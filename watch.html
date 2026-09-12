@@ -4,30 +4,53 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Watch Video</title>
-  <link rel="stylesheet" href="styles.css">
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Neon Styles -->
+  <style>
+    .text-neon {
+      color: #00f5ff;
+      text-shadow: 0 0 8px rgba(0, 245, 255, 0.7);
+    }
+    .btn-neon {
+      background-color: #00f5ff;
+      color: black;
+      font-weight: bold;
+      padding: 8px 16px;
+      border-radius: 6px;
+      transition: 0.2s ease;
+    }
+    .btn-neon:hover {
+      box-shadow: 0 0 12px rgba(0, 245, 255, 0.6);
+      transform: translateY(-2px);
+    }
+  </style>
 </head>
 
-<body class="bg-black text-white">
+<body class="bg-black text-white min-h-screen">
 
-  <header class="p-4 text-center text-neon text-3xl font-bold">
-    AI Learning Stream
+  <!-- Header -->
+  <header class="p-4 flex justify-between items-center border-b border-gray-700">
+    <h1 class="text-neon text-2xl font-bold">AI Learning Stream</h1>
+    <a href="index.html" class="text-sm text-gray-300 hover:text-neon">
+      ← Back to Home
+    </a>
   </header>
 
-  <main class="p-4">
-    <div id="video-container" class="mb-6">
-      <iframe id="videoPlayer" class="w-full h-64 rounded-lg" frameborder="0" allowfullscreen></iframe>
-    </div>
+  <!-- Main Content -->
+  <main class="p-4 max-w-3xl mx-auto">
 
-    <h2 id="videoTitle" class="text-2xl font-bold mb-2"></h2>
-    <p id="videoDescription" class="text-gray-300 mb-6"></p>
+    <!-- Video Player -->
+    <video id="videoPlayer" controls class="w-full rounded-lg mb-4 bg-gray-900"></video>
 
-    <h3 class="text-xl font-semibold mb-3">Related Videos</h3>
-    <div id="relatedVideos" class="grid grid-cols-1 md:grid-cols-3 gap-4"></div>
-  </main>
-<button id="watchLaterBtn" class="mt-2 px-3 py-1 bg-neon text-black rounded">
-  + Watch Later
-</button>
+    <!-- Title -->
+    <h2 id="videoTitle" class="text-xl font-bold mb-4"></h2>
 
-  <script src="app.js"></script>
-</body>
-</html>
+    <!-- Watch Later Button -->
+    <button id="watchLaterBtn" class="btn-neon mb-6">
+      + Add to Watch Later
+    </button>
+
+    <!-- Related Videos -->

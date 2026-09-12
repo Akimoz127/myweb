@@ -1,102 +1,35 @@
-// Video Data
-const videos = [
-  {
-    title: "Nature Live Stream",
-    thumbnail: "https://placehold.co/600x400?text=Nature",
-    url: "https://www.w3schools.com/html/mov_bbb.mp4"
-  },
-  {
-    title: "Tech Talk Live",
-    thumbnail: "https://placehold.co/600x400?text=Tech",
-    url: "https://www.w3schools.com/html/movie.mp4"
-  },
-  {
-    title: "Gaming Stream",
-    thumbnail: "https://placehold.co/600x400?text=Gaming",
-    url: "https://placehold.co/600x400"
-  }
-];
+// ===============================
+// تحميل الفيديوهات من videos.json
+// ===============================
 
-const videoList = document.getElementById("video-list");
-
-// Render All Videos
-function renderVideos() {
-  videoList.innerHTML = "";
-
-  videos.forEach(video => {
-    const card = `
-      <div class="bg-gray-900 rounded-lg overflow-hidden shadow-lg hover:scale-105 transition cursor-pointer"
-           onclick="playVideo('${video.url}', '${video.title}')">
-        <img src="${video.thumbnail}" class="w-full h-32 object-cover">
-        <div class="p-3">
-          <h3 class="text-lg font-semibold">${video.title}</h3>
-          <p class="text-gray-400 text-sm">Click to play</p>
-        </div>
-      </div>
-    `;
-    videoList.innerHTML += card;
-  });
-}
-
-renderVideos();
-
-// Search System
-const searchInput = document.getElementById("searchInput");
-
-searchInput.addEventListener("input", function () {
-  const keyword = searchInput.value.toLowerCase();
-
-  const filteredVideos = videos.filter(video =>
-    video.title.toLowerCase().includes(keyword)
-  );
-
-  renderFilteredVideos(filteredVideos);
-});
-
-function renderFilteredVideos(list) {
-  videoList.innerHTML = "";
-
-  list.forEach(video => {
-    const card = `
-      <div class="bg-gray-900 rounded-lg overflow-hidden shadow-lg hover:scale-105 transition cursor-pointer"
-           onclick="playVideo('${video.url}', '${video.title}')">
-        <img src="${video.thumbnail}" class="w-full h-32 object-cover">
-        <div class="p-3">
-          <h3 class="text-lg font-semibold">${video.title}</h3>
-          <p class="text-gray-400 text-sm">Click to play</p>
-        </div>
-      </div>
-    `;
-    videoList.innerHTML += card;
-  });
-}
-
-// Video Player
-function playVideo(url, title) {
-  const player = document.getElementById("player");
-  const videoPlayer = document.getElementById("videoPlayer");
-
-  videoPlayer.src = url;
-  videoPlayer.play();
-
-  player.classList.remove("hidden");
-}
-
-function closePlayer() {
-  const player = document.getElementById("player");
-  const videoPlayer = document.getElementById("videoPlayer");
-
-  videoPlayer.pause();
-  player.classList.add("hidden");
-}
+let allVideos = [];
 
 fetch("videos.json")
-  .then(response => response.json())
-  .then(videos => {
-    renderVideos(videos);
-  });
+  .then(res => res.json())
+  .then(data => {
+    allVideos = data;
+    initPages();
+  })
+  .catch(err => console.error("Error loading videos:", err));
 
----
+
+// ===============================
+// تفعيل الدوال حسب الصفحة الحالية
+// ===============================
+
+function initPages() {
+  renderCategories(allVideos);
+  renderCategoryVideos(allVideos);
+  renderTrending(allVideos);
+  renderWatchLater(allVideos);
+  renderWatchPage(allVideos);
+}
+
+
+// ===============================
+// صفحة الأقسام categories.html
+// ===============================
+
 function renderCategories(videos) {
   const categoryList = document.getElementById("categoryList");
   if (!categoryList) return;
@@ -105,31 +38,67 @@ function renderCategories(videos) {
 
   categories.forEach(cat => {
     const div = document.createElement("div");
-    div.className = "p-4 bg-gray-800 rounded-lg cursor-pointer hover:bg-gray-700";
-    div.textContent = cat;
+    div.className =
+      "card-neon p-4 bg-gray-800 rounded-lg cursor-pointer hover:bg-gray-700 flex justify-between";
+
+    div.innerHTML = `
+      <span class="font-bold">${cat}</span>
+      <span class="text-xs text-gray-400">View →</span>
+    `;
 
     div.onclick = () => {
-      window.location.href = `category.html?name=${cat}`;
+      window.location.href = `category.html?name=${encodeURIComponent(cat)}`;
     };
 
     categoryList.appendChild(div);
   });
 }
 
-function addToWatchLater(videoId) {
-  const key = "watchLaterList";
-  const current = JSON.parse(localStorage.getItem(key) || "[]");
-  if (!current.includes(videoId)) {
-    current.push(videoId);
-    localStorage.setItem(key, JSON.stringify(current));
-  }
+
+// ===============================
+// صفحة عرض فيديوهات القسم category.html
+// ===============================
+
+function renderCategoryVideos(videos) {
+  const container = document.getElementById("categoryVideos");
+  const title = document.getElementById("categoryTitle");
+  if (!container || !title) return;
+
+  const params = new URLSearchParams(window.location.search);
+  const categoryName = params.get("name");
+  if (!categoryName) return;
+
+  title.textContent = categoryName;
+
+  const filtered = videos.filter(v => v.category === categoryName);
+
+  filtered.forEach(video => {
+    const div = document.createElement("div");
+    div.className = "card-neon p-4 bg-gray-800 rounded-lg cursor-pointer";
+
+    div.innerHTML = `
+      <img src="${video.thumbnail}" class="rounded-lg mb-2">
+      <h3 class="font-bold">${video.title}</h3>
+      <p class="text-xs text-gray-400">${video.views} views</p>
+    `;
+
+    div.onclick = () => {
+      window.location.href = `watch.html?id=${video.id}`;
+    };
+
+    container.appendChild(div);
+  });
 }
+
+
+// ===============================
+// صفحة Trending
+// ===============================
 
 function renderTrending(videos) {
   const trendingList = document.getElementById("trendingList");
   if (!trendingList) return;
 
-  // ترتيب الفيديوهات حسب عدد المشاهدات
   const sorted = [...videos].sort((a, b) => b.views - a.views).slice(0, 9);
 
   sorted.forEach(video => {
@@ -138,7 +107,7 @@ function renderTrending(videos) {
 
     div.innerHTML = `
       <img src="${video.thumbnail}" class="rounded-lg mb-2">
-      <h3 class="font-bold mb-1">${video.title}</h3>
+      <h3 class="font-bold">${video.title}</h3>
       <p class="text-xs text-gray-400">${video.views} views</p>
     `;
 
@@ -149,3 +118,74 @@ function renderTrending(videos) {
     trendingList.appendChild(div);
   });
 }
+
+
+// ===============================
+// نظام Watch Later
+// ===============================
+
+// حفظ الفيديو في LocalStorage
+function addToWatchLater(videoId) {
+  const key = "watchLaterList";
+  const current = JSON.parse(localStorage.getItem(key) || "[]");
+
+  if (!current.includes(videoId)) {
+    current.push(videoId);
+    localStorage.setItem(key, JSON.stringify(current));
+  }
+}
+
+// عرض قائمة Watch Later
+function renderWatchLater(videos) {
+  const container = document.getElementById("watchLaterList");
+  if (!container) return;
+
+  const key = "watchLaterList";
+  const ids = JSON.parse(localStorage.getItem(key) || "[]");
+
+  const filtered = videos.filter(v => ids.includes(v.id));
+
+  filtered.forEach(video => {
+    const div = document.createElement("div");
+    div.className = "card-neon p-4 bg-gray-800 rounded-lg cursor-pointer";
+
+    div.innerHTML = `
+      <img src="${video.thumbnail}" class="rounded-lg mb-2">
+      <h3 class="font-bold">${video.title}</h3>
+      <p class="text-xs text-gray-400">${video.views} views</p>
+    `;
+
+    div.onclick = () => {
+      window.location.href = `watch.html?id=${video.id}`;
+    };
+
+    container.appendChild(div);
+  });
+}
+
+
+// ===============================
+// صفحة watch.html
+// ===============================
+
+function renderWatchPage(videos) {
+  const videoContainer = document.getElementById("videoPlayer");
+  const title = document.getElementById("videoTitle");
+  const watchLaterBtn = document.getElementById("watchLaterBtn");
+
+  if (!videoContainer || !title) return;
+
+  const params = new URLSearchParams(window.location.search);
+  const id = parseInt(params.get("id"));
+  const video = videos.find(v => v.id === id);
+
+  if (!video) return;
+
+  videoContainer.src = video.url;
+  title.textContent = video.title;
+
+  if (watchLaterBtn) {
+    watchLaterBtn.onclick = () => addToWatchLater(video.id);
+  }
+}
+

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Watch Video</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="bg-black text-white">
+
+  <header class="p-4 text-center text-neon text-3xl font-bold">
+    AI Learning Stream
+  </header>
+
+  <main class="p-4">
+    <div id="video-container" class="mb-6">
+      <iframe id="videoPlayer" class="w-full h-64 rounded-lg" frameborder="0" allowfullscreen></iframe>
+    </div>
+
+    <h2 id="videoTitle" class="text-2xl font-bold mb-2"></h2>
+    <p id="videoDescription" class="text-gray-300 mb-6"></p>
+
+    <h3 class="text-xl font-semibold mb-3">Related Videos</h3>
+    <div id="relatedVideos" class="grid grid-cols-1 md:grid-cols-3 gap-4"></div>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

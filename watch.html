@@ -40,10 +40,26 @@
   </header>
 
   <!-- Main Content -->
-  <main class="p-4 max-w-3xl mx-auto">
+<main class="p-4 max-w-3xl mx-auto">
 
-    <!-- Video Player -->
-    <video id="videoPlayer" controls class="w-full rounded-lg mb-4 bg-gray-900"></video>
+  <!-- Video Player -->
+  <video id="videoPlayer" controls class="w-full rounded-lg mb-4 bg-gray-900"></video>
+
+  <!-- Title -->
+  <h2 id="videoTitle" class="text-xl font-bold mb-4"></h2>
+
+  <!-- Action Buttons -->
+  <div class="flex gap-3 mb-6">
+    <button id="watchLaterBtn" class="btn-neon">+ Add to Watch Later</button>
+    <button id="favoriteBtn" class="btn-neon">★ Add to Favorites</button>
+  </div>
+
+  <!-- Recommended Videos -->
+  <h3 class="text-lg font-bold mb-3">Recommended Videos</h3>
+  <div id="recommendedVideos" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+
+</main>
+
 
     <!-- Title -->
     <h2 id="videoTitle" class="text-xl font-bold mb-4"></h2>

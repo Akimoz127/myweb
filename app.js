@@ -124,3 +124,28 @@ function addToWatchLater(videoId) {
     localStorage.setItem(key, JSON.stringify(current));
   }
 }
+
+function renderTrending(videos) {
+  const trendingList = document.getElementById("trendingList");
+  if (!trendingList) return;
+
+  // ترتيب الفيديوهات حسب عدد المشاهدات
+  const sorted = [...videos].sort((a, b) => b.views - a.views).slice(0, 9);
+
+  sorted.forEach(video => {
+    const div = document.createElement("div");
+    div.className = "card-neon p-4 bg-gray-800 rounded-lg cursor-pointer";
+
+    div.innerHTML = `
+      <img src="${video.thumbnail}" class="rounded-lg mb-2">
+      <h3 class="font-bold mb-1">${video.title}</h3>
+      <p class="text-xs text-gray-400">${video.views} views</p>
+    `;
+
+    div.onclick = () => {
+      window.location.href = `watch.html?id=${video.id}`;
+    };
+
+    trendingList.appendChild(div);
+  });
+}

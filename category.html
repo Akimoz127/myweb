@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Category Videos</title>
+  <title>Categories</title>
 
   <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -28,17 +28,17 @@
 
   <!-- Header -->
   <header class="p-4 flex justify-between items-center border-b border-gray-700">
-    <h1 class="text-neon text-2xl font-bold">Category Videos</h1>
-    <a href="categories.html" class="text-sm text-gray-300 hover:text-neon">
-      ← Back to Categories
+    <h1 class="text-neon text-2xl font-bold">AI Learning Categories</h1>
+    <a href="index.html" class="text-sm text-gray-300 hover:text-neon">
+      ← Back to Home
     </a>
   </header>
 
   <!-- Main Content -->
   <main class="p-4">
-    <h2 id="categoryTitle" class="text-xl font-bold mb-4"></h2>
+    <h2 class="text-xl font-bold mb-4">Choose a Category</h2>
 
-    <div id="categoryVideos" class="grid grid-cols-1 md:grid-cols-3 gap-4"></div>
+    <div id="categoryList" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
   </main>
 
   <!-- App Logic -->
@@ -46,3 +46,4 @@
 
 </body>
 </html>
+

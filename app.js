@@ -88,3 +88,7 @@ function closePlayer() {
 
   videoPlayer.pause();
   player.classList.add("hidden");
+}
+
+
+---

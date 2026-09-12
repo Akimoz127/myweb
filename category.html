@@ -3,22 +3,46 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Categories</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>Category Videos</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Neon Styles -->
+  <style>
+    .text-neon {
+      color: #00f5ff;
+      text-shadow: 0 0 8px rgba(0, 245, 255, 0.7);
+    }
+    .card-neon {
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .card-neon:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 12px rgba(0, 245, 255, 0.4);
+    }
+  </style>
 </head>
 
-<body class="bg-black text-white">
+<body class="bg-black text-white min-h-screen">
 
-  <header class="p-4 text-center text-neon text-3xl font-bold">
-    AI Learning Categories
+  <!-- Header -->
+  <header class="p-4 flex justify-between items-center border-b border-gray-700">
+    <h1 class="text-neon text-2xl font-bold">Category Videos</h1>
+    <a href="categories.html" class="text-sm text-gray-300 hover:text-neon">
+      ← Back to Categories
+    </a>
   </header>
 
+  <!-- Main Content -->
   <main class="p-4">
-    <h2 class="text-xl font-bold mb-4">Choose a Category</h2>
+    <h2 id="categoryTitle" class="text-xl font-bold mb-4"></h2>
 
-    <div id="categoryList" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+    <div id="categoryVideos" class="grid grid-cols-1 md:grid-cols-3 gap-4"></div>
   </main>
 
+  <!-- App Logic -->
   <script src="app.js"></script>
+
 </body>
 </html>

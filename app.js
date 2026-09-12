@@ -90,5 +90,10 @@ function closePlayer() {
   player.classList.add("hidden");
 }
 
+fetch("videos.json")
+  .then(response => response.json())
+  .then(videos => {
+    renderVideos(videos);
+  });
 
 ---

@@ -2,81 +2,247 @@
   {
     "id": 1,
     "title": "Introduction to Artificial Intelligence",
-    "thumbnail": "img/ai1.jpg",
-    "url": "https://www.w3schools.com/html/mov_bbb.mp4",
+    "url": "https://www.youtube.com/embed/2ePf9rue1Ao",
+    "thumbnail": "https://i.ytimg.com/vi/2ePf9rue1Ao/hqdefault.jpg",
     "category": "AI Basics",
     "views": 1200
   },
   {
     "id": 2,
-    "title": "Machine Learning Explained",
-    "thumbnail": "img/ml1.jpg",
-    "url": "https://www.w3schools.com/html/movie.mp4",
-    "category": "Machine Learning",
+    "title": "What is Machine Learning?",
+    "url": "https://www.youtube.com/embed/ukzFI9rgwfU",
+    "thumbnail": "https://i.ytimg.com/vi/ukzFI9rgwfU/hqdefault.jpg",
+    "category": "AI Basics",
     "views": 980
   },
   {
     "id": 3,
-    "title": "Deep Learning Fundamentals",
-    "thumbnail": "img/dl1.jpg",
-    "url": "https://www.w3schools.com/html/mov_bbb.mp4",
+    "title": "Neural Networks Explained",
+    "url": "https://www.youtube.com/embed/aircAruvnKk",
+    "thumbnail": "https://i.ytimg.com/vi/aircAruvnKk/hqdefault.jpg",
     "category": "Deep Learning",
     "views": 1500
   },
   {
     "id": 4,
-    "title": "Neural Networks for Beginners",
-    "thumbnail": "img/nn1.jpg",
-    "url": "https://www.w3schools.com/html/movie.mp4",
+    "title": "Deep Learning Crash Course",
+    "url": "https://www.youtube.com/embed/VyWAvY2CF9c",
+    "thumbnail": "https://i.ytimg.com/vi/VyWAvY2CF9c/hqdefault.jpg",
     "category": "Deep Learning",
-    "views": 870
+    "views": 1100
   },
   {
     "id": 5,
-    "title": "Understanding Large Language Models",
-    "thumbnail": "img/llm1.jpg",
-    "url": "https://www.w3schools.com/html/mov_bbb.mp4",
+    "title": "Large Language Models Explained",
+    "url": "https://www.youtube.com/embed/7xTGNNLPyMI",
+    "thumbnail": "https://i.ytimg.com/vi/7xTGNNLPyMI/hqdefault.jpg",
     "category": "LLMs",
     "views": 2100
   },
   {
     "id": 6,
     "title": "Prompt Engineering Basics",
-    "thumbnail": "img/prompt1.jpg",
-    "url": "https://www.w3schools.com/html/movie.mp4",
+    "url": "https://www.youtube.com/embed/dOxUroR57xs",
+    "thumbnail": "https://i.ytimg.com/vi/dOxUroR57xs/hqdefault.jpg",
     "category": "Prompt Engineering",
-    "views": 1650
+    "views": 1750
   },
   {
     "id": 7,
-    "title": "Advanced Prompt Techniques",
-    "thumbnail": "img/prompt2.jpg",
-    "url": "https://www.w3schools.com/html/mov_bbb.mp4",
-    "category": "Prompt Engineering",
-    "views": 940
+    "title": "AI Ethics and Safety",
+    "url": "https://www.youtube.com/embed/0pDE4VX_9Kk",
+    "thumbnail": "https://i.ytimg.com/vi/0pDE4VX_9Kk/hqdefault.jpg",
+    "category": "AI Ethics",
+    "views": 900
   },
   {
     "id": 8,
-    "title": "AI Ethics & Safety",
-    "thumbnail": "img/ethics1.jpg",
-    "url": "https://www.w3schools.com/html/movie.mp4",
-    "category": "AI Ethics",
-    "views": 720
+    "title": "How Computers Learn",
+    "url": "https://www.youtube.com/embed/R9OHn5ZF4Uo",
+    "thumbnail": "https://i.ytimg.com/vi/R9OHn5ZF4Uo/hqdefault.jpg",
+    "category": "Machine Learning",
+    "views": 1300
   },
   {
     "id": 9,
-    "title": "How ChatGPT Works Internally",
-    "thumbnail": "img/chatgpt1.jpg",
-    "url": "https://www.w3schools.com/html/mov_bbb.mp4",
-    "category": "LLMs",
-    "views": 3000
+    "title": "Gradient Descent Explained",
+    "url": "https://www.youtube.com/embed/sDv4f4s2SB8",
+    "thumbnail": "https://i.ytimg.com/vi/sDv4f4s2SB8/hqdefault.jpg",
+    "category": "Deep Learning",
+    "views": 1600
   },
   {
     "id": 10,
-    "title": "Building AI Projects Step-by-Step",
-    "thumbnail": "img/project1.jpg",
-    "url": "https://www.w3schools.com/html/movie.mp4",
+    "title": "AI for Beginners",
+    "url": "https://www.youtube.com/embed/JMUxmLyrhSk",
+    "thumbnail": "https://i.ytimg.com/vi/JMUxmLyrhSk/hqdefault.jpg",
     "category": "AI Basics",
-    "views": 1100
+    "views": 1400
+  },
+
+  /* ============================
+     20 Professional AI Videos
+     ============================ */
+
+  {
+    "id": 11,
+    "title": "Transformers Architecture Explained",
+    "url": "https://www.youtube.com/embed/XSYJ7zSg8yI",
+    "thumbnail": "https://i.ytimg.com/vi/XSYJ7zSg8yI/hqdefault.jpg",
+    "category": "LLMs",
+    "views": 3200
+  },
+  {
+    "id": 12,
+    "title": "Attention Mechanism in Deep Learning",
+    "url": "https://www.youtube.com/embed/5vcj8kSwBCY",
+    "thumbnail": "https://i.ytimg.com/vi/5vcj8kSwBCY/hqdefault.jpg",
+    "category": "Deep Learning",
+    "views": 2900
+  },
+  {
+    "id": 13,
+    "title": "Building ChatGPT from Scratch",
+    "url": "https://www.youtube.com/embed/bZQun8Y4L2A",
+    "thumbnail": "https://i.ytimg.com/vi/bZQun8Y4L2A/hqdefault.jpg",
+    "category": "LLMs",
+    "views": 4100
+  },
+  {
+    "id": 14,
+    "title": "AI Agents Explained",
+    "url": "https://www.youtube.com/embed/8V20HkYxFfA",
+    "thumbnail": "https://i.ytimg.com/vi/8V20HkYxFfA/hqdefault.jpg",
+    "category": "AI Systems",
+    "views": 2600
+  },
+  {
+    "id": 15,
+    "title": "Reinforcement Learning Crash Course",
+    "url": "https://www.youtube.com/embed/IL3gVyJMmhg",
+    "thumbnail": "https://i.ytimg.com/vi/IL3gVyJMmhg/hqdefault.jpg",
+    "category": "Reinforcement Learning",
+    "views": 3500
+  },
+  {
+    "id": 16,
+    "title": "Q-Learning Explained",
+    "url": "https://www.youtube.com/embed/0g4j2k_Ggc4",
+    "thumbnail": "https://i.ytimg.com/vi/0g4j2k_Ggc4/hqdefault.jpg",
+    "category": "Reinforcement Learning",
+    "views": 2800
+  },
+  {
+    "id": 17,
+    "title": "AI in Robotics",
+    "url": "https://www.youtube.com/embed/8LuPp6g8YlE",
+    "thumbnail": "https://i.ytimg.com/vi/8LuPp6g8YlE/hqdefault.jpg",
+    "category": "Robotics",
+    "views": 2300
+  },
+  {
+    "id": 18,
+    "title": "Computer Vision Basics",
+    "url": "https://www.youtube.com/embed/1RZQ0p7g1Ho",
+    "thumbnail": "https://i.ytimg.com/vi/1RZQ0p7g1Ho/hqdefault.jpg",
+    "category": "Computer Vision",
+    "views": 3100
+  },
+  {
+    "id": 19,
+    "title": "Convolutional Neural Networks",
+    "url": "https://www.youtube.com/embed/YRhxdVk_sIs",
+    "thumbnail": "https://i.ytimg.com/vi/YRhxdVk_sIs/hqdefault.jpg",
+    "category": "Computer Vision",
+    "views": 3900
+  },
+  {
+    "id": 20,
+    "title": "AI for Business Automation",
+    "url": "https://www.youtube.com/embed/2eF9V0fZ7xE",
+    "thumbnail": "https://i.ytimg.com/vi/2eF9V0fZ7xE/hqdefault.jpg",
+    "category": "AI Applications",
+    "views": 2500
+  },
+  {
+    "id": 21,
+    "title": "Natural Language Processing Crash Course",
+    "url": "https://www.youtube.com/embed/8u1wZQ0U0WQ",
+    "thumbnail": "https://i.ytimg.com/vi/8u1wZQ0U0WQ/hqdefault.jpg",
+    "category": "NLP",
+    "views": 3300
+  },
+  {
+    "id": 22,
+    "title": "Tokenization in NLP",
+    "url": "https://www.youtube.com/embed/8u1wZQ0U0WQ",
+    "thumbnail": "https://i.ytimg.com/vi/8u1wZQ0U0WQ/hqdefault.jpg",
+    "category": "NLP",
+    "views": 2100
+  },
+  {
+    "id": 23,
+    "title": "AI Security Fundamentals",
+    "url": "https://www.youtube.com/embed/0pDE4VX_9Kk",
+    "thumbnail": "https://i.ytimg.com/vi/0pDE4VX_9Kk/hqdefault.jpg",
+    "category": "AI Ethics",
+    "views": 1900
+  },
+  {
+    "id": 24,
+    "title": "Building AI Models with Python",
+    "url": "https://www.youtube.com/embed/7eh4d6sabA0",
+    "thumbnail": "https://i.ytimg.com/vi/7eh4d6sabA0/hqdefault.jpg",
+    "category": "Programming",
+    "views": 4200
+  },
+  {
+    "id": 25,
+    "title": "Data Science Full Course",
+    "url": "https://www.youtube.com/embed/ua-CiK0o5zU",
+    "thumbnail": "https://i.ytimg.com/vi/ua-CiK0o5zU/hqdefault.jpg",
+    "category": "Data Science",
+    "views": 5100
+  },
+  {
+    "id": 26,
+    "title": "AI for Healthcare",
+    "url": "https://www.youtube.com/embed/8LuPp6g8YlE",
+    "thumbnail": "https://i.ytimg.com/vi/8LuPp6g8YlE/hqdefault.jpg",
+    "category": "AI Applications",
+    "views": 2700
+  },
+  {
+    "id": 27,
+    "title": "AI in Finance",
+    "url": "https://www.youtube.com/embed/2eF9V0fZ7xE",
+    "thumbnail": "https://i.ytimg.com/vi/2eF9V0fZ7xE/hqdefault.jpg",
+    "category": "AI Applications",
+    "views": 3000
+  },
+  {
+    "id": 28,
+    "title": "AI for Cybersecurity",
+    "url": "https://www.youtube.com/embed/0pDE4VX_9Kk",
+    "thumbnail": "https://i.ytimg.com/vi/0pDE4VX_9Kk/hqdefault.jpg",
+    "category": "AI Ethics",
+    "views": 2600
+  },
+  {
+    "id": 29,
+    "title": "Building Neural Networks in Python",
+    "url": "https://www.youtube.com/embed/aircAruvnKk",
+    "thumbnail": "https://i.ytimg.com/vi/aircAruvnKk/hqdefault.jpg",
+    "category": "Programming",
+    "views": 3800
+  },
+  {
+    "id": 30,
+    "title": "AI Career Roadmap",
+    "url": "https://www.youtube.com/embed/JMUxmLyrhSk",
+    "thumbnail": "https://i.ytimg.com/vi/JMUxmLyrhSk/hqdefault.jpg",
+    "category": "AI Basics",
+    "views": 4500
   }
 ]
+

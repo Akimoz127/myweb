@@ -80,10 +80,6 @@
     "views": 1400
   },
 
-  /* ============================
-     20 Professional AI Videos
-     ============================ */
-
   {
     "id": 11,
     "title": "Transformers Architecture Explained",
@@ -243,6 +239,249 @@
     "thumbnail": "https://i.ytimg.com/vi/JMUxmLyrhSk/hqdefault.jpg",
     "category": "AI Basics",
     "views": 4500
+  },
+
+  {
+    "id": 31,
+    "title": "Full Machine Learning Course",
+    "url": "https://www.youtube.com/embed/7eh4d6sabA0",
+    "thumbnail": "https://i.ytimg.com/vi/7eh4d6sabA0/hqdefault.jpg",
+    "category": "AI Courses",
+    "views": 6200
+  },
+  {
+    "id": 32,
+    "title": "Deep Learning Full Course",
+    "url": "https://www.youtube.com/embed/aircAruvnKk",
+    "thumbnail": "https://i.ytimg.com/vi/aircAruvnKk/hqdefault.jpg",
+    "category": "AI Courses",
+    "views": 5800
+  },
+  {
+    "id": 33,
+    "title": "Data Science Bootcamp",
+    "url": "https://www.youtube.com/embed/ua-CiK0o5zU",
+    "thumbnail": "https://i.ytimg.com/vi/ua-CiK0o5zU/hqdefault.jpg",
+    "category": "AI Courses",
+    "views": 7300
+  },
+  {
+    "id": 34,
+    "title": "NLP Full Course",
+    "url": "https://www.youtube.com/embed/8u1wZQ0U0WQ",
+    "thumbnail": "https://i.ytimg.com/vi/8u1wZQ0U0WQ/hqdefault.jpg",
+    "category": "AI Courses",
+    "views": 5400
+  },
+  {
+    "id": 35,
+    "title": "Computer Vision Full Course",
+    "url": "https://www.youtube.com/embed/YRhxdVk_sIs",
+    "thumbnail": "https://i.ytimg.com/vi/YRhxdVk_sIs/hqdefault.jpg",
+    "category": "AI Courses",
+    "views": 5600
+  },
+  {
+    "id": 36,
+    "title": "Python for AI Full Course",
+    "url": "https://www.youtube.com/embed/7eh4d6sabA0",
+    "thumbnail": "https://i.ytimg.com/vi/7eh4d6sabA0/hqdefault.jpg",
+    "category": "AI Courses",
+    "views": 6100
+  },
+  {
+    "id": 37,
+    "title": "LLMs and Transformers Masterclass",
+    "url": "https://www.youtube.com/embed/XSYJ7zSg8yI",
+    "thumbnail": "https://i.ytimg.com/vi/XSYJ7zSg8yI/hqdefault.jpg",
+    "category": "AI Courses",
+    "views": 5900
+  },
+  {
+    "id": 38,
+    "title": "Reinforcement Learning Full Course",
+    "url": "https://www.youtube.com/embed/IL3gVyJMmhg",
+    "thumbnail": "https://i.ytimg.com/vi/IL3gVyJMmhg/hqdefault.jpg",
+    "category": "AI Courses",
+    "views": 5700
+  },
+  {
+    "id": 39,
+    "title": "AI Projects Course",
+    "url": "https://www.youtube.com/embed/2ePf9rue1Ao",
+    "thumbnail": "https://i.ytimg.com/vi/2ePf9rue1Ao/hqdefault.jpg",
+    "category": "AI Courses",
+    "views": 5200
+  },
+  {
+    "id": 40,
+    "title": "Crash Course: AI in 1 Hour",
+    "url": "https://www.youtube.com/embed/JMUxmLyrhSk",
+    "thumbnail": "https://i.ytimg.com/vi/JMUxmLyrhSk/hqdefault.jpg",
+    "category": "AI Crash Courses",
+    "views": 4800
+  },
+  {
+    "id": 41,
+    "title": "Crash Course: Machine Learning in 30 Minutes",
+    "url": "https://www.youtube.com/embed/ukzFI9rgwfU",
+    "thumbnail": "https://i.ytimg.com/vi/ukzFI9rgwfU/hqdefault.jpg",
+    "category": "AI Crash Courses",
+    "views": 4500
+  },
+  {
+    "id": 42,
+    "title": "Crash Course: Deep Learning in 45 Minutes",
+    "url": "https://www.youtube.com/embed/VyWAvY2CF9c",
+    "thumbnail": "https://i.ytimg.com/vi/VyWAvY2CF9c/hqdefault.jpg",
+    "category": "AI Crash Courses",
+    "views": 4300
+  },
+  {
+    "id": 43,
+    "title": "Crash Course: NLP in 40 Minutes",
+    "url": "https://www.youtube.com/embed/8u1wZQ0U0WQ",
+    "thumbnail": "https://i.ytimg.com/vi/8u1wZQ0U0WQ/hqdefault.jpg",
+    "category": "AI Crash Courses",
+    "views": 4200
+  },
+  {
+    "id": 44,
+    "title": "Crash Course: Computer Vision in 35 Minutes",
+    "url": "https://www.youtube.com/embed/YRhxdVk_sIs",
+    "thumbnail": "https://i.ytimg.com/vi/YRhxdVk_sIs/hqdefault.jpg",
+    "category": "AI Crash Courses",
+    "views": 4100
+  },
+  {
+    "id": 45,
+    "title": "Crash Course: Python for AI in 1 Hour",
+    "url": "https://www.youtube.com/embed/7eh4d6sabA0",
+    "thumbnail": "https://i.ytimg.com/vi/7eh4d6sabA0/hqdefault.jpg",
+    "category": "AI Crash Courses",
+    "views": 4600
+  },
+
+  {
+    "id": 46,
+    "title": "دورة الذكاء الاصطناعي للمبتدئين",
+    "url": "https://www.youtube.com/embed/VIDEO_ID_AR1",
+    "thumbnail": "https://i.ytimg.com/vi/VIDEO_ID_AR1/hqdefault.jpg",
+    "category": "Arabic AI Courses",
+    "views": 3500
+  },
+  {
+    "id": 47,
+    "title": "دورة تعلم الآلة باللغة العربية",
+    "url": "https://www.youtube.com/embed/VIDEO_ID_AR2",
+    "thumbnail": "https://i.ytimg.com/vi/VIDEO_ID_AR2/hqdefault.jpg",
+    "category": "Arabic AI Courses",
+    "views": 3300
+  },
+  {
+    "id": 48,
+    "title": "دورة بايثون للذكاء الاصطناعي",
+    "url": "https://www.youtube.com/embed/VIDEO_ID_AR3",
+    "thumbnail": "https://i.ytimg.com/vi/VIDEO_ID_AR3/hqdefault.jpg",
+    "category": "Arabic AI Courses",
+    "views": 3700
+  },
+  {
+    "id": 49,
+    "title": "دورة تحليل البيانات باستخدام بايثون",
+    "url": "https://www.youtube.com/embed/VIDEO_ID_AR4",
+    "thumbnail": "https://i.ytimg.com/vi/VIDEO_ID_AR4/hqdefault.jpg",
+    "category": "Arabic AI Courses",
+    "views": 3400
+  },
+  {
+    "id": 50,
+    "title": "دورة الشبكات العصبية بالعربي",
+    "url": "https://www.youtube.com/embed/VIDEO_ID_AR5",
+    "thumbnail": "https://i.ytimg.com/vi/VIDEO_ID_AR5/hqdefault.jpg",
+    "category": "Arabic AI Courses",
+    "views": 3600
+  },
+  {
+    "id": 51,
+    "title": "دورة الرؤية الحاسوبية بالعربي",
+    "url": "https://www.youtube.com/embed/VIDEO_ID_AR6",
+    "thumbnail": "https://i.ytimg.com/vi/VIDEO_ID_AR6/hqdefault.jpg",
+    "category": "Arabic AI Courses",
+    "views": 3200
+  },
+  {
+    "id": 52,
+    "title": "دورة نماذج اللغة الكبيرة بالعربي",
+    "url": "https://www.youtube.com/embed/VIDEO_ID_AR7",
+    "thumbnail": "https://i.ytimg.com/vi/VIDEO_ID_AR7/hqdefault.jpg",
+    "category": "Arabic AI Courses",
+    "views": 3100
+  },
+  {
+    "id": 53,
+    "title": "دورة الذكاء الاصطناعي العملي",
+    "url": "https://www.youtube.com/embed/VIDEO_ID_AR8",
+    "thumbnail": "https://i.ytimg.com/vi/VIDEO_ID_AR8/hqdefault.jpg",
+    "category": "Arabic AI Courses",
+    "views": 3900
+  },
+  {
+    "id": 54,
+    "title": "كورس سريع: مقدمة في الذكاء الاصطناعي",
+    "url": "https://www.youtube.com/embed/VIDEO_ID_AR9",
+    "thumbnail": "https://i.ytimg.com/vi/VIDEO_ID_AR9/hqdefault.jpg",
+    "category": "Arabic AI Crash Courses",
+    "views": 2800
+  },
+  {
+    "id": 55,
+    "title": "كورس سريع: تعلم الآلة في ساعة",
+    "url": "https://www.youtube.com/embed/VIDEO_ID_AR10",
+    "thumbnail": "https://i.ytimg.com/vi/VIDEO_ID_AR10/hqdefault.jpg",
+    "category": "Arabic AI Crash Courses",
+    "views": 2700
+  },
+  {
+    "id": 56,
+    "title": "كورس سريع: الشبكات العصبية في 45 دقيقة",
+    "url": "https://www.youtube.com/embed/VIDEO_ID_AR11",
+    "thumbnail": "https://i.ytimg.com/vi/VIDEO_ID_AR11/hqdefault.jpg",
+    "category": "Arabic AI Crash Courses",
+    "views": 2600
+  },
+  {
+    "id": 57,
+    "title": "كورس سريع: الرؤية الحاسوبية في 30 دقيقة",
+    "url": "https://www.youtube.com/embed/VIDEO_ID_AR12",
+    "thumbnail": "https://i.ytimg.com/vi/VIDEO_ID_AR12/hqdefault.jpg",
+    "category": "Arabic AI Crash Courses",
+    "views": 2500
+  },
+  {
+    "id": 58,
+    "title": "كورس سريع: نماذج اللغة في 40 دقيقة",
+    "url": "https://www.youtube.com/embed/VIDEO_ID_AR13",
+    "thumbnail": "https://i.ytimg.com/vi/VIDEO_ID_AR13/hqdefault.jpg",
+    "category": "Arabic AI Crash Courses",
+    "views": 2400
+  },
+  {
+    "id": 59,
+    "title": "كورس سريع: الذكاء الاصطناعي في الحياة اليومية",
+    "url": "https://www.youtube.com/embed/VIDEO_ID_AR14",
+    "thumbnail": "https://i.ytimg.com/vi/VIDEO_ID_AR14/hqdefault.jpg",
+    "category": "Arabic AI Crash Courses",
+    "views": 2300
+  },
+  {
+    "id": 60,
+    "title": "مسار كامل لتعلم الذكاء الاصطناعي بالعربي",
+    "url": "https://www.youtube.com/embed/VIDEO_ID_AR15",
+    "thumbnail": "https://i.ytimg.com/vi/VIDEO_ID_AR15/hqdefault.jpg",
+    "category": "Arabic AI Courses",
+    "views": 4200
   }
 ]
+
 

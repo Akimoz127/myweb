@@ -1,36 +1,82 @@
-[ { "id": 1,
- "title": "Introduction to Artificial Intelligence",
- "category": "AI Basics",
- "thumbnail": "https://i.ytimg.com/vi/2ePf9rue1Ao/hqdefault.jpg",
- "url": "https://www.youtube.com/embed/2ePf9rue1Ao",
- "description": "Basic introduction to AI concepts, history, and applications." },
- { "id": 2,
- "title": "Machine Learning Crash Course",
- "category": "Machine Learning",
- "thumbnail": "https://i.ytimg.com/vi/ukzFI9rgwfU/hqdefault.jpg",
- "url": "https://www.youtube.com/embed/ukzFI9rgwfU",
- "description": "A fast-paced introduction to machine learning fundamentals." },
- { "id": 3,
- "title": "Neural Networks Explained",
- "category": "Deep Learning",
- "thumbnail": "https://i.ytimg.com/vi/aircAruvnKk/hqdefault.jpg",
- "url": "https://www.youtube.com/embed/aircAruvnKk",
- "description": "Understanding how neural networks work and learn." },
- { "id": 4,
- "title": "What Are Large Language Models?",
- "category": "LLMs",
- "thumbnail": "https://i.ytimg.com/vi/7xTGNNLPyMI/hqdefault.jpg",
- "url": "https://www.youtube.com/embed/7xTGNNLPyMI",
- "description": "Overview of LLMs like GPT, how they work, and their uses." },
- { "id": 5,
- "title": "Prompt Engineering Basics",
- "category": "Prompt Engineering",
- "thumbnail": "https://i.ytimg.com/vi/dOxUroR57xs/hqdefault.jpg",
- "url": "https://www.youtube.com/embed/dOxUroR57xs",
- "description": "Learn how to write effective prompts for AI models." },
- { "id": 6,
- "title": "AI Ethics and Safety",
- "category": "AI Ethics",
- "thumbnail": "https://i.ytimg.com/vi/0pDE4VX_9Kk/hqdefault.jpg",
- "url": "https://www.youtube.com/embed/0pDE4VX_9Kk",
- "description": "Understanding the ethical challenges of artificial intelligence." } ]
+[
+  {
+    "id": 1,
+    "title": "Introduction to Artificial Intelligence",
+    "thumbnail": "img/ai1.jpg",
+    "url": "https://www.w3schools.com/html/mov_bbb.mp4",
+    "category": "AI Basics",
+    "views": 1200
+  },
+  {
+    "id": 2,
+    "title": "Machine Learning Explained",
+    "thumbnail": "img/ml1.jpg",
+    "url": "https://www.w3schools.com/html/movie.mp4",
+    "category": "Machine Learning",
+    "views": 980
+  },
+  {
+    "id": 3,
+    "title": "Deep Learning Fundamentals",
+    "thumbnail": "img/dl1.jpg",
+    "url": "https://www.w3schools.com/html/mov_bbb.mp4",
+    "category": "Deep Learning",
+    "views": 1500
+  },
+  {
+    "id": 4,
+    "title": "Neural Networks for Beginners",
+    "thumbnail": "img/nn1.jpg",
+    "url": "https://www.w3schools.com/html/movie.mp4",
+    "category": "Deep Learning",
+    "views": 870
+  },
+  {
+    "id": 5,
+    "title": "Understanding Large Language Models",
+    "thumbnail": "img/llm1.jpg",
+    "url": "https://www.w3schools.com/html/mov_bbb.mp4",
+    "category": "LLMs",
+    "views": 2100
+  },
+  {
+    "id": 6,
+    "title": "Prompt Engineering Basics",
+    "thumbnail": "img/prompt1.jpg",
+    "url": "https://www.w3schools.com/html/movie.mp4",
+    "category": "Prompt Engineering",
+    "views": 1650
+  },
+  {
+    "id": 7,
+    "title": "Advanced Prompt Techniques",
+    "thumbnail": "img/prompt2.jpg",
+    "url": "https://www.w3schools.com/html/mov_bbb.mp4",
+    "category": "Prompt Engineering",
+    "views": 940
+  },
+  {
+    "id": 8,
+    "title": "AI Ethics & Safety",
+    "thumbnail": "img/ethics1.jpg",
+    "url": "https://www.w3schools.com/html/movie.mp4",
+    "category": "AI Ethics",
+    "views": 720
+  },
+  {
+    "id": 9,
+    "title": "How ChatGPT Works Internally",
+    "thumbnail": "img/chatgpt1.jpg",
+    "url": "https://www.w3schools.com/html/mov_bbb.mp4",
+    "category": "LLMs",
+    "views": 3000
+  },
+  {
+    "id": 10,
+    "title": "Building AI Projects Step-by-Step",
+    "thumbnail": "img/project1.jpg",
+    "url": "https://www.w3schools.com/html/movie.mp4",
+    "category": "AI Basics",
+    "views": 1100
+  }
+]

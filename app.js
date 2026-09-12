@@ -97,3 +97,21 @@ fetch("videos.json")
   });
 
 ---
+function renderCategories(videos) {
+  const categoryList = document.getElementById("categoryList");
+  if (!categoryList) return;
+
+  const categories = [...new Set(videos.map(v => v.category))];
+
+  categories.forEach(cat => {
+    const div = document.createElement("div");
+    div.className = "p-4 bg-gray-800 rounded-lg cursor-pointer hover:bg-gray-700";
+    div.textContent = cat;
+
+    div.onclick = () => {
+      window.location.href = `category.html?name=${cat}`;
+    };
+
+    categoryList.appendChild(div);
+  });
+}

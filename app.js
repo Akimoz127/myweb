@@ -115,3 +115,12 @@ function renderCategories(videos) {
     categoryList.appendChild(div);
   });
 }
+
+function addToWatchLater(videoId) {
+  const key = "watchLaterList";
+  const current = JSON.parse(localStorage.getItem(key) || "[]");
+  if (!current.includes(videoId)) {
+    current.push(videoId);
+    localStorage.setItem(key, JSON.stringify(current));
+  }
+}

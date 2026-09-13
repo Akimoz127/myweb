@@ -1,54 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 
- 
 <head>
   <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "AI Learning Stream",
-  "url": "https://akimoz127.github.io/myweb/",
-  "description": "AI Learning Stream is a fast, installable PWA that organizes Artificial Intelligence videos into categories, trending lists, favorites, and personalized recommendations.",
-  "publisher": {
-    "@type": "Person",
-    "name": "Ahmed"
-  },
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": "https://akimoz127.github.io/myweb/?search={query}",
-    "query-input": "required name=query"
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "AI Categories — Akimoz AI Learning Stream",
+    "url": "https://akimoz127.github.io/myweb/categories.html",
+    "description": "Browse AI categories including Machine Learning, Deep Learning, Data Science, and more.",
+    "publisher": {
+      "@type": "Person",
+      "name": "Ahmed"
+    }
   }
-}
-</script>
-  <!-- Basic Meta -->
+  </script>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI Categories — AI Learning Stream</title>
+  <title>Categories — Akimoz AI Learning Stream</title>
 
-  <!-- SEO Description -->
-  <meta name="description" content="AI Learning Stream is a fast, installable PWA that organizes Artificial Intelligence videos into categories, trending lists, favorites, and personalized recommendations.">
+  <meta name="description" content="Explore AI categories such as Machine Learning, Deep Learning, Data Science, and more.">
+  <meta name="keywords" content="AI categories, machine learning, deep learning, data science">
 
-  <!-- SEO Keywords -->
-  <meta name="keywords" content="AI categories, artificial intelligence topics, machine learning tutorials, AI learning platform, PWA education">
-
-  <!-- Canonical URL -->
   <link rel="canonical" href="https://akimoz127.github.io/myweb/categories.html">
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="AI Categories — AI Learning Stream">
-  <meta property="og:description" content="Explore organized AI categories including machine learning, deep learning, data science, and more.">
+  <meta property="og:title" content="Categories — Akimoz AI Learning Stream">
+  <meta property="og:description" content="Explore AI categories including ML, DL, and Data Science.">
   <meta property="og:image" content="https://akimoz127.github.io/myweb/preview.png">
   <meta property="og:url" content="https://akimoz127.github.io/myweb/categories.html">
-  <meta property="og:type" content="website">
 
-  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="AI Categories — AI Learning Stream">
-  <meta name="twitter:description" content="Explore organized AI categories including machine learning, deep learning, data science, and more.">
-  <meta name="twitter:image" content="https://akimoz127.github.io/myweb/preview.png">
 
-  <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-GGHTMRXGEC"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -57,33 +40,81 @@
     gtag('config', 'G-GGHTMRXGEC');
   </script>
 
-  <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Neon Styles -->
   <style>
     .text-neon { color:#00f5ff; text-shadow:0 0 8px rgba(0,245,255,0.7); }
-    .card-neon { transition:transform .2s, box-shadow .2s; }
-    .card-neon:hover { transform:translateY(-3px); box-shadow:0 0 12px rgba(0,245,255,0.4); }
+    .card-neon {
+      background:rgba(0,0,0,0.6);
+      border:1px solid rgba(0,245,255,0.3);
+      padding:20px;
+      border-radius:12px;
+      box-shadow:0 0 12px rgba(0,245,255,0.4);
+      transition:.2s;
+    }
+    .card-neon:hover {
+      transform:translateY(-3px);
+      box-shadow:0 0 18px rgba(0,245,255,0.6);
+    }
   </style>
 </head>
 
 <body class="bg-black text-white min-h-screen">
 
-  <header class="p-4 flex justify-between items-center border-b border-gray-700">
-    <h1 class="text-neon text-2xl font-bold">AI Learning Categories</h1>
-    <a href="index.html" class="text-sm text-gray-300 hover:text-neon">← Back to Home</a>
-  </header>
+<header class="p-4 border-b border-gray-700 flex justify-between items-center">
+  <h1 class="text-neon text-2xl font-bold">Akimoz AI Learning Stream</h1>
 
-  <main class="p-4">
-    <h2 class="text-xl font-bold mb-4">Choose a Category</h2>
-    <div id="categoryList" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
-  </main>
+  <nav class="flex gap-4">
+    <a href="index.html" class="hover:text-neon">Home</a>
+    <a href="categories.html" class="hover:text-neon">Categories</a>
+    <a href="trending.html" class="hover:text-neon">Trending</a>
+    <a href="watch-later.html" class="hover:text-neon">Watch Later</a>
+    <a href="favorites.html" class="hover:text-neon">Favorites</a>
+    <a href="search.html" class="hover:text-neon">Search</a>
+  </nav>
+</header>
 
-  <script src="app.js"></script>
+<main class="p-6 max-w-4xl mx-auto">
+
+  <div class="card-neon mb-6">
+    <h2 class="text-neon text-xl font-bold mb-3">AI Categories</h2>
+    <p class="text-gray-300 leading-relaxed">
+      Choose a category to explore AI videos organized by topic. Each category loads dynamically from videos.json.
+    </p>
+  </div>
+
+  <div id="categoryList" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
+
+</main>
+
+<script>
+  async function loadVideos() {
+    const res = await fetch("videos.json");
+    return await res.json();
+  }
+
+  loadVideos().then(videos => {
+    const categories = [...new Set(videos.map(v => v.category))];
+    const list = document.getElementById("categoryList");
+
+    categories.forEach(cat => {
+      const card = document.createElement("a");
+      card.href = `category.html?name=${encodeURIComponent(cat)}`;
+      card.className = "card-neon block";
+
+      card.innerHTML = `
+        <h3 class="text-neon font-bold mb-2">${cat}</h3>
+        <p class="text-gray-400">Explore videos in ${cat}</p>
+      `;
+
+      list.appendChild(card);
+    });
+  });
+</script>
 
 </body>
 </html>
+
 
 
 

@@ -18,12 +18,13 @@ fetch("videos.json")
 // ===============================
 
 function initPages() {
-  renderHomeVideos(allVideos);        // صفحة الرئيسية
+  renderHomeVideos(allVideos);        // الصفحة الرئيسية
   renderCategories(allVideos);        // صفحة الأقسام
   renderCategoryVideos(allVideos);    // صفحة القسم
   renderTrending(allVideos);          // صفحة الترند
   renderWatchLater(allVideos);        // صفحة المشاهدة لاحقًا
   renderWatchPage(allVideos);         // صفحة المشاهدة
+  renderRecommendedVideos(allVideos); // الفيديوهات المقترحة
 }
 
 
@@ -214,6 +215,44 @@ function renderWatchPage(videos) {
     watchLaterBtn.onclick = () => addToWatchLater(video.id);
   }
 }
+
+
+// ===============================
+// Recommended Videos
+// ===============================
+
+function renderRecommendedVideos(videos) {
+  const container = document.getElementById("recommendedList");
+  if (!container) return;
+
+  const params = new URLSearchParams(window.location.search);
+  const id = parseInt(params.get("id"));
+  const currentVideo = videos.find(v => v.id === id);
+
+  if (!currentVideo) return;
+
+  const recommended = videos
+    .filter(v => v.category === currentVideo.category && v.id !== currentVideo.id)
+    .slice(0, 6);
+
+  recommended.forEach(video => {
+    const div = document.createElement("div");
+    div.className = "card-neon p-4 bg-gray-800 rounded-lg cursor-pointer";
+
+    div.innerHTML = `
+      <img src="${video.thumbnail}" class="rounded-lg mb-2">
+      <h3 class="font-bold">${video.title}</h3>
+      <p class="text-xs text-gray-400">${video.views} views</p>
+    `;
+
+    div.onclick = () => {
+      window.location.href = `watch.html?id=${video.id}`;
+    };
+
+    container.appendChild(div);
+  });
+}
+
 
 
 

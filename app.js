@@ -18,11 +18,39 @@ fetch("videos.json")
 // ===============================
 
 function initPages() {
-  renderCategories(allVideos);
-  renderCategoryVideos(allVideos);
-  renderTrending(allVideos);
-  renderWatchLater(allVideos);
-  renderWatchPage(allVideos);
+  renderHomeVideos(allVideos);        // صفحة الرئيسية
+  renderCategories(allVideos);        // صفحة الأقسام
+  renderCategoryVideos(allVideos);    // صفحة القسم
+  renderTrending(allVideos);          // صفحة الترند
+  renderWatchLater(allVideos);        // صفحة المشاهدة لاحقًا
+  renderWatchPage(allVideos);         // صفحة المشاهدة
+}
+
+
+// ===============================
+// الصفحة الرئيسية index.html
+// ===============================
+
+function renderHomeVideos(videos) {
+  const container = document.getElementById("videoList");
+  if (!container) return;
+
+  videos.forEach(video => {
+    const div = document.createElement("div");
+    div.className = "card-neon p-4 bg-gray-800 rounded-lg cursor-pointer";
+
+    div.innerHTML = `
+      <img src="${video.thumbnail}" class="rounded-lg mb-2">
+      <h3 class="font-bold">${video.title}</h3>
+      <p class="text-xs text-gray-400">${video.views} views</p>
+    `;
+
+    div.onclick = () => {
+      window.location.href = `watch.html?id=${video.id}`;
+    };
+
+    container.appendChild(div);
+  });
 }
 
 
@@ -124,7 +152,6 @@ function renderTrending(videos) {
 // نظام Watch Later
 // ===============================
 
-// حفظ الفيديو في LocalStorage
 function addToWatchLater(videoId) {
   const key = "watchLaterList";
   const current = JSON.parse(localStorage.getItem(key) || "[]");
@@ -135,7 +162,6 @@ function addToWatchLater(videoId) {
   }
 }
 
-// عرض قائمة Watch Later
 function renderWatchLater(videos) {
   const container = document.getElementById("watchLaterList");
   if (!container) return;
@@ -188,6 +214,7 @@ function renderWatchPage(videos) {
     watchLaterBtn.onclick = () => addToWatchLater(video.id);
   }
 }
+
 
 
 

@@ -1,53 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "AI Learning Stream",
-  "url": "https://akimoz127.github.io/myweb/",
-  "description": "AI Learning Stream is a fast, installable PWA that organizes Artificial Intelligence videos into categories, trending lists, favorites, and personalized recommendations.",
-  "publisher": {
-    "@type": "Person",
-    "name": "Ahmed"
-  },
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": "https://akimoz127.github.io/myweb/?search={query}",
-    "query-input": "required name=query"
-  }
-}
-</script>
-  
+
 <head>
-  <!-- Basic Meta -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Akimoz AI Learning Stream",
+    "url": "https://akimoz127.github.io/myweb/",
+    "description": "Akimoz AI Learning Stream is a fast, installable PWA that organizes Artificial Intelligence videos into categories, trending lists, favorites, and personalized recommendations.",
+    "publisher": {
+      "@type": "Person",
+      "name": "Ahmed"
+    },
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://akimoz127.github.io/myweb/search.html?query={search}",
+      "query-input": "required name=search"
+    }
+  }
+  </script>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI Learning Stream — Free AI Video Learning Platform</title>
+  <title>Akimoz AI Learning Stream — Home</title>
 
-  <!-- SEO Description -->
-  <meta name="description" content="AI Learning Stream is a fast, installable PWA that organizes Artificial Intelligence videos into categories, trending lists, favorites, and personalized recommendations.">
+  <meta name="description" content="Explore AI videos, categories, trending content, favorites, and more on Akimoz AI Learning Stream.">
+  <meta name="keywords" content="AI learning, machine learning videos, deep learning tutorials, AI platform">
 
-  <!-- SEO Keywords -->
-  <meta name="keywords" content="AI learning, artificial intelligence tutorials, machine learning videos, AI education, trending AI content, PWA learning platform, neon dark UI">
+  <link rel="canonical" href="https://akimoz127.github.io/myweb/index.html">
 
-  <!-- Canonical URL -->
-  <link rel="canonical" href="https://akimoz127.github.io/myweb/">
-
-  <!-- Open Graph (Facebook, WhatsApp, LinkedIn) -->
-  <meta property="og:title" content="AI Learning Stream">
-  <meta property="og:description" content="A fast, installable PWA for learning Artificial Intelligence through organized video categories and trending lessons.">
+  <meta property="og:title" content="Akimoz AI Learning Stream — Home">
+  <meta property="og:description" content="Explore AI videos, categories, trending content, favorites, and more.">
   <meta property="og:image" content="https://akimoz127.github.io/myweb/preview.png">
-  <meta property="og:url" content="https://akimoz127.github.io/myweb/">
-  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://akimoz127.github.io/myweb/index.html">
 
-  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="AI Learning Stream">
-  <meta name="twitter:description" content="Learn Artificial Intelligence through organized video categories, trending lessons, and favorites.">
-  <meta name="twitter:image" content="https://akimoz127.github.io/myweb/preview.png">
 
-  <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-GGHTMRXGEC"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -56,50 +45,75 @@
     gtag('config', 'G-GGHTMRXGEC');
   </script>
 
-  <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Neon Styles -->
   <style>
-    .text-neon {
-      color: #00f5ff;
-      text-shadow: 0 0 8px rgba(0, 245, 255, 0.7);
-    }
+    .text-neon { color:#00f5ff; text-shadow:0 0 8px rgba(0,245,255,0.7); }
     .card-neon {
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      background:rgba(0,0,0,0.6);
+      border:1px solid rgba(0,245,255,0.3);
+      padding:20px;
+      border-radius:12px;
+      box-shadow:0 0 12px rgba(0,245,255,0.4);
+      transition:.2s;
     }
     .card-neon:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 0 12px rgba(0, 245, 255, 0.4);
+      transform:translateY(-3px);
+      box-shadow:0 0 18px rgba(0,245,255,0.6);
     }
   </style>
 </head>
 
 <body class="bg-black text-white min-h-screen">
 
-  <!-- Header -->
-  <header class="p-4 border-b border-gray-700 flex justify-between items-center">
-    <h1 class="text-neon text-3xl font-bold">AI Learning Stream</h1>
+<header class="p-4 border-b border-gray-700 flex justify-between items-center">
+  <h1 class="text-neon text-2xl font-bold">Akimoz AI Learning Stream</h1>
 
-    <nav class="space-x-4 text-sm">
-      <a href="categories.html" class="hover:text-neon">Categories</a>
-      <a href="trending.html" class="hover:text-neon">Trending</a>
-      <a href="watch-later.html" class="hover:text-neon">Watch Later</a>
-    </nav>
-  </header>
+  <nav class="flex gap-4">
+    <a href="index.html" class="hover:text-neon">Home</a>
+    <a href="categories.html" class="hover:text-neon">Categories</a>
+    <a href="trending.html" class="hover:text-neon">Trending</a>
+    <a href="watch-later.html" class="hover:text-neon">Watch Later</a>
+    <a href="favorites.html" class="hover:text-neon">Favorites</a>
+    <a href="search.html" class="hover:text-neon">Search</a>
+  </nav>
+</header>
 
-  <!-- Main Content -->
-  <main class="p-4">
-    <h2 class="text-xl font-bold mb-4">Featured Videos</h2>
+<main class="p-6 max-w-4xl mx-auto">
 
-    <div id="videoList" class="grid grid-cols-1 md:grid-cols-3 gap-4"></div>
-  </main>
+  <div class="card-neon mb-6">
+    <h2 class="text-neon text-xl font-bold mb-3">Welcome to Akimoz AI Learning Stream</h2>
+    <p class="text-gray-300 leading-relaxed">
+      Your gateway to learning Artificial Intelligence through structured categories, trending content,
+      favorites, and personalized recommendations. Explore machine learning, deep learning, data science,
+      and more — all in one fast, neon-dark PWA.
+    </p>
+  </div>
 
-  <!-- App Logic -->
-  <script src="app.js"></script>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+    <a href="categories.html" class="card-neon block">
+      <h3 class="text-neon font-bold mb-2">Browse Categories</h3>
+      <p class="text-gray-400">Explore AI topics organized neatly.</p>
+    </a>
+
+    <a href="trending.html" class="card-neon block">
+      <h3 class="text-neon font-bold mb-2">Trending Videos</h3>
+      <p class="text-gray-400">See what's popular right now.</p>
+    </a>
+
+    <a href="favorites.html" class="card-neon block">
+      <h3 class="text-neon font-bold mb-2">Your Favorites</h3>
+      <p class="text-gray-400">Access your saved videos.</p>
+    </a>
+
+  </div>
+
+</main>
 
 </body>
 </html>
+
 
 
 

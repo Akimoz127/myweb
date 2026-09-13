@@ -1,168 +1,232 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "VideoObject",
-    "name": "AI Video — Akimoz AI Learning Stream",
-    "description": "Watch AI educational videos including Machine Learning, Deep Learning, and Data Science content.",
-    "publisher": {
-      "@type": "Person",
-      "name": "Ahmed"
-    }
-  }
-  </script>
-
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Watch — Akimoz AI Learning Stream</title>
+  <title>Watch – Akimoz AI Stream</title>
 
-  <meta name="description" content="Watch AI videos with recommendations, favorites, and watch-later features.">
-  <meta name="keywords" content="watch AI video, machine learning tutorial, deep learning video">
-
-  <link rel="canonical" href="https://akimoz127.github.io/myweb/watch.html">
-
-  <meta property="og:title" content="Watch — Akimoz AI Learning Stream">
-  <meta property="og:description" content="Watch AI videos with recommendations and favorites.">
-  <meta property="og:image" content="https://akimoz127.github.io/myweb/preview.png">
-  <meta property="og:url" content="https://akimoz127.github.io/myweb/watch.html">
-
-  <meta name="twitter:card" content="summary_large_image">
-
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GGHTMRXGEC"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){ dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'G-GGHTMRXGEC');
-  </script>
-
-  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Tajawal:wght@400;600&display=swap" rel="stylesheet">
 
   <style>
-    .text-neon { color:#00f5ff; text-shadow:0 0 8px rgba(0,245,255,0.7); }
-    .card-neon {
-      background:rgba(0,0,0,0.6);
-      border:1px solid rgba(0,245,255,0.3);
-      padding:20px;
-      border-radius:12px;
-      box-shadow:0 0 12px rgba(0,245,255,0.4);
-      transition:.2s;
+    body {
+      margin: 0;
+      background: #0d0d0d;
+      font-family: 'Inter', 'Tajawal', sans-serif;
+      color: #e5e5e5;
     }
-    .card-neon:hover {
-      transform:translateY(-3px);
-      box-shadow:0 0 18px rgba(0,245,255,0.6);
+
+    /* Header */
+    header {
+      padding: 20px;
+      border-bottom: 1px solid #00eaff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 24px;
+      color: #00eaff;
+      font-weight: 600;
+    }
+
+    nav a {
+      margin-left: 20px;
+      color: #e5e5e5;
+      text-decoration: none;
+      font-size: 16px;
+    }
+
+    nav a:hover {
+      color: #00eaff;
+    }
+
+    /* Video Player */
+    .player-container {
+      width: 100%;
+      max-width: 900px;
+      margin: 30px auto;
+      border: 1px solid #00eaff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 15px rgba(0, 234, 255, 0.3);
+    }
+
+    iframe {
+      width: 100%;
+      height: 500px;
+      border: none;
+    }
+
+    /* Video Info */
+    .info-box {
+      max-width: 900px;
+      margin: 20px auto;
+      padding: 20px;
+      background: #111;
+      border: 1px solid #00eaff;
+      border-radius: 10px;
+    }
+
+    .info-title {
+      font-size: 22px;
+      font-weight: 600;
+      margin: 0;
+      color: #00eaff;
+    }
+
+    .info-category {
+      margin-top: 10px;
+      font-size: 16px;
+      color: #9e9e9e;
+    }
+
+    .info-views {
+      margin-top: 5px;
+      font-size: 14px;
+      color: #777;
+    }
+
+    /* Section Title */
+    .section-title {
+      font-size: 22px;
+      margin: 25px;
+      font-weight: 600;
+      color: #00eaff;
+    }
+
+    /* Grid */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+
+    /* Video Card */
+    .video-card {
+      background: #111;
+      border: 1px solid #00eaff;
+      border-radius: 10px;
+      overflow: hidden;
+      transition: 0.25s;
+      cursor: pointer;
+    }
+
+    .video-card:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 15px rgba(0, 234, 255, 0.4);
+    }
+
+    .thumb {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+    }
+
+    .info {
+      padding: 15px;
+    }
+
+    .title {
+      margin: 0;
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .category {
+      margin: 5px 0 0;
+      font-size: 14px;
+      color: #9e9e9e;
+    }
+
+    .views {
+      margin: 8px 0 0;
+      font-size: 13px;
+      color: #777;
     }
   </style>
 </head>
 
-<body class="bg-black text-white min-h-screen">
+<body>
 
-<header class="p-4 border-b border-gray-700 flex justify-between items-center">
-  <h1 class="text-neon text-2xl font-bold">Akimoz AI Learning Stream</h1>
+  <!-- Header -->
+  <header>
+    <h1>Akimoz AI Stream</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="categories.html">Categories</a>
+      <a href="trending.html">Trending</a>
+      <a href="search.html">Search</a>
+    </nav>
+  </header>
 
-  <nav class="flex gap-4">
-    <a href="index.html" class="hover:text-neon">Home</a>
-    <a href="categories.html" class="hover:text-neon">Categories</a>
-    <a href="trending.html" class="hover:text-neon">Trending</a>
-    <a href="watch-later.html" class="hover:text-neon">Watch Later</a>
-    <a href="favorites.html" class="hover:text-neon">Favorites</a>
-    <a href="search.html" class="hover:text-neon">Search</a>
-  </nav>
-</header>
+  <!-- Video Player -->
+  <div class="player-container">
+    <iframe id="videoPlayer" allowfullscreen></iframe>
+  </div>
 
-<main class="p-6 max-w-4xl mx-auto">
+  <!-- Video Info -->
+  <div class="info-box">
+    <h2 class="info-title" id="videoTitle"></h2>
+    <p class="info-category" id="videoCategory"></p>
+    <p class="info-views" id="videoViews"></p>
+  </div>
 
-  <div id="videoContainer" class="mb-6"></div>
+  <!-- Section Title -->
+  <div class="section-title">Recommended Videos</div>
 
-  <button id="favoriteBtn" class="px-4 py-2 bg-gray-800 rounded card-neon mb-4">
-    ★ Add to Favorites
-  </button>
+  <!-- Grid -->
+  <div class="grid" id="recommendedGrid"></div>
 
-  <button id="watchLaterBtn" class="px-4 py-2 bg-gray-800 rounded card-neon mb-6">
-    ⏳ Add to Watch Later
-  </button>
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const videoId = parseInt(urlParams.get("id"));
 
-  <h3 class="text-neon text-xl font-bold mt-6 mb-4">Recommended Videos</h3>
-  <div id="recommendedList" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
+    async function loadVideo() {
+      const response = await fetch('videos.json');
+      const videos = await response.json();
 
-</main>
+      const video = videos.find(v => v.id === videoId);
 
-<script>
-  const params = new URLSearchParams(window.location.search);
-  const videoId = params.get("id");
+      if (!video) return;
 
-  async function loadVideos() {
-    const res = await fetch("videos.json");
-    return await res.json();
-  }
+      // Load player
+      document.getElementById("videoPlayer").src = video.url;
 
-  loadVideos().then(videos => {
-    const video = videos.find(v => v.id == videoId);
-    const container = document.getElementById("videoContainer");
+      // Load info
+      document.getElementById("videoTitle").innerText = video.title;
+      document.getElementById("videoCategory").innerText = "Category: " + video.category;
+      document.getElementById("videoViews").innerText = video.views + " views";
 
-    container.innerHTML = `
-      <div class="card-neon mb-6">
-        <h2 class="text-neon text-xl font-bold mb-3">${video.title}</h2>
-        <p class="text-gray-400 mb-4">${video.category}</p>
+      // Recommended videos (same category)
+      const recommended = videos.filter(v => v.category === video.category && v.id !== videoId);
 
-        <div class="mb-4">
-          <iframe width="100%" height="315"
-            src="${video.url}"
-            frameborder="0"
-            allowfullscreen
-            class="rounded-lg">
-          </iframe>
-        </div>
+      const grid = document.getElementById('recommendedGrid');
 
-        <p class="text-gray-300">${video.description}</p>
-      </div>
-    `;
-
-    // Recommended videos
-    const recommended = videos.filter(v => v.category === video.category && v.id != videoId);
-    const list = document.getElementById("recommendedList");
-
-    recommended.forEach(v => {
-      const card = document.createElement("a");
-      card.href = `watch.html?id=${v.id}`;
-      card.className = "card-neon block";
-
-      card.innerHTML = `
-        <h3 class="text-neon font-bold mb-2">${v.title}</h3>
-        <p class="text-gray-400 mb-2">${v.category}</p>
-        <p class="text-gray-500 text-sm">Watch →</p>
-      `;
-
-      list.appendChild(card);
-    });
-  });
-
-  // Add to Favorites
-  document.getElementById("favoriteBtn").addEventListener("click", () => {
-    let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
-
-    if (!favorites.includes(videoId)) {
-      favorites.push(videoId);
-      localStorage.setItem("favorites", JSON.stringify(favorites));
+      recommended.forEach(v => {
+        const card = `
+          <div class="video-card" onclick="location.href='watch.html?id=${v.id}'">
+            <img src="${v.thumbnail}" class="thumb" loading="lazy">
+            <div class="info">
+              <h3 class="title">${v.title}</h3>
+              <p class="category">${v.category}</p>
+              <p class="views">${v.views} views</p>
+            </div>
+          </div>
+        `;
+        grid.innerHTML += card;
+      });
     }
-  });
 
-  // Add to Watch Later
-  document.getElementById("watchLaterBtn").addEventListener("click", () => {
-    let later = JSON.parse(localStorage.getItem("watchLater")) || [];
-
-    if (!later.includes(videoId)) {
-      later.push(videoId);
-      localStorage.setItem("watchLater", JSON.stringify(later));
-    }
-  });
-</script>
+    loadVideo();
+  </script>
 
 </body>
 </html>
+
 
 
 

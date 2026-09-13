@@ -2,42 +2,35 @@
 <html lang="en">
 
 <head>
- <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "AI Learning Stream",
-  "url": "https://akimoz127.github.io/myweb/",
-  "description": "AI Learning Stream is a fast, installable PWA that organizes Artificial Intelligence videos into categories, trending lists, favorites, and personalized recommendations.",
-  "publisher": {
-    "@type": "Person",
-    "name": "Ahmed"
-  },
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": "https://akimoz127.github.io/myweb/?search={query}",
-    "query-input": "required name=query"
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Trending AI Videos — Akimoz AI Learning Stream",
+    "url": "https://akimoz127.github.io/myweb/trending.html",
+    "description": "Discover trending AI videos including Machine Learning, Deep Learning, and Data Science content.",
+    "publisher": {
+      "@type": "Person",
+      "name": "Ahmed"
+    }
   }
-}
-</script> 
+  </script>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Trending AI Videos — AI Learning Stream</title>
+  <title>Trending — Akimoz AI Learning Stream</title>
 
-  <meta name="description" content="Discover trending Artificial Intelligence videos updated daily. Learn AI faster with curated trending content.">
-  <meta name="keywords" content="trending AI videos, AI tutorials, machine learning trending, deep learning trending">
+  <meta name="description" content="Explore trending AI videos updated dynamically from the platform’s content.">
+  <meta name="keywords" content="trending AI videos, popular machine learning, deep learning trending">
 
   <link rel="canonical" href="https://akimoz127.github.io/myweb/trending.html">
 
-  <meta property="og:title" content="Trending AI Videos — AI Learning Stream">
-  <meta property="og:description" content="Discover trending Artificial Intelligence videos updated daily.">
+  <meta property="og:title" content="Trending — Akimoz AI Learning Stream">
+  <meta property="og:description" content="Explore trending AI videos updated dynamically.">
   <meta property="og:image" content="https://akimoz127.github.io/myweb/preview.png">
   <meta property="og:url" content="https://akimoz127.github.io/myweb/trending.html">
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Trending AI Videos — AI Learning Stream">
-  <meta name="twitter:description" content="Discover trending Artificial Intelligence videos updated daily.">
-  <meta name="twitter:image" content="https://akimoz127.github.io/myweb/preview.png">
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-GGHTMRXGEC"></script>
   <script>
@@ -51,26 +44,78 @@
 
   <style>
     .text-neon { color:#00f5ff; text-shadow:0 0 8px rgba(0,245,255,0.7); }
-    .card-neon { transition:transform .2s, box-shadow .2s; }
-    .card-neon:hover { transform:translateY(-3px); box-shadow:0 0 12px rgba(0,245,255,0.4); }
+    .card-neon {
+      background:rgba(0,0,0,0.6);
+      border:1px solid rgba(0,245,255,0.3);
+      padding:20px;
+      border-radius:12px;
+      box-shadow:0 0 12px rgba(0,245,255,0.4);
+      transition:.2s;
+    }
+    .card-neon:hover {
+      transform:translateY(-3px);
+      box-shadow:0 0 18px rgba(0,245,255,0.6);
+    }
   </style>
 </head>
 
 <body class="bg-black text-white min-h-screen">
 
-  <header class="p-4 flex justify-between items-center border-b border-gray-700">
-    <h1 class="text-neon text-2xl font-bold">Trending Videos</h1>
-    <a href="index.html" class="text-sm text-gray-300 hover:text-neon">← Back to Home</a>
-  </header>
+<header class="p-4 border-b border-gray-700 flex justify-between items-center">
+  <h1 class="text-neon text-2xl font-bold">Akimoz AI Learning Stream</h1>
 
-  <main class="p-4">
-    <div id="trendingList" class="grid grid-cols-1 md:grid-cols-3 gap-4"></div>
-  </main>
+  <nav class="flex gap-4">
+    <a href="index.html" class="hover:text-neon">Home</a>
+    <a href="categories.html" class="hover:text-neon">Categories</a>
+    <a href="trending.html" class="hover:text-neon">Trending</a>
+    <a href="watch-later.html" class="hover:text-neon">Watch Later</a>
+    <a href="favorites.html" class="hover:text-neon">Favorites</a>
+    <a href="search.html" class="hover:text-neon">Search</a>
+  </nav>
+</header>
 
-  <script src="app.js"></script>
+<main class="p-6 max-w-4xl mx-auto">
+
+  <div class="card-neon mb-6">
+    <h2 class="text-neon text-xl font-bold mb-3">Trending AI Videos</h2>
+    <p class="text-gray-300 leading-relaxed">
+      These videos are currently trending across the platform. Updated dynamically from videos.json.
+    </p>
+  </div>
+
+  <div id="trendingList" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
+
+</main>
+
+<script>
+  async function loadVideos() {
+    const res = await fetch("videos.json");
+    return await res.json();
+  }
+
+  loadVideos().then(videos => {
+    const trending = videos.filter(v => v.trending === true);
+    const list = document.getElementById("trendingList");
+
+    trending.forEach(v => {
+      const card = document.createElement("a");
+      card.href = `watch.html?id=${v.id}`;
+      card.className = "card-neon block";
+
+      card.innerHTML = `
+        <h3 class="text-neon font-bold mb-2">${v.title}</h3>
+        <p class="text-gray-400 mb-2">${v.category}</p>
+        <p class="text-gray-500 text-sm">Watch →</p>
+      `;
+
+      list.appendChild(card);
+    });
+  });
+</script>
 
 </body>
 </html>
+
 
 
 

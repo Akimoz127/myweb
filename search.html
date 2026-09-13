@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search – AI Learning Stream</title>
+
+  <meta name="description" content="Search AI Learning Stream for Artificial Intelligence tutorials, categories, and trending videos.">
+  <meta name="keywords" content="AI search, machine learning search, deep learning search, AI videos">
+
+  <link rel="canonical" href="https://akimoz127.github.io/myweb/search.html">
+
+  <meta property="og:title" content="Search – AI Learning Stream">
+  <meta property="og:description" content="Search AI Learning Stream for Artificial Intelligence tutorials, categories, and trending videos.">
+  <meta property="og:image" content="https://akimoz127.github.io/myweb/preview.png">
+  <meta property="og:url" content="https://akimoz127.github.io/myweb/search.html">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Search – AI Learning Stream">
+  <meta name="twitter:description" content="Search AI Learning Stream for Artificial Intelligence tutorials, categories, and trending videos.">
+  <meta name="twitter:image" content="https://akimoz127.github.io/myweb/preview.png">
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GGHTMRXGEC"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-GGHTMRXGEC');
+  </script>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    .text-neon { color:#00f5ff; text-shadow:0 0 8px rgba(0,245,255,0.7); }
+    .card-neon { transition:.2s; }
+    .card-neon:hover { transform:translateY(-3px); box-shadow:0 0 12px rgba(0,245,255,0.4); }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "AI Learning Stream",
+    "url": "https://akimoz127.github.io/myweb/",
+    "description": "AI Learning Stream is a fast, installable PWA that organizes Artificial Intelligence videos into categories, trending lists, favorites, and personalized recommendations.",
+    "publisher": {
+      "@type": "Person",
+      "name": "Ahmed"
+    },
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://akimoz127.github.io/myweb/search.html?query={search}",
+      "query-input": "required name=search"
+    }
+  }
+  </script>
+</head>
+
+<body class="bg-black text-white min-h-screen">
+
+  <header class="p-4 border-b border-gray-700 flex justify-between items-center">
+    <h1 class="text-neon text-2xl font-bold">Search</h1>
+    <a href="index.html" class="hover:text-neon">← Home</a>
+  </header>
+
+  <main class="p-4 max-w-3xl mx-auto">
+    <input id="searchInput" type="text" placeholder="Search AI videos..."
+           class="w-full p-3 rounded bg-gray-900 border border-gray-700 text-white mb-4">
+
+    <div id="results" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+  </main>
+
+  <script>
+    async function loadVideos() {
+      const res = await fetch("videos.json");
+      return await res.json();
+    }
+
+    function renderResults(videos, query) {
+      const resultsDiv = document.getElementById("results");
+      resultsDiv.innerHTML = "";
+
+      const filtered = videos.filter(v =>
+        v.title.toLowerCase().includes(query.toLowerCase()) ||
+        v.category.toLowerCase().includes(query.toLowerCase()) ||
+        v.description.toLowerCase().includes(query.toLowerCase())
+      );
+
+      filtered.forEach(v => {
+        const card = document.createElement("div");
+        card.className = "card-neon bg-gray-900 p-4 rounded";
+
+        card.innerHTML = `
+          <h3 class="text-neon font-bold mb-2">${v.title}</h3>
+          <p class="text-gray-400 mb-2">${v.category}</p>
+          <a href="watch.html?id=${v.id}" class="text-sm text-neon">Watch →</a>
+        `;
+
+        resultsDiv.appendChild(card);
+      });
+    }
+
+    loadVideos().then(videos => {
+      const input = document.getElementById("searchInput");
+
+      input.addEventListener("input", () => {
+        const query = input.value.trim();
+        renderResults(videos, query);
+      });
+    });
+  </script>
+
+</body>
+</html>

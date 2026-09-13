@@ -3,9 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Trending Videos</title>
+  <title>Trending AI Videos — AI Learning Stream</title>
 
-  <!-- Google Analytics -->
+  <meta name="description" content="Discover trending Artificial Intelligence videos updated daily. Learn AI faster with curated trending content.">
+  <meta name="keywords" content="trending AI videos, AI tutorials, machine learning trending, deep learning trending">
+
+  <link rel="canonical" href="https://akimoz127.github.io/myweb/trending.html">
+
+  <meta property="og:title" content="Trending AI Videos — AI Learning Stream">
+  <meta property="og:description" content="Discover trending Artificial Intelligence videos updated daily.">
+  <meta property="og:image" content="https://akimoz127.github.io/myweb/preview.png">
+  <meta property="og:url" content="https://akimoz127.github.io/myweb/trending.html">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Trending AI Videos — AI Learning Stream">
+  <meta name="twitter:description" content="Discover trending Artificial Intelligence videos updated daily.">
+  <meta name="twitter:image" content="https://akimoz127.github.io/myweb/preview.png">
+
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-GGHTMRXGEC"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -14,44 +28,30 @@
     gtag('config', 'G-GGHTMRXGEC');
   </script>
 
-  <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Neon Styles -->
   <style>
-    .text-neon {
-      color: #00f5ff;
-      text-shadow: 0 0 8px rgba(0, 245, 255, 0.7);
-    }
-    .card-neon {
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-    .card-neon:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 0 12px rgba(0, 245, 255, 0.4);
-    }
+    .text-neon { color:#00f5ff; text-shadow:0 0 8px rgba(0,245,255,0.7); }
+    .card-neon { transition:transform .2s, box-shadow .2s; }
+    .card-neon:hover { transform:translateY(-3px); box-shadow:0 0 12px rgba(0,245,255,0.4); }
   </style>
 </head>
 
 <body class="bg-black text-white min-h-screen">
 
-  <!-- Header -->
   <header class="p-4 flex justify-between items-center border-b border-gray-700">
     <h1 class="text-neon text-2xl font-bold">Trending Videos</h1>
-    <a href="index.html" class="text-sm text-gray-300 hover:text-neon">
-      ← Back to Home
-    </a>
+    <a href="index.html" class="text-sm text-gray-300 hover:text-neon">← Back to Home</a>
   </header>
 
-  <!-- Main Content -->
   <main class="p-4">
     <div id="trendingList" class="grid grid-cols-1 md:grid-cols-3 gap-4"></div>
   </main>
 
-  <!-- App Logic -->
   <script src="app.js"></script>
 
 </body>
 </html>
+
 
 

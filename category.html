@@ -1,62 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
- <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "AI Learning Stream",
-  "url": "https://akimoz127.github.io/myweb/",
-  "description": "AI Learning Stream is a fast, installable PWA that organizes Artificial Intelligence videos into categories, trending lists, favorites, and personalized recommendations.",
-  "publisher": {
-    "@type": "Person",
-    "name": "Ahmed"
-  },
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": "https://akimoz127.github.io/myweb/?search={query}",
-    "query-input": "required name=query"
-  }
-}
-</script>
- 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Category Videos</title>
+  <title>Category – AI Learning Stream</title>
+
+  <meta name="description" content="Browse AI videos by category including machine learning, deep learning, data science, and more.">
+  <meta name="keywords" content="AI categories, machine learning, deep learning, data science, AI tutorials">
+
+  <link rel="canonical" href="https://akimoz127.github.io/myweb/category.html">
+
+  <meta property="og:title" content="Category – AI Learning Stream">
+  <meta property="og:description" content="Browse AI videos by category including machine learning, deep learning, data science, and more.">
+  <meta property="og:image" content="https://akimoz127.github.io/myweb/preview.png">
+  <meta property="og:url" content="https://akimoz127.github.io/myweb/category.html">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Category – AI Learning Stream">
+  <meta name="twitter:description" content="Browse AI videos by category including machine learning, deep learning, data science, and more.">
+  <meta name="twitter:image" content="https://akimoz127.github.io/myweb/preview.png">
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GGHTMRXGEC"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-GGHTMRXGEC');
+  </script>
 
   <script src="https://cdn.tailwindcss.com"></script>
 
   <style>
-    .text-neon {
-      color: #00f5ff;
-      text-shadow: 0 0 8px rgba(0, 245, 255, 0.7);
-    }
-    .card-neon {
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-    .card-neon:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 0 12px rgba(0, 245, 255, 0.4);
-    }
+    .text-neon { color:#00f5ff; text-shadow:0 0 8px rgba(0,245,255,0.7); }
+    .card-neon { transition:.2s; }
+    .card-neon:hover { transform:translateY(-3px); box-shadow:0 0 12px rgba(0,245,255,0.4); }
   </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "AI Learning Stream",
+    "url": "https://akimoz127.github.io/myweb/",
+    "description": "AI Learning Stream is a fast, installable PWA that organizes Artificial Intelligence videos into categories, trending lists, favorites, and personalized recommendations.",
+    "publisher": {
+      "@type": "Person",
+      "name": "Ahmed"
+    },
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://akimoz127.github.io/myweb/search.html?query={search}",
+      "query-input": "required name=search"
+    }
+  }
+  </script>
 </head>
 
 <body class="bg-black text-white min-h-screen">
 
-  <header class="p-4 flex justify-between items-center border-b border-gray-700">
-    <h1 class="text-neon text-2xl font-bold" id="categoryTitle">Category</h1>
-    <a href="categories.html" class="text-sm text-gray-300 hover:text-neon">
-      ← Back to Categories
-    </a>
+  <header class="p-4 border-b border-gray-700 flex justify-between items-center">
+    <h1 class="text-neon text-2xl font-bold">Category</h1>
+    <a href="categories.html" class="hover:text-neon">← All Categories</a>
   </header>
 
   <main class="p-4">
-    <div id="categoryVideos" class="grid grid-cols-1 md:grid-cols-3 gap-4"></div>
+    <h2 id="categoryTitle" class="text-xl font-bold mb-4"></h2>
+    <div id="categoryList" class="grid grid-cols-1 md:grid-cols-3 gap-4"></div>
   </main>
 
-  <script src="app.js"></script>
+  <script>
+    async function loadVideos() {
+      const res = await fetch("videos.json");
+      return await res.json();
+    }
+
+    function getCategoryFromURL() {
+      const params = new URLSearchParams(window.location.search);
+      return params.get("name");
+    }
+
+    function renderCategory(videos, category) {
+      document.getElementById("categoryTitle").textContent = category;
+
+      const list = document.getElementById("categoryList");
+      list.innerHTML = "";
+
+      const filtered = videos.filter(v => v.category.toLowerCase() === category.toLowerCase());
+
+      filtered.forEach(v => {
+        const card = document.createElement("div");
+        card.className = "card-neon bg-gray-900 p-4 rounded";
+
+        card.innerHTML = `
+          <h3 class="text-neon font-bold mb-2">${v.title}</h3>
+          <p class="text-gray-400 mb-2">${v.description}</p>
+          <a href="watch.html?id=${v.id}" class="text-sm text-neon">Watch →</a>
+        `;
+
+        list.appendChild(card);
+      });
+    }
+
+    loadVideos().then(videos => {
+      const category = getCategoryFromURL();
+      if (category) renderCategory(videos, category);
+    });
+  </script>
 
 </body>
 </html>
+
 
 

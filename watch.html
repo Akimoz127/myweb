@@ -1,43 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "AI Learning Stream",
-  "url": "https://akimoz127.github.io/myweb/",
-  "description": "AI Learning Stream is a fast, installable PWA that organizes Artificial Intelligence videos into categories, trending lists, favorites, and personalized recommendations.",
-  "publisher": {
-    "@type": "Person",
-    "name": "Ahmed"
-  },
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": "https://akimoz127.github.io/myweb/?search={query}",
-    "query-input": "required name=query"
+  {
+    "@context": "https://schema.org",
+    "@type": "VideoObject",
+    "name": "AI Video — Akimoz AI Learning Stream",
+    "description": "Watch AI educational videos including Machine Learning, Deep Learning, and Data Science content.",
+    "publisher": {
+      "@type": "Person",
+      "name": "Ahmed"
+    }
   }
-}
-</script>
+  </script>
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Watch AI Video — AI Learning Stream</title>
+  <title>Watch — Akimoz AI Learning Stream</title>
 
-  <meta name="description" content="Watch Artificial Intelligence videos with a modern neon-dark interface. Includes recommendations, favorites, and watch-later features.">
-  <meta name="keywords" content="watch AI video, AI player, machine learning video player, AI recommendations">
+  <meta name="description" content="Watch AI videos with recommendations, favorites, and watch-later features.">
+  <meta name="keywords" content="watch AI video, machine learning tutorial, deep learning video">
 
   <link rel="canonical" href="https://akimoz127.github.io/myweb/watch.html">
 
-  <meta property="og:title" content="Watch AI Video — AI Learning Stream">
-  <meta property="og:description" content="Watch Artificial Intelligence videos with recommendations and favorites.">
+  <meta property="og:title" content="Watch — Akimoz AI Learning Stream">
+  <meta property="og:description" content="Watch AI videos with recommendations and favorites.">
   <meta property="og:image" content="https://akimoz127.github.io/myweb/preview.png">
   <meta property="og:url" content="https://akimoz127.github.io/myweb/watch.html">
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Watch AI Video — AI Learning Stream">
-  <meta name="twitter:description" content="Watch Artificial Intelligence videos with recommendations and favorites.">
-  <meta name="twitter:image" content="https://akimoz127.github.io/myweb/preview.png">
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-GGHTMRXGEC"></script>
   <script>
@@ -51,50 +43,127 @@
 
   <style>
     .text-neon { color:#00f5ff; text-shadow:0 0 8px rgba(0,245,255,0.7); }
-    .card-neon { transition:transform .2s, box-shadow .2s; }
-    .card-neon:hover { transform:translateY(-3px); box-shadow:0 0 12px rgba(0,245,255,0.4); }
+    .card-neon {
+      background:rgba(0,0,0,0.6);
+      border:1px solid rgba(0,245,255,0.3);
+      padding:20px;
+      border-radius:12px;
+      box-shadow:0 0 12px rgba(0,245,255,0.4);
+      transition:.2s;
+    }
+    .card-neon:hover {
+      transform:translateY(-3px);
+      box-shadow:0 0 18px rgba(0,245,255,0.6);
+    }
   </style>
 </head>
 
 <body class="bg-black text-white min-h-screen">
 
-  <header class="p-4 flex justify-between items-center border-b border-gray-700">
-    <h1 class="text-neon text-2xl font-bold">AI Learning Stream</h1>
-    <a href="index.html" class="text-sm text-gray-300 hover:text-neon">← Back to Home</a>
-  </header>
+<header class="p-4 border-b border-gray-700 flex justify-between items-center">
+  <h1 class="text-neon text-2xl font-bold">Akimoz AI Learning Stream</h1>
 
-  <main class="p-4">
+  <nav class="flex gap-4">
+    <a href="index.html" class="hover:text-neon">Home</a>
+    <a href="categories.html" class="hover:text-neon">Categories</a>
+    <a href="trending.html" class="hover:text-neon">Trending</a>
+    <a href="watch-later.html" class="hover:text-neon">Watch Later</a>
+    <a href="favorites.html" class="hover:text-neon">Favorites</a>
+    <a href="search.html" class="hover:text-neon">Search</a>
+  </nav>
+</header>
 
-    <iframe id="videoPlayer" class="w-full h-64 md:h-96 rounded-lg mb-4"
-            frameborder="0" allowfullscreen></iframe>
+<main class="p-6 max-w-4xl mx-auto">
 
-    <h2 id="videoTitle" class="text-xl font-bold mb-4"></h2>
+  <div id="videoContainer" class="mb-6"></div>
 
-    <button id="watchLaterBtn" class="px-4 py-2 bg-gray-800 rounded card-neon mb-4">
-      + Add to Watch Later
-    </button>
+  <button id="favoriteBtn" class="px-4 py-2 bg-gray-800 rounded card-neon mb-4">
+    ★ Add to Favorites
+  </button>
 
-    <button id="favoriteBtn" class="px-4 py-2 bg-gray-800 rounded card-neon mb-4">
-      ★ Add to Favorites
-    </button>
-document.getElementById("favoriteBtn").addEventListener("click", () => {
-  let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+  <button id="watchLaterBtn" class="px-4 py-2 bg-gray-800 rounded card-neon mb-6">
+    ⏳ Add to Watch Later
+  </button>
 
-  if (!favorites.includes(videoId)) {
-    favorites.push(videoId);
-    localStorage.setItem("favorites", JSON.stringify(favorites));
+  <h3 class="text-neon text-xl font-bold mt-6 mb-4">Recommended Videos</h3>
+  <div id="recommendedList" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
+
+</main>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const videoId = params.get("id");
+
+  async function loadVideos() {
+    const res = await fetch("videos.json");
+    return await res.json();
   }
-});
 
-    <h3 class="text-xl font-bold mt-6 mb-4">Recommended Videos</h3>
-    <div id="recommendedList" class="grid grid-cols-1 md:grid-cols-3 gap-4"></div>
+  loadVideos().then(videos => {
+    const video = videos.find(v => v.id == videoId);
+    const container = document.getElementById("videoContainer");
 
-  </main>
+    container.innerHTML = `
+      <div class="card-neon mb-6">
+        <h2 class="text-neon text-xl font-bold mb-3">${video.title}</h2>
+        <p class="text-gray-400 mb-4">${video.category}</p>
 
-  <script src="app.js"></script>
+        <div class="mb-4">
+          <iframe width="100%" height="315"
+            src="${video.url}"
+            frameborder="0"
+            allowfullscreen
+            class="rounded-lg">
+          </iframe>
+        </div>
+
+        <p class="text-gray-300">${video.description}</p>
+      </div>
+    `;
+
+    // Recommended videos
+    const recommended = videos.filter(v => v.category === video.category && v.id != videoId);
+    const list = document.getElementById("recommendedList");
+
+    recommended.forEach(v => {
+      const card = document.createElement("a");
+      card.href = `watch.html?id=${v.id}`;
+      card.className = "card-neon block";
+
+      card.innerHTML = `
+        <h3 class="text-neon font-bold mb-2">${v.title}</h3>
+        <p class="text-gray-400 mb-2">${v.category}</p>
+        <p class="text-gray-500 text-sm">Watch →</p>
+      `;
+
+      list.appendChild(card);
+    });
+  });
+
+  // Add to Favorites
+  document.getElementById("favoriteBtn").addEventListener("click", () => {
+    let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+
+    if (!favorites.includes(videoId)) {
+      favorites.push(videoId);
+      localStorage.setItem("favorites", JSON.stringify(favorites));
+    }
+  });
+
+  // Add to Watch Later
+  document.getElementById("watchLaterBtn").addEventListener("click", () => {
+    let later = JSON.parse(localStorage.getItem("watchLater")) || [];
+
+    if (!later.includes(videoId)) {
+      later.push(videoId);
+      localStorage.setItem("watchLater", JSON.stringify(later));
+    }
+  });
+</script>
 
 </body>
 </html>
+
 
 
 

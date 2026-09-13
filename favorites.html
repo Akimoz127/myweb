@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Favorites – AI Learning Stream</title>
+
+  <meta name="description" content="Your favorite AI videos saved for quick access. Works offline with PWA caching.">
+  <meta name="keywords" content="AI favorites, saved AI videos, machine learning favorites">
+
+  <link rel="canonical" href="https://akimoz127.github.io/myweb/favorites.html">
+
+  <meta property="og:title" content="Favorites – AI Learning Stream">
+  <meta property="og:description" content="Your favorite AI videos saved for quick access.">
+  <meta property="og:image" content="https://akimoz127.github.io/myweb/preview.png">
+  <meta property="og:url" content="https://akimoz127.github.io/myweb/favorites.html">
+
+  <meta name="twitter:card" content="summary_large_image">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    .text-neon { color:#00f5ff; text-shadow:0 0 8px rgba(0,245,255,0.7); }
+    .card-neon { transition:.2s; }
+    .card-neon:hover { transform:translateY(-3px); box-shadow:0 0 12px rgba(0,245,255,0.4); }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "AI Learning Stream",
+    "url": "https://akimoz127.github.io/myweb/",
+    "description": "AI Learning Stream is a fast, installable PWA that organizes Artificial Intelligence videos into categories, trending lists, favorites, and personalized recommendations.",
+    "publisher": {
+      "@type": "Person",
+      "name": "Ahmed"
+    }
+  }
+  </script>
+</head>
+
+<body class="bg-black text-white min-h-screen">
+
+  <header class="p-4 border-b border-gray-700 flex justify-between items-center">
+    <h1 class="text-neon text-2xl font-bold">Favorites</h1>
+    <a href="index.html" class="hover:text-neon">← Home</a>
+  </header>
+
+  <main class="p-4">
+    <div id="favoritesList" class="grid grid-cols-1 md:grid-cols-3 gap-4"></div>
+  </main>
+
+  <script>
+    async function loadVideos() {
+      const res = await fetch("videos.json");
+      return await res.json();
+    }
+
+    function loadFavorites() {
+      return JSON.parse(localStorage.getItem("favorites")) || [];
+    }
+
+    loadVideos().then(videos => {
+      const favorites = loadFavorites();
+      const list = document.getElementById("favoritesList");
+
+      const filtered = videos.filter(v => favorites.includes(v.id));
+
+      filtered.forEach(v => {
+        const card = document.createElement("div");
+        card.className = "card-neon bg-gray-900 p-4 rounded";
+
+        card.innerHTML = `
+          <h3 class="text-neon font-bold mb-2">${v.title}</h3>
+          <p class="text-gray-400 mb-2">${v.category}</p>
+          <a href="watch.html?id=${v.id}" class="text-sm text-neon">Watch →</a>
+        `;
+
+        list.appendChild(card);
+      });
+    });
+  </script>
+
+</body>
+</html>

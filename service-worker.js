@@ -1,51 +1,56 @@
-const CACHE_NAME = "ai-stream-cache-v1";
-
-const urlsToCache = [
-  "index.html",
-  "categories.html",
-  "category.html",
-  "trending.html",
-  "watch-later.html",
-  "watch.html",
-
-  "app.js",
-  "videos.json",
-
-  "manifest.json",
-
-  "img/icon-192.png",
-  "img/icon-512.png"
+const CACHE_NAME = "ai-learning-stream-v3";
+const ASSETS = [
+  "/myweb/",
+  "/myweb/index.html",
+  "/myweb/about.html",
+  "/myweb/categories.html",
+  "/myweb/category.html",
+  "/myweb/trending.html",
+  "/myweb/watch.html",
+  "/myweb/watch-later.html",
+  "/myweb/contact.html",
+  "/myweb/app.js",
+  "/myweb/manifest.json",
+  "/myweb/videos.json"
 ];
 
-// تثبيت الـ Service Worker وتخزين الملفات
+// Install
 self.addEventListener("install", event => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then(cache => {
-      return cache.addAll(urlsToCache);
-    })
+    caches.open(CACHE_NAME).then(cache => cache.addAll(ASSETS))
   );
+  self.skipWaiting();
 });
 
-// جلب الملفات من الكاش أو من الإنترنت
-self.addEventListener("fetch", event => {
-  event.respondWith(
-    caches.match(event.request).then(response => {
-      return response || fetch(event.request);
-    })
-  );
-});
-
-// تحديث الكاش عند تغيير الإصدار
+// Activate
 self.addEventListener("activate", event => {
   event.waitUntil(
-    caches.keys().then(keys => {
-      return Promise.all(
+    caches.keys().then(keys =>
+      Promise.all(
         keys.map(key => {
-          if (key !== CACHE_NAME) {
-            return caches.delete(key);
-          }
+          if (key !== CACHE_NAME) return caches.delete(key);
         })
-      );
+      )
+    )
+  );
+  self.clients.claim();
+});
+
+// Fetch
+self.addEventListener("fetch", event => {
+  event.respondWith(
+    caches.match(event.request).then(cached => {
+      const networkFetch = fetch(event.request)
+        .then(response => {
+          if (response && response.status === 200) {
+            const cloned = response.clone();
+            caches.open(CACHE_NAME).then(cache => cache.put(event.request, cloned));
+          }
+          return response;
+        })
+        .catch(() => cached);
+
+      return cached || networkFetch;
     })
   );
 });

@@ -4,7 +4,8 @@
 
 let allVideos = [];
 
-fetch("videos.json")
+fetch('data/videos.json')
+
   .then(res => res.json())
   .then(data => {
     allVideos = data;

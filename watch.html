@@ -77,6 +77,14 @@
     <button id="favoriteBtn" class="px-4 py-2 bg-gray-800 rounded card-neon mb-4">
       ★ Add to Favorites
     </button>
+document.getElementById("favoriteBtn").addEventListener("click", () => {
+  let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+
+  if (!favorites.includes(videoId)) {
+    favorites.push(videoId);
+    localStorage.setItem("favorites", JSON.stringify(favorites));
+  }
+});
 
     <h3 class="text-xl font-bold mt-6 mb-4">Recommended Videos</h3>
     <div id="recommendedList" class="grid grid-cols-1 md:grid-cols-3 gap-4"></div>

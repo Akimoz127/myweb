@@ -1,120 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "AI Learning Stream",
-    "url": "https://akimoz127.github.io/myweb/",
-    "description": "AI Learning Stream is a fast, installable PWA that organizes Artificial Intelligence videos into categories, trending lists, favorites, and personalized recommendations.",
-    "publisher": {
-      "@type": "Person",
-      "name": "Ahmed"
-    },
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": "https://akimoz127.github.io/myweb/search.html?query={search}",
-      "query-input": "required name=search"
-    }
-  }
-  </script>
-
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About — AI Learning Stream</title>
+  <title>About – Akimoz AI Stream</title>
 
-  <meta name="description" content="Learn about AI Learning Stream, a modern neon-dark PWA created by Ahmed to make Artificial Intelligence learning easier and accessible.">
-  <meta name="keywords" content="about AI platform, Ahmed AI developer, AI learning mission, PWA education">
-
-  <link rel="canonical" href="https://akimoz127.github.io/myweb/about.html">
-
-  <meta property="og:title" content="About — AI Learning Stream">
-  <meta property="og:description" content="Learn about the mission behind AI Learning Stream and its creator Ahmed.">
-  <meta property="og:image" content="https://akimoz127.github.io/myweb/preview.png">
-  <meta property="og:url" content="https://akimoz127.github.io/myweb/about.html">
-
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="About — AI Learning Stream">
-  <meta name="twitter:description" content="Learn about the mission behind AI Learning Stream and its creator Ahmed.">
-  <meta name="twitter:image" content="https://akimoz127.github.io/myweb/preview.png">
-
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GGHTMRXGEC"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){ dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'G-GGHTMRXGEC');
-  </script>
-
-  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Tajawal:wght@400;600&display=swap" rel="stylesheet">
 
   <style>
-    .text-neon { color:#00f5ff; text-shadow:0 0 8px rgba(0,245,255,0.7); }
-    .card-neon {
-      background:rgba(0,0,0,0.6);
-      border:1px solid rgba(0,245,255,0.3);
-      padding:20px;
-      border-radius:12px;
-      box-shadow:0 0 12px rgba(0,245,255,0.4);
-      transition:.2s;
+    body {
+      margin: 0;
+      background: #0d0d0d;
+      font-family: 'Inter', 'Tajawal', sans-serif;
+      color: #e5e5e5;
     }
-    .card-neon:hover {
-      transform:translateY(-3px);
-      box-shadow:0 0 18px rgba(0,245,255,0.6);
+
+    /* Header */
+    header {
+      padding: 20px;
+      border-bottom: 1px solid #00eaff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 24px;
+      color: #00eaff;
+      font-weight: 600;
+    }
+
+    nav a {
+      margin-left: 20px;
+      color: #e5e5e5;
+      text-decoration: none;
+      font-size: 16px;
+    }
+
+    nav a:hover {
+      color: #00eaff;
+    }
+
+    /* Content Box */
+    .content-box {
+      max-width: 900px;
+      margin: 40px auto;
+      background: #111;
+      border: 1px solid #00eaff;
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: 0 0 15px rgba(0, 234, 255, 0.3);
+    }
+
+    .title {
+      font-size: 26px;
+      font-weight: 600;
+      color: #00eaff;
+      margin-bottom: 20px;
+    }
+
+    .text {
+      font-size: 18px;
+      line-height: 1.7;
+      color: #d0d0d0;
+      margin-bottom: 20px;
+    }
+
+    .highlight {
+      color: #00eaff;
+      font-weight: 600;
     }
   </style>
 </head>
 
-<body class="bg-black text-white min-h-screen">
+<body>
 
-<header class="p-4 border-b border-gray-700 flex justify-between items-center">
-  <h1 class="text-neon text-2xl font-bold">About</h1>
+  <!-- Header -->
+  <header>
+    <h1>Akimoz AI Stream</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="categories.html">Categories</a>
+      <a href="trending.html">Trending</a>
+      <a href="search.html">Search</a>
+    </nav>
+  </header>
 
-  <nav class="flex gap-4">
-    <a href="index.html" class="hover:text-neon">Home</a>
-    <a href="categories.html" class="hover:text-neon">Categories</a>
-    <a href="trending.html" class="hover:text-neon">Trending</a>
-    <a href="watch-later.html" class="hover:text-neon">Watch Later</a>
-    <a href="favorites.html" class="hover:text-neon">Favorites</a>
-    <a href="search.html" class="hover:text-neon">Search</a>
-  </nav>
-</header>
+  <!-- Content -->
+  <div class="content-box">
+    <div class="title">About Akimoz AI Stream</div>
 
-<main class="p-6 max-w-3xl mx-auto">
+    <div class="text">
+      Akimoz AI Stream is a modern platform designed to make learning artificial intelligence simple, fast, and enjoyable.  
+      Our mission is to provide high‑quality AI educational videos in a clean, minimal, and neon‑styled interface.
+    </div>
 
-  <div class="card-neon mb-6">
-    <h2 class="text-neon text-xl font-bold mb-3">About AI Learning Stream</h2>
-    <p class="text-gray-300 leading-relaxed">
-      AI Learning Stream is a modern, fast, installable PWA designed to make learning Artificial Intelligence easier,
-      organized, and accessible for everyone. Built with a neon-dark theme and optimized for performance, SEO, and
-      offline usage, the platform delivers a smooth experience across all devices.
-    </p>
+    <div class="text">
+      The platform includes <span class="highlight">AI Basics</span>,  
+      <span class="highlight">Machine Learning</span>,  
+      <span class="highlight">Deep Learning</span>,  
+      <span class="highlight">LLMs</span>,  
+      <span class="highlight">Computer Vision</span>,  
+      <span class="highlight">NLP</span>,  
+      and full <span class="highlight">Arabic AI Courses</span>.
+    </div>
+
+    <div class="text">
+      Built with a focus on speed, simplicity, and a beautiful neon‑dark experience,  
+      Akimoz AI Stream is your gateway to mastering AI — one video at a time.
+    </div>
   </div>
-
-  <div class="card-neon mb-6">
-    <h2 class="text-neon text-xl font-bold mb-3">Our Mission</h2>
-    <p class="text-gray-300 leading-relaxed">
-      The mission behind AI Learning Stream is simple: provide a clean, fast, and structured way to explore AI content.
-      Whether you're learning Machine Learning, Deep Learning, Data Science, or general AI concepts, the platform
-      organizes everything into categories, trending lists, favorites, and personalized recommendations.
-    </p>
-  </div>
-
-  <div class="card-neon">
-    <h2 class="text-neon text-xl font-bold mb-3">Created by Ahmed</h2>
-    <p class="text-gray-300 leading-relaxed">
-      This platform was created by Ahmed, a developer passionate about building modern web apps, PWA technology,
-      and AI education tools. The project continues to evolve with new features, improved UI, and better learning
-      experiences.
-    </p>
-  </div>
-
-</main>
 
 </body>
 </html>
+
 
 
 

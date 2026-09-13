@@ -3,9 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Watch Video</title>
+  <title>Watch AI Video — AI Learning Stream</title>
 
-  <!-- Google Analytics -->
+  <meta name="description" content="Watch Artificial Intelligence videos with a modern neon-dark interface. Includes recommendations, favorites, and watch-later features.">
+  <meta name="keywords" content="watch AI video, AI player, machine learning video player, AI recommendations">
+
+  <link rel="canonical" href="https://akimoz127.github.io/myweb/watch.html">
+
+  <meta property="og:title" content="Watch AI Video — AI Learning Stream">
+  <meta property="og:description" content="Watch Artificial Intelligence videos with recommendations and favorites.">
+  <meta property="og:image" content="https://akimoz127.github.io/myweb/preview.png">
+  <meta property="og:url" content="https://akimoz127.github.io/myweb/watch.html">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Watch AI Video — AI Learning Stream">
+  <meta name="twitter:description" content="Watch Artificial Intelligence videos with recommendations and favorites.">
+  <meta name="twitter:image" content="https://akimoz127.github.io/myweb/preview.png">
+
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-GGHTMRXGEC"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -14,22 +28,12 @@
     gtag('config', 'G-GGHTMRXGEC');
   </script>
 
-  <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Neon Styles -->
   <style>
-    .text-neon {
-      color: #00f5ff;
-      text-shadow: 0 0 8px rgba(0, 245, 255, 0.7);
-    }
-    .card-neon {
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-    .card-neon:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 0 12px rgba(0, 245, 255, 0.4);
-    }
+    .text-neon { color:#00f5ff; text-shadow:0 0 8px rgba(0,245,255,0.7); }
+    .card-neon { transition:transform .2s, box-shadow .2s; }
+    .card-neon:hover { transform:translateY(-3px); box-shadow:0 0 12px rgba(0,245,255,0.4); }
   </style>
 </head>
 
@@ -37,32 +41,24 @@
 
   <header class="p-4 flex justify-between items-center border-b border-gray-700">
     <h1 class="text-neon text-2xl font-bold">AI Learning Stream</h1>
-    <a href="index.html" class="text-sm text-gray-300 hover:text-neon">
-      ← Back to Home
-    </a>
+    <a href="index.html" class="text-sm text-gray-300 hover:text-neon">← Back to Home</a>
   </header>
 
   <main class="p-4">
 
-    <!-- Video Player -->
     <iframe id="videoPlayer" class="w-full h-64 md:h-96 rounded-lg mb-4"
             frameborder="0" allowfullscreen></iframe>
 
-    <!-- Title -->
     <h2 id="videoTitle" class="text-xl font-bold mb-4"></h2>
 
-    <!-- Buttons -->
-    <button id="watchLaterBtn"
-            class="px-4 py-2 bg-gray-800 rounded card-neon mb-4">
+    <button id="watchLaterBtn" class="px-4 py-2 bg-gray-800 rounded card-neon mb-4">
       + Add to Watch Later
     </button>
 
-    <button id="favoriteBtn"
-            class="px-4 py-2 bg-gray-800 rounded card-neon mb-4">
+    <button id="favoriteBtn" class="px-4 py-2 bg-gray-800 rounded card-neon mb-4">
       ★ Add to Favorites
     </button>
 
-    <!-- Recommended Videos -->
     <h3 class="text-xl font-bold mt-6 mb-4">Recommended Videos</h3>
     <div id="recommendedList" class="grid grid-cols-1 md:grid-cols-3 gap-4"></div>
 
@@ -72,6 +68,7 @@
 
 </body>
 </html>
+
 
 
 

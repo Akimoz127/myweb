@@ -1,119 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    "name": "AI Categories — Akimoz AI Learning Stream",
-    "url": "https://akimoz127.github.io/myweb/categories.html",
-    "description": "Browse AI categories including Machine Learning, Deep Learning, Data Science, and more.",
-    "publisher": {
-      "@type": "Person",
-      "name": "Ahmed"
-    }
-  }
-  </script>
-
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Categories — Akimoz AI Learning Stream</title>
+  <title>Categories – Akimoz AI Stream</title>
 
-  <meta name="description" content="Explore AI categories such as Machine Learning, Deep Learning, Data Science, and more.">
-  <meta name="keywords" content="AI categories, machine learning, deep learning, data science">
-
-  <link rel="canonical" href="https://akimoz127.github.io/myweb/categories.html">
-
-  <meta property="og:title" content="Categories — Akimoz AI Learning Stream">
-  <meta property="og:description" content="Explore AI categories including ML, DL, and Data Science.">
-  <meta property="og:image" content="https://akimoz127.github.io/myweb/preview.png">
-  <meta property="og:url" content="https://akimoz127.github.io/myweb/categories.html">
-
-  <meta name="twitter:card" content="summary_large_image">
-
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GGHTMRXGEC"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){ dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'G-GGHTMRXGEC');
-  </script>
-
-  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Tajawal:wght@400;600&display=swap" rel="stylesheet">
 
   <style>
-    .text-neon { color:#00f5ff; text-shadow:0 0 8px rgba(0,245,255,0.7); }
-    .card-neon {
-      background:rgba(0,0,0,0.6);
-      border:1px solid rgba(0,245,255,0.3);
-      padding:20px;
-      border-radius:12px;
-      box-shadow:0 0 12px rgba(0,245,255,0.4);
-      transition:.2s;
+    body {
+      margin: 0;
+      background: #0d0d0d;
+      font-family: 'Inter', 'Tajawal', sans-serif;
+      color: #e5e5e5;
     }
-    .card-neon:hover {
-      transform:translateY(-3px);
-      box-shadow:0 0 18px rgba(0,245,255,0.6);
+
+    /* Header */
+    header {
+      padding: 20px;
+      border-bottom: 1px solid #00eaff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 24px;
+      color: #00eaff;
+      font-weight: 600;
+    }
+
+    nav a {
+      margin-left: 20px;
+      color: #e5e5e5;
+      text-decoration: none;
+      font-size: 16px;
+    }
+
+    nav a:hover {
+      color: #00eaff;
+    }
+
+    /* Section Title */
+    .section-title {
+      font-size: 22px;
+      margin: 25px;
+      font-weight: 600;
+      color: #00eaff;
+    }
+
+    /* Category Grid */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+
+    /* Category Card */
+    .category-card {
+      background: #111;
+      border: 1px solid #00eaff;
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+      font-size: 18px;
+      font-weight: 600;
+      transition: 0.25s;
+      cursor: pointer;
+    }
+
+    .category-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px rgba(0, 234, 255, 0.4);
+      color: #00eaff;
     }
   </style>
 </head>
 
-<body class="bg-black text-white min-h-screen">
+<body>
 
-<header class="p-4 border-b border-gray-700 flex justify-between items-center">
-  <h1 class="text-neon text-2xl font-bold">Akimoz AI Learning Stream</h1>
+  <!-- Header -->
+  <header>
+    <h1>Akimoz AI Stream</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="trending.html">Trending</a>
+      <a href="favorites.html">Favorites</a>
+      <a href="search.html">Search</a>
+    </nav>
+  </header>
 
-  <nav class="flex gap-4">
-    <a href="index.html" class="hover:text-neon">Home</a>
-    <a href="categories.html" class="hover:text-neon">Categories</a>
-    <a href="trending.html" class="hover:text-neon">Trending</a>
-    <a href="watch-later.html" class="hover:text-neon">Watch Later</a>
-    <a href="favorites.html" class="hover:text-neon">Favorites</a>
-    <a href="search.html" class="hover:text-neon">Search</a>
-  </nav>
-</header>
+  <!-- Section Title -->
+  <div class="section-title">Categories</div>
 
-<main class="p-6 max-w-4xl mx-auto">
+  <!-- Category Grid -->
+  <div class="grid" id="categoryGrid"></div>
 
-  <div class="card-neon mb-6">
-    <h2 class="text-neon text-xl font-bold mb-3">AI Categories</h2>
-    <p class="text-gray-300 leading-relaxed">
-      Choose a category to explore AI videos organized by topic. Each category loads dynamically from videos.json.
-    </p>
-  </div>
+  <script>
+    async function loadCategories() {
+      const response = await fetch('videos.json');
+      const videos = await response.json();
 
-  <div id="categoryList" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
+      const categories = [...new Set(videos.map(v => v.category))];
 
-</main>
+      const grid = document.getElementById('categoryGrid');
 
-<script>
-  async function loadVideos() {
-    const res = await fetch("videos.json");
-    return await res.json();
-  }
+      categories.forEach(cat => {
+        const card = `
+          <div class="category-card" onclick="location.href='category.html?name=${encodeURIComponent(cat)}'">
+            ${cat}
+          </div>
+        `;
+        grid.innerHTML += card;
+      });
+    }
 
-  loadVideos().then(videos => {
-    const categories = [...new Set(videos.map(v => v.category))];
-    const list = document.getElementById("categoryList");
-
-    categories.forEach(cat => {
-      const card = document.createElement("a");
-      card.href = `category.html?name=${encodeURIComponent(cat)}`;
-      card.className = "card-neon block";
-
-      card.innerHTML = `
-        <h3 class="text-neon font-bold mb-2">${cat}</h3>
-        <p class="text-gray-400">Explore videos in ${cat}</p>
-      `;
-
-      list.appendChild(card);
-    });
-  });
-</script>
+    loadCategories();
+  </script>
 
 </body>
 </html>
+
 
 
 

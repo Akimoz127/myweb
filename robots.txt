@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://akimoz127.github.io/myweb/sitemap.xml

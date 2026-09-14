@@ -6,21 +6,28 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// Serve static files (HTML, JS, CSS) from the 'public' directory
 app.use(express.static(path.join(__dirname, 'public')));
 
-const VIDEOS_FILE = path.join(__dirname, 'videos.json');
+// Path to videos database inside the 'data' folder
+const VIDEOS_FILE = path.join(__dirname, 'data', 'videos.json');
 
-// Helper function to read videos
-const readVideos = (callback) => {
+// Helper function to read videos with fallbacks applied
+const readVideosFromFile = (callback) => {
   fs.readFile(VIDEOS_FILE, 'utf8', (err, data) => {
-    if (err) return callback(err, null);
+    if (err) {
+      if (err.code === 'ENOENT') return callback(null, []);
+      return callback(err, null);
+    }
     try {
       const videos = JSON.parse(data || '[]');
       const updatedVideos = videos.map((video) => ({
         ...video,
         url: video.url || video.embed_url,
-        category: video.category || 'AI',
-        views: video.views || 0,
+        category: video.category || "AI",
+        views: video.views || 0
       }));
       callback(null, updatedVideos);
     } catch (parseError) {
@@ -30,24 +37,24 @@ const readVideos = (callback) => {
 };
 
 // Helper function to write videos
-const writeVideos = (data, callback) => {
+const writeVideosToFile = (data, callback) => {
   fs.writeFile(VIDEOS_FILE, JSON.stringify(data, null, 2), 'utf8', callback);
 };
 
-// GET /api/videos - Retrieve all videos
+// GET /api/videos - Fetch all videos
 app.get('/api/videos', (req, res) => {
-  readVideos((err, videos) => {
-    if (err) return res.status(500).json({ error: 'Failed to read videos file.' });
+  readVideosFromFile((err, videos) => {
+    if (err) return res.status(500).json({ error: 'Failed to read videos data.' });
     res.json(videos);
   });
 });
 
-// POST /api/videos/:id/view - Increment video views
+// POST /api/videos/:id/view - Increment view count
 app.post('/api/videos/:id/view', (req, res) => {
   const videoId = parseInt(req.params.id, 10);
 
-  readVideos((err, videos) => {
-    if (err) return res.status(500).json({ error: 'Failed to read videos file.' });
+  readVideosFromFile((err, videos) => {
+    if (err) return res.status(500).json({ error: 'Failed to read videos data.' });
 
     const videoIndex = videos.findIndex((v) => v.id === videoId);
     if (videoIndex === -1) {
@@ -56,15 +63,15 @@ app.post('/api/videos/:id/view', (req, res) => {
 
     videos[videoIndex].views = (videos[videoIndex].views || 0) + 1;
 
-    writeVideos(videos, (writeErr) => {
-      if (writeErr) return res.status(500).json({ error: 'Failed to update views.' });
+    writeVideosToFile(videos, (writeErr) => {
+      if (writeErr) return res.status(500).json({ error: 'Failed to save view.' });
       res.json({ success: true, views: videos[videoIndex].views });
     });
   });
 });
 
 app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+  console.log(`Server running at http://localhost:${PORT}`);
 });
 
 

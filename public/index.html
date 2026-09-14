@@ -2,30 +2,27 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Video Platform - Home</title>
+  <title>Akimoz AI Stream - Home</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
   <header>
-    <h1>Video Platform</h1>
+    <h1>Akimoz AI Stream</h1>
     <nav>
-      <a href="/" class="active">Home</a>
+      <a href="/index.html">Home</a>
       <a href="/trending.html">Trending</a>
+      <a href="/categories.html">Categories</a>
+      <a href="/favorites.html">Favorites</a>
+      <a href="/about.html">About</a>
     </nav>
   </header>
 
   <main>
     <section class="controls">
-      <h2>Latest Videos</h2>
-      <!-- Category dropdown populated by script.js -->
-      <select id="category-filter">
-        <option value="All">All Categories</option>
-      </select>
+      <h2>All Videos</h2>
+      <select id="category-filter"></select>
     </section>
 
-    <!-- Video grid target for script.js -->
     <div id="video-container" class="video-grid"></div>
   </main>
 

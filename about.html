@@ -3,116 +3,40 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About – Akimoz AI Stream</title>
-
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Tajawal:wght@400;600&display=swap" rel="stylesheet">
-
-  <style>
-    body {
-      margin: 0;
-      background: #0d0d0d;
-      font-family: 'Inter', 'Tajawal', sans-serif;
-      color: #e5e5e5;
-    }
-
-    /* Header */
-    header {
-      padding: 20px;
-      border-bottom: 1px solid #00eaff;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    header h1 {
-      margin: 0;
-      font-size: 24px;
-      color: #00eaff;
-      font-weight: 600;
-    }
-
-    nav a {
-      margin-left: 20px;
-      color: #e5e5e5;
-      text-decoration: none;
-      font-size: 16px;
-    }
-
-    nav a:hover {
-      color: #00eaff;
-    }
-
-    /* Content Box */
-    .content-box {
-      max-width: 900px;
-      margin: 40px auto;
-      background: #111;
-      border: 1px solid #00eaff;
-      border-radius: 10px;
-      padding: 30px;
-      box-shadow: 0 0 15px rgba(0, 234, 255, 0.3);
-    }
-
-    .title {
-      font-size: 26px;
-      font-weight: 600;
-      color: #00eaff;
-      margin-bottom: 20px;
-    }
-
-    .text {
-      font-size: 18px;
-      line-height: 1.7;
-      color: #d0d0d0;
-      margin-bottom: 20px;
-    }
-
-    .highlight {
-      color: #00eaff;
-      font-weight: 600;
-    }
-  </style>
+  <title>Akimoz AI Stream - About</title>
+  <link rel="stylesheet" href="style.css">
 </head>
+<body class="about-page">
 
-<body>
-
-  <!-- Header -->
+  <!-- Main Top Navigation Header -->
   <header>
-    <h1>Akimoz AI Stream</h1>
+    <h1><a href="index.html" style="text-decoration: none; color: inherit;">Akimoz AI Stream</a></h1>
     <nav>
       <a href="index.html">Home</a>
-      <a href="categories.html">Categories</a>
       <a href="trending.html">Trending</a>
+      <a href="categories.html">Categories</a>
+      <a href="favorites.html">Favorites</a>
       <a href="search.html">Search</a>
+      <a href="about.html" class="active">About</a>
     </nav>
   </header>
 
-  <!-- Content -->
-  <div class="content-box">
-    <div class="title">About Akimoz AI Stream</div>
-
-    <div class="text">
-      Akimoz AI Stream is a modern platform designed to make learning artificial intelligence simple, fast, and enjoyable.  
-      Our mission is to provide high‑quality AI educational videos in a clean, minimal, and neon‑styled interface.
+  <main style="max-width: 800px; margin: 0 auto;">
+    <h2>About Akimoz AI Stream</h2>
+    <div style="background: var(--card-bg); padding: 25px; border-radius: 12px; border: 1px solid var(--border-color);">
+      <p style="margin-bottom: 15px;">
+        Welcome to <strong>Akimoz AI Stream</strong>, your central hub for discovering, organizing, and tracking the best AI tutorials, courses, and tech insights.
+      </p>
+      <p style="margin-bottom: 15px;">
+        Designed with a neon-dark aesthetic, this platform allows you to filter content across trending AI tools including Claude, ChatGPT, Gemini, Copilot, and Autonomous Agents.
+      </p>
+      <p>
+        Save your favorite videos locally to revisit anytime, or explore specialized categories tailored for beginners and experts alike.
+      </p>
     </div>
+  </main>
 
-    <div class="text">
-      The platform includes <span class="highlight">AI Basics</span>,  
-      <span class="highlight">Machine Learning</span>,  
-      <span class="highlight">Deep Learning</span>,  
-      <span class="highlight">LLMs</span>,  
-      <span class="highlight">Computer Vision</span>,  
-      <span class="highlight">NLP</span>,  
-      and full <span class="highlight">Arabic AI Courses</span>.
-    </div>
-
-    <div class="text">
-      Built with a focus on speed, simplicity, and a beautiful neon‑dark experience,  
-      Akimoz AI Stream is your gateway to mastering AI — one video at a time.
-    </div>
-  </div>
-<script src="/script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
 

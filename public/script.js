@@ -1,43 +1,51 @@
 document.addEventListener('DOMContentLoaded', () => {
   const videoContainer = document.getElementById('video-container');
   const categoryFilter = document.getElementById('category-filter');
-  const searchInput = document.getElementById('search-input');
 
-  // Detect active page state
-  const isTrending = document.body.classList.contains('trending-page') || window.location.pathname.includes('trending');
-  const isFavorites = document.body.classList.contains('favorites-page') || window.location.pathname.includes('favorites');
+  // Detect current route/page
+  const path = window.location.pathname.toLowerCase();
+  const isTrending = path.includes('trending') || document.body.classList.contains('trending-page');
+  const isFavorites = path.includes('favorites') || document.body.classList.contains('favorites-page');
+  
   const urlParams = new URLSearchParams(window.location.search);
-  const selectedCategoryParam = urlParams.get('cat');
-  const searchQueryParam = urlParams.get('q');
+  const categoryParam = urlParams.get('cat');
+  const searchQuery = urlParams.get('q');
 
   let allVideos = [];
 
   async function fetchVideos() {
     try {
       const response = await fetch('/api/videos');
-      if (!response.ok) throw new Error('Failed to fetch videos');
+      if (!response.ok) throw new Error('Failed to fetch video dataset');
       allVideos = await response.json();
 
       let displayVideos = [...allVideos];
 
-      // Page Logic Routing
+      // 1. Trending Routing
       if (isTrending) {
-        // Sort by view count descending
         displayVideos.sort((a, b) => (b.views || 0) - (a.views || 0));
-      } else if (isFavorites) {
-        // Filter by localStorage favorites
+      } 
+      // 2. Favorites Routing
+      else if (isFavorites) {
         const favoriteIds = JSON.parse(localStorage.getItem('favorites') || '[]');
         displayVideos = displayVideos.filter(v => favoriteIds.includes(v.id));
-      } else if (selectedCategoryParam) {
-        // Filter by specific URL category param (e.g. category.html?cat=LLMs)
-        displayVideos = displayVideos.filter(v => v.category.toLowerCase() === selectedCategoryParam.toLowerCase());
-      } else if (searchQueryParam) {
-        // Filter by search query
-        const query = searchQueryParam.toLowerCase();
+      } 
+      // 3. Category Page Routing (via URL parameter ?cat=Name)
+      else if (categoryParam) {
         displayVideos = displayVideos.filter(v => 
-          v.title.toLowerCase().includes(query) || 
-          v.category.toLowerCase().includes(query)
+          v.category.toLowerCase() === categoryParam.toLowerCase()
         );
+      } 
+      // 4. Search Routing (via URL parameter ?q=Query)
+      else if (searchQuery) {
+        const q = searchQuery.toLowerCase();
+        displayVideos = displayVideos.filter(v => 
+          v.title.toLowerCase().includes(q) || v.category.toLowerCase().includes(q)
+        );
+      } 
+      // 5. Default Home Page Routing (Newest / All videos)
+      else {
+        displayVideos.sort((a, b) => (b.id || 0) - (a.id || 0));
       }
 
       populateCategoryDropdown(allVideos);
@@ -45,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
     } catch (error) {
       console.error(error);
       if (videoContainer) {
-        videoContainer.innerHTML = '<p class="error">Failed to load content.</p>';
+        videoContainer.innerHTML = '<p class="error">Unable to load video feed.</p>';
       }
     }
   }
@@ -57,6 +65,12 @@ document.addEventListener('DOMContentLoaded', () => {
     categoryFilter.innerHTML = categories
       .map(cat => `<option value="${cat}">${cat}</option>`)
       .join('');
+
+    // Pre-select category if matching URL parameter
+    if (categoryParam) {
+      const match = categories.find(c => c.toLowerCase() === categoryParam.toLowerCase());
+      if (match) categoryFilter.value = match;
+    }
 
     categoryFilter.addEventListener('change', (e) => {
       const selected = e.target.value;
@@ -70,8 +84,8 @@ document.addEventListener('DOMContentLoaded', () => {
   function renderVideos(videos) {
     if (!videoContainer) return;
 
-    if (videos.length === 0) {
-      videoContainer.innerHTML = '<p>No videos available.</p>';
+    if (!videos || videos.length === 0) {
+      videoContainer.innerHTML = '<p class="empty-msg">No videos found for this section.</p>';
       return;
     }
 
@@ -101,7 +115,6 @@ document.addEventListener('DOMContentLoaded', () => {
   fetchVideos();
 });
 
-// View count counter
 async function registerView(videoId) {
   try {
     const res = await fetch(`/api/videos/${videoId}/view`, { method: 'POST' });
@@ -115,7 +128,6 @@ async function registerView(videoId) {
   }
 }
 
-// Favorite button handler
 function toggleFavorite(videoId) {
   let favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
   if (favorites.includes(videoId)) {

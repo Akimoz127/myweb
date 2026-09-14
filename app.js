@@ -1,154 +1,71 @@
-// app.js - Main Application Logic for Video Gallery
+const express = require('express');
+const fs = require('fs');
+const path = require('path');
 
-let videosData = [];
-let activeCategory = 'All';
+const app = express();
+const PORT = process.env.PORT || 3000;
 
-// Fetch and initialize video data
-async function initApp() {
+app.use(express.json());
+app.use(express.static(path.join(__dirname, 'public')));
+
+const VIDEOS_FILE = path.join(__dirname, 'videos.json');
+
+// Helper function to read videos
+const readVideos = (callback) => {
+  fs.readFile(VIDEOS_FILE, 'utf8', (err, data) => {
+    if (err) return callback(err, null);
     try {
-        const response = await fetch('videos.json');
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        videosData = await response.json();
-        renderGrid(videosData);
-        setupEventListeners();
-    } catch (error) {
-        console.error("Failed to load videos data:", error);
+      const videos = JSON.parse(data || '[]');
+      const updatedVideos = videos.map((video) => ({
+        ...video,
+        url: video.url || video.embed_url,
+        category: video.category || 'AI',
+        views: video.views || 0,
+      }));
+      callback(null, updatedVideos);
+    } catch (parseError) {
+      callback(parseError, null);
     }
-}
+  });
+};
 
-// Render video cards in the grid container
-function renderGrid(videos) {
-    const gridContainer = document.getElementById('grid-container');
-    if (!gridContainer) return;
+// Helper function to write videos
+const writeVideos = (data, callback) => {
+  fs.writeFile(VIDEOS_FILE, JSON.stringify(data, null, 2), 'utf8', callback);
+};
 
-    gridContainer.innerHTML = '';
+// GET /api/videos - Retrieve all videos
+app.get('/api/videos', (req, res) => {
+  readVideos((err, videos) => {
+    if (err) return res.status(500).json({ error: 'Failed to read videos file.' });
+    res.json(videos);
+  });
+});
 
-    if (videos.length === 0) {
-        gridContainer.innerHTML = '<p style="text-align: center; grid-column: 1/-1; color: #aaa;">No matching videos found.</p>';
-        return;
+// POST /api/videos/:id/view - Increment video views
+app.post('/api/videos/:id/view', (req, res) => {
+  const videoId = parseInt(req.params.id, 10);
+
+  readVideos((err, videos) => {
+    if (err) return res.status(500).json({ error: 'Failed to read videos file.' });
+
+    const videoIndex = videos.findIndex((v) => v.id === videoId);
+    if (videoIndex === -1) {
+      return res.status(404).json({ error: 'Video not found.' });
     }
 
-    videos.forEach(video => {
-        const card = createVideoCard(video);
-        gridContainer.appendChild(card);
+    videos[videoIndex].views = (videos[videoIndex].views || 0) + 1;
+
+    writeVideos(videos, (writeErr) => {
+      if (writeErr) return res.status(500).json({ error: 'Failed to update views.' });
+      res.json({ success: true, views: videos[videoIndex].views });
     });
-}
+  });
+});
 
-// Create individual video card element
-function createVideoCard(video) {
-    const card = document.createElement('div');
-    card.className = 'video-card';
-
-    // Fallback values for updated data properties
-    const videoUrl = video.url || video.embed_url;
-    const category = video.category || "AI";
-    const views = video.views || 0;
-
-    card.innerHTML = `
-        <div class="thumbnail-container">
-            <img src="${video.thumbnail}" alt="${video.title}" loading="lazy">
-            <span class="category-badge">${category}</span>
-        </div>
-        <div class="video-info">
-            <h3 class="video-title">${video.title}</h3>
-            <div class="video-meta">
-                <span class="views">${views} views</span>
-            </div>
-        </div>
-    `;
-
-    card.addEventListener('click', () => {
-        if (videoUrl) {
-            openModal(videoUrl);
-        }
-    });
-
-    return card;
-}
-
-// Filter videos based on search input and category selection
-function filterVideos() {
-    const searchInput = document.getElementById('search-input');
-    const searchVal = searchInput ? searchInput.value.toLowerCase() : '';
-
-    const filtered = videosData.filter(video => {
-        const title = video.title ? video.title.toLowerCase() : '';
-        const category = video.category || "AI";
-
-        const matchesSearch = title.includes(searchVal);
-        let matchesCategory = true;
-
-        if (activeCategory === 'Arabic') {
-            matchesCategory = /[\u0600-\u06FF]/.test(title);
-        } else if (activeCategory !== 'All') {
-            matchesCategory = category.toLowerCase().includes(activeCategory.toLowerCase()) || 
-                              title.toLowerCase().includes(activeCategory.toLowerCase());
-        }
-
-        return matchesSearch && matchesCategory;
-    });
-
-    renderGrid(filtered);
-}
-
-// Category selection handler
-function filterCategory(category, btnElement) {
-    activeCategory = category;
-    
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-        btn.classList.remove('active');
-    });
-
-    if (btnElement) {
-        btnElement.classList.add('active');
-    }
-
-    filterVideos();
-}
-
-// Setup event listeners for inputs & controls
-function setupEventListeners() {
-    const searchInput = document.getElementById('search-input');
-    if (searchInput) {
-        searchInput.addEventListener('input', filterVideos);
-    }
-
-    const modal = document.getElementById('video-modal');
-    if (modal) {
-        modal.addEventListener('click', closeModal);
-    }
-}
-
-// Open modal and embed iframe
-function openModal(embedUrl) {
-    const modal = document.getElementById('video-modal');
-    const iframe = document.getElementById('modal-iframe');
-
-    if (modal && iframe) {
-        iframe.src = embedUrl.includes('?') ? `${embedUrl}&autoplay=1` : `${embedUrl}?autoplay=1`;
-        modal.classList.add('active');
-    }
-}
-
-// Close modal and clear iframe src
-function closeModal() {
-    const modal = document.getElementById('video-modal');
-    const iframe = document.getElementById('modal-iframe');
-
-    if (modal && iframe) {
-        iframe.src = '';
-        modal.classList.remove('active');
-    }
-}
-
-// Expose handlers globally for HTML inline onclick event bindings
-window.filterCategory = filterCategory;
-window.closeModal = closeModal;
-
-// Initialize on DOM ready
-document.addEventListener('DOMContentLoaded', initApp);
+app.listen(PORT, () => {
+  console.log(`Server running on http://localhost:${PORT}`);
+});
 
 
 

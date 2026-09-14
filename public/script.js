@@ -2,33 +2,37 @@ document.addEventListener('DOMContentLoaded', () => {
   const videoContainer = document.getElementById('video-container');
   const categoriesContainer = document.getElementById('categories-container') || document.getElementById('category-list');
   const categoryFilter = document.getElementById('category-filter');
+  const searchInput = document.getElementById('search-input');
 
-  const isTrending = document.body.classList.contains('trending-page') || window.location.pathname.includes('trending');
-  const isFavorites = document.body.classList.contains('favorites-page') || window.location.pathname.includes('favorites');
-  const isCategoriesPage = window.location.pathname.includes('categories');
+  // Route & Context Detection
+  const path = window.location.pathname;
+  const isTrendingPage = path.endsWith('trending.html') || path.endsWith('/trending') || document.body.classList.contains('trending-page');
+  const isFavoritesPage = path.endsWith('favorites.html') || path.endsWith('/favorites') || document.body.classList.contains('favorites-page');
+  const isCategoriesPage = path.endsWith('categories.html') || path.endsWith('/categories');
 
   const urlParams = new URLSearchParams(window.location.search);
   const selectedCategoryParam = urlParams.get('cat');
+  const searchQueryParam = urlParams.get('q');
 
   let allVideos = [];
+  let currentFilteredVideos = [];
 
   async function fetchVideos() {
     try {
       let response;
-      // Try API route first, fall back to static JSON path for GitHub Pages
+      // Try backend Express route first, fall back to static JSON path for GitHub Pages
       try {
         response = await fetch('/api/videos');
         if (!response.ok) throw new Error('API unavailable');
       } catch (e) {
-        // Fallback relative path for static hosting (GitHub Pages)
         response = await fetch('./data/videos.json');
       }
 
-      if (!response.ok) throw new Error('Failed to fetch videos.json');
+      if (!response.ok) throw new Error('Failed to fetch videos data.');
 
       const rawVideos = await response.json();
 
-      // Apply fallbacks on client side
+      // Apply default fallbacks
       allVideos = rawVideos.map((video) => ({
         ...video,
         url: video.url || video.embed_url,
@@ -36,39 +40,84 @@ document.addEventListener('DOMContentLoaded', () => {
         views: video.views || 0,
       }));
 
+      let displayVideos = [...allVideos];
+
+      // Page-Specific Sorting & Filtering
+      if (isTrendingPage) {
+        // Sort by highest view count
+        displayVideos.sort((a, b) => (b.views || 0) - (a.views || 0));
+      } else if (isFavoritesPage) {
+        // Filter by saved IDs in LocalStorage
+        const favoriteIds = JSON.parse(localStorage.getItem('favorites') || '[]');
+        displayVideos = displayVideos.filter((v) => favoriteIds.includes(v.id));
+      } else if (selectedCategoryParam) {
+        displayVideos = displayVideos.filter(
+          (v) => v.category.toLowerCase() === selectedCategoryParam.toLowerCase()
+        );
+      } else {
+        // Newest/Default order for Home
+        displayVideos.sort((a, b) => (b.id || 0) - (a.id || 0));
+      }
+
+      // Pre-filter if search param exists in URL
+      if (searchQueryParam) {
+        const query = searchQueryParam.toLowerCase();
+        displayVideos = displayVideos.filter((v) =>
+          v.title.toLowerCase().includes(query) || v.category.toLowerCase().includes(query)
+        );
+      }
+
+      currentFilteredVideos = displayVideos;
+
       if (isCategoriesPage) {
         renderCategoriesPage(allVideos);
       } else {
-        renderVideoFeed(allVideos);
+        renderVideoFeed(currentFilteredVideos);
+        setupSearchInput();
+        setupCategoryPills();
       }
     } catch (error) {
       console.error('Data loading error:', error);
       if (videoContainer) {
-        videoContainer.innerHTML = '<p style="color:red;">Failed to load videos.</p>';
+        videoContainer.innerHTML = '<p class="error" style="color: #ff0080; padding: 20px;">Failed to load videos.</p>';
       }
     }
   }
 
-  // Render Grid for Home, Trending, Favorites, Category Pages
+  // Render Grid for Home, Trending, Favorites, Search
   function renderVideoFeed(videos) {
-    let displayVideos = [...videos];
+    if (!videoContainer) return;
 
-    if (isTrending) {
-      displayVideos.sort((a, b) => (b.views || 0) - (a.views || 0));
-    } else if (isFavorites) {
-      const favoriteIds = JSON.parse(localStorage.getItem('favorites') || '[]');
-      displayVideos = displayVideos.filter((v) => favoriteIds.includes(v.id));
-    } else if (selectedCategoryParam) {
-      displayVideos = displayVideos.filter(
-        (v) => v.category.toLowerCase() === selectedCategoryParam.toLowerCase()
-      );
+    if (videos.length === 0) {
+      videoContainer.innerHTML = '<p style="color: #94a3b8; grid-column: 1/-1; padding: 20px;">No videos found.</p>';
+      return;
     }
 
-    populateDropdown(videos);
-    renderCards(displayVideos);
+    const favoriteIds = JSON.parse(localStorage.getItem('favorites') || '[]');
+
+    videoContainer.innerHTML = videos
+      .map((video) => {
+        const isFav = favoriteIds.includes(video.id);
+        return `
+        <div class="video-card" data-id="${video.id}">
+          <iframe src="${video.url}" title="${video.title}" frameborder="0" allowfullscreen></iframe>
+          <div class="video-info">
+            <h3>${video.title}</h3>
+            <span class="badge">${video.category}</span>
+            <p class="views" id="views-${video.id}">${(video.views || 0).toLocaleString()} views</p>
+            <div class="card-actions">
+              <button onclick="toggleFavorite(${video.id})" id="fav-btn-${video.id}">
+                ${isFav ? '❤️ Saved' : '🤍 Favorite'}
+              </button>
+            </div>
+          </div>
+        </div>
+      `;
+      })
+      .join('');
   }
 
-  // Render Categories Grid for categories.html
+  // Render Grid for Categories Page
   function renderCategoriesPage(videos) {
     const target = categoriesContainer || videoContainer;
     if (!target) return;
@@ -76,7 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const categories = [...new Set(videos.map((v) => v.category))];
 
     if (categories.length === 0) {
-      target.innerHTML = '<p>No categories found.</p>';
+      target.innerHTML = '<p style="color: #94a3b8;">No categories found.</p>';
       return;
     }
 
@@ -93,57 +142,51 @@ document.addEventListener('DOMContentLoaded', () => {
       .join('');
   }
 
-  function populateDropdown(videos) {
-    if (!categoryFilter) return;
+  // Real-time Search Handler
+  function setupSearchInput() {
+    if (!searchInput) return;
 
-    const categories = ['All', ...new Set(videos.map((v) => v.category))];
-    categoryFilter.innerHTML = categories
-      .map((cat) => `<option value="${cat}">${cat}</option>`)
-      .join('');
-
-    categoryFilter.addEventListener('change', (e) => {
-      const selected = e.target.value;
-      const filtered =
-        selected === 'All' ? videos : videos.filter((v) => v.category === selected);
-      renderCards(filtered);
+    searchInput.addEventListener('input', (e) => {
+      const query = e.target.value.toLowerCase().trim();
+      const filtered = currentFilteredVideos.filter(
+        (v) =>
+          v.title.toLowerCase().includes(query) ||
+          v.category.toLowerCase().includes(query)
+      );
+      renderVideoFeed(filtered);
     });
   }
 
-  function renderCards(videos) {
-    if (!videoContainer) return;
+  // Interactive Category Pills Handler
+  function setupCategoryPills() {
+    const pills = document.querySelectorAll('.category-pill');
+    if (!pills.length) return;
 
-    if (videos.length === 0) {
-      videoContainer.innerHTML = '<p>No videos available.</p>';
-      return;
-    }
+    pills.forEach((pill) => {
+      pill.addEventListener('click', (e) => {
+        pills.forEach((p) => p.classList.remove('active'));
+        e.target.classList.add('active');
 
-    const favoriteIds = JSON.parse(localStorage.getItem('favorites') || '[]');
+        const selectedCat = e.target.textContent.trim();
 
-    videoContainer.innerHTML = videos
-      .map((video) => {
-        const isFav = favoriteIds.includes(video.id);
-        return `
-        <div class="video-card">
-          <iframe src="${video.url}" title="${video.title}" frameborder="0" allowfullscreen></iframe>
-          <div class="video-info">
-            <h3>${video.title}</h3>
-            <span class="badge">${video.category}</span>
-            <p class="views">${(video.views || 0).toLocaleString()} views</p>
-            <div class="card-actions">
-              <button onclick="toggleFavorite(${video.id})" id="fav-btn-${video.id}">
-                ${isFav ? '❤️ Saved' : '🤍 Favorite'}
-              </button>
-            </div>
-          </div>
-        </div>
-      `;
-      })
-      .join('');
+        if (selectedCat === 'All') {
+          renderVideoFeed(currentFilteredVideos);
+        } else {
+          const filtered = currentFilteredVideos.filter(
+            (v) =>
+              (v.category && v.category.toLowerCase() === selectedCat.toLowerCase()) ||
+              (v.title && v.title.toLowerCase().includes(selectedCat.toLowerCase()))
+          );
+          renderVideoFeed(filtered);
+        }
+      });
+    });
   }
 
   fetchVideos();
 });
 
+// Toggle Favorite Status in LocalStorage
 function toggleFavorite(videoId) {
   let favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
   if (favorites.includes(videoId)) {

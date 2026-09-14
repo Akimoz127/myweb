@@ -1,107 +1,135 @@
 document.addEventListener('DOMContentLoaded', () => {
   const videoContainer = document.getElementById('video-container');
+  const categoriesContainer = document.getElementById('categories-container') || document.getElementById('category-list');
   const categoryFilter = document.getElementById('category-filter');
 
-  // Detect current route/page
-  const path = window.location.pathname.toLowerCase();
-  const isTrending = path.includes('trending') || document.body.classList.contains('trending-page');
-  const isFavorites = path.includes('favorites') || document.body.classList.contains('favorites-page');
-  
+  const isTrending = document.body.classList.contains('trending-page') || window.location.pathname.includes('trending');
+  const isFavorites = document.body.classList.contains('favorites-page') || window.location.pathname.includes('favorites');
+  const isCategoriesPage = window.location.pathname.includes('categories');
+
   const urlParams = new URLSearchParams(window.location.search);
-  const categoryParam = urlParams.get('cat');
-  const searchQuery = urlParams.get('q');
+  const selectedCategoryParam = urlParams.get('cat');
 
   let allVideos = [];
 
   async function fetchVideos() {
     try {
-      const response = await fetch('/api/videos');
-      if (!response.ok) throw new Error('Failed to fetch video dataset');
-      allVideos = await response.json();
-
-      let displayVideos = [...allVideos];
-
-      // 1. Trending Routing
-      if (isTrending) {
-        displayVideos.sort((a, b) => (b.views || 0) - (a.views || 0));
-      } 
-      // 2. Favorites Routing
-      else if (isFavorites) {
-        const favoriteIds = JSON.parse(localStorage.getItem('favorites') || '[]');
-        displayVideos = displayVideos.filter(v => favoriteIds.includes(v.id));
-      } 
-      // 3. Category Page Routing (via URL parameter ?cat=Name)
-      else if (categoryParam) {
-        displayVideos = displayVideos.filter(v => 
-          v.category.toLowerCase() === categoryParam.toLowerCase()
-        );
-      } 
-      // 4. Search Routing (via URL parameter ?q=Query)
-      else if (searchQuery) {
-        const q = searchQuery.toLowerCase();
-        displayVideos = displayVideos.filter(v => 
-          v.title.toLowerCase().includes(q) || v.category.toLowerCase().includes(q)
-        );
-      } 
-      // 5. Default Home Page Routing (Newest / All videos)
-      else {
-        displayVideos.sort((a, b) => (b.id || 0) - (a.id || 0));
+      let response;
+      // Try API route first, fall back to static JSON path for GitHub Pages
+      try {
+        response = await fetch('/api/videos');
+        if (!response.ok) throw new Error('API unavailable');
+      } catch (e) {
+        // Fallback relative path for static hosting (GitHub Pages)
+        response = await fetch('./data/videos.json');
       }
 
-      populateCategoryDropdown(allVideos);
-      renderVideos(displayVideos);
+      if (!response.ok) throw new Error('Failed to fetch videos.json');
+
+      const rawVideos = await response.json();
+
+      // Apply fallbacks on client side
+      allVideos = rawVideos.map((video) => ({
+        ...video,
+        url: video.url || video.embed_url,
+        category: video.category || 'AI',
+        views: video.views || 0,
+      }));
+
+      if (isCategoriesPage) {
+        renderCategoriesPage(allVideos);
+      } else {
+        renderVideoFeed(allVideos);
+      }
     } catch (error) {
-      console.error(error);
+      console.error('Data loading error:', error);
       if (videoContainer) {
-        videoContainer.innerHTML = '<p class="error">Unable to load video feed.</p>';
+        videoContainer.innerHTML = '<p style="color:red;">Failed to load videos.</p>';
       }
     }
   }
 
-  function populateCategoryDropdown(videos) {
+  // Render Grid for Home, Trending, Favorites, Category Pages
+  function renderVideoFeed(videos) {
+    let displayVideos = [...videos];
+
+    if (isTrending) {
+      displayVideos.sort((a, b) => (b.views || 0) - (a.views || 0));
+    } else if (isFavorites) {
+      const favoriteIds = JSON.parse(localStorage.getItem('favorites') || '[]');
+      displayVideos = displayVideos.filter((v) => favoriteIds.includes(v.id));
+    } else if (selectedCategoryParam) {
+      displayVideos = displayVideos.filter(
+        (v) => v.category.toLowerCase() === selectedCategoryParam.toLowerCase()
+      );
+    }
+
+    populateDropdown(videos);
+    renderCards(displayVideos);
+  }
+
+  // Render Categories Grid for categories.html
+  function renderCategoriesPage(videos) {
+    const target = categoriesContainer || videoContainer;
+    if (!target) return;
+
+    const categories = [...new Set(videos.map((v) => v.category))];
+
+    if (categories.length === 0) {
+      target.innerHTML = '<p>No categories found.</p>';
+      return;
+    }
+
+    target.innerHTML = categories
+      .map((cat) => {
+        const count = videos.filter((v) => v.category === cat).length;
+        return `
+        <div class="category-card" onclick="window.location.href='category.html?cat=${encodeURIComponent(cat)}'">
+          <h3>${cat}</h3>
+          <p>${count} Video${count === 1 ? '' : 's'}</p>
+        </div>
+      `;
+      })
+      .join('');
+  }
+
+  function populateDropdown(videos) {
     if (!categoryFilter) return;
 
-    const categories = ['All', ...new Set(videos.map(v => v.category))];
+    const categories = ['All', ...new Set(videos.map((v) => v.category))];
     categoryFilter.innerHTML = categories
-      .map(cat => `<option value="${cat}">${cat}</option>`)
+      .map((cat) => `<option value="${cat}">${cat}</option>`)
       .join('');
-
-    // Pre-select category if matching URL parameter
-    if (categoryParam) {
-      const match = categories.find(c => c.toLowerCase() === categoryParam.toLowerCase());
-      if (match) categoryFilter.value = match;
-    }
 
     categoryFilter.addEventListener('change', (e) => {
       const selected = e.target.value;
-      const filtered = selected === 'All' 
-        ? allVideos 
-        : allVideos.filter(v => v.category === selected);
-      renderVideos(filtered);
+      const filtered =
+        selected === 'All' ? videos : videos.filter((v) => v.category === selected);
+      renderCards(filtered);
     });
   }
 
-  function renderVideos(videos) {
+  function renderCards(videos) {
     if (!videoContainer) return;
 
-    if (!videos || videos.length === 0) {
-      videoContainer.innerHTML = '<p class="empty-msg">No videos found for this section.</p>';
+    if (videos.length === 0) {
+      videoContainer.innerHTML = '<p>No videos available.</p>';
       return;
     }
 
     const favoriteIds = JSON.parse(localStorage.getItem('favorites') || '[]');
 
-    videoContainer.innerHTML = videos.map(video => {
-      const isFav = favoriteIds.includes(video.id);
-      return `
-        <div class="video-card" data-id="${video.id}">
+    videoContainer.innerHTML = videos
+      .map((video) => {
+        const isFav = favoriteIds.includes(video.id);
+        return `
+        <div class="video-card">
           <iframe src="${video.url}" title="${video.title}" frameborder="0" allowfullscreen></iframe>
           <div class="video-info">
             <h3>${video.title}</h3>
             <span class="badge">${video.category}</span>
-            <p class="views" id="views-${video.id}">${(video.views || 0).toLocaleString()} views</p>
+            <p class="views">${(video.views || 0).toLocaleString()} views</p>
             <div class="card-actions">
-              <button onclick="registerView(${video.id})">Watch</button>
               <button onclick="toggleFavorite(${video.id})" id="fav-btn-${video.id}">
                 ${isFav ? '❤️ Saved' : '🤍 Favorite'}
               </button>
@@ -109,29 +137,17 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
         </div>
       `;
-    }).join('');
+      })
+      .join('');
   }
 
   fetchVideos();
 });
 
-async function registerView(videoId) {
-  try {
-    const res = await fetch(`/api/videos/${videoId}/view`, { method: 'POST' });
-    const data = await res.json();
-    if (data.success) {
-      const el = document.getElementById(`views-${videoId}`);
-      if (el) el.textContent = `${data.views.toLocaleString()} views`;
-    }
-  } catch (err) {
-    console.error('Error recording view:', err);
-  }
-}
-
 function toggleFavorite(videoId) {
   let favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
   if (favorites.includes(videoId)) {
-    favorites = favorites.filter(id => id !== videoId);
+    favorites = favorites.filter((id) => id !== videoId);
   } else {
     favorites.push(videoId);
   }

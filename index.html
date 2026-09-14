@@ -3,10 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Akimoz AI Stream</title>
+  <title>Akimoz AI Stream - Home</title>
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Tajawal:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Optional External Stylesheet Fallback -->
+  <link rel="stylesheet" href="./style.css">
 
   <style>
     body {
@@ -32,6 +35,11 @@
       font-weight: 600;
     }
 
+    header h1 a {
+      color: inherit;
+      text-decoration: none;
+    }
+
     nav a {
       margin-left: 20px;
       color: #e5e5e5;
@@ -39,7 +47,8 @@
       font-size: 16px;
     }
 
-    nav a:hover {
+    nav a:hover,
+    nav a.active {
       color: #00eaff;
     }
 
@@ -66,6 +75,7 @@
       border-radius: 10px;
       overflow: hidden;
       transition: 0.25s;
+      cursor: pointer;
     }
 
     .video-card:hover {
@@ -107,12 +117,14 @@
 
   <!-- Header -->
   <header>
-    <h1>Akimoz AI Stream</h1>
+    <h1><a href="./index.html">Akimoz AI Stream</a></h1>
     <nav>
-      <a href="categories.html">Categories</a>
-      <a href="trending.html">Trending</a>
-      <a href="favorites.html">Favorites</a>
-      <a href="search.html">Search</a>
+      <a href="./index.html" class="active">Home</a>
+      <a href="./trending.html">Trending</a>
+      <a href="./categories.html">Categories</a>
+      <a href="./favorites.html">Favorites</a>
+      <a href="./search.html">Search</a>
+      <a href="./about.html">About</a>
     </nav>
   </header>
 
@@ -124,29 +136,50 @@
 
   <script>
     async function loadVideos() {
-      const response = await fetch('videos.json');
-      const videos = await response.json();
-
       const grid = document.getElementById('videoGrid');
+      try {
+        let response;
+        try {
+          response = await fetch('/api/videos');
+          if (!response.ok) throw new Error('API unavailable');
+        } catch (e) {
+          // GitHub Pages static JSON path fallback
+          response = await fetch('./data/videos.json');
+        }
 
-      videos.forEach(video => {
-        const card = `
-          <div class="video-card" onclick="location.href='watch.html?id=${video.id}'">
-            <img src="${video.thumbnail}" class="thumb" loading="lazy">
-            <div class="info">
-              <h3 class="title">${video.title}</h3>
-              <p class="category">${video.category}</p>
-              <p class="views">${video.views} views</p>
+        if (!response.ok) {
+          // Alternative fallback if videos.json is in root
+          response = await fetch('./videos.json');
+        }
+
+        const videos = await response.json();
+        grid.innerHTML = '';
+
+        videos.forEach(video => {
+          const thumbnail = video.thumbnail || 'https://via.placeholder.com/320x180/111/00eaff?text=AI+Video';
+          const card = `
+            <div class="video-card" onclick="location.href='./watch.html?id=${video.id}'">
+              <img src="${thumbnail}" class="thumb" loading="lazy" alt="${video.title}">
+              <div class="info">
+                <h3 class="title">${video.title}</h3>
+                <p class="category">${video.category || 'AI'}</p>
+                <p class="views">${(video.views || 0).toLocaleString()} views</p>
+              </div>
             </div>
-          </div>
-        `;
-        grid.innerHTML += card;
-      });
+          `;
+          grid.innerHTML += card;
+        });
+      } catch (error) {
+        console.error('Error loading videos:', error);
+        grid.innerHTML = '<p style="color: #ff4d4d; padding: 20px;">Failed to load videos. Please check videos.json path.</p>';
+      }
     }
 
     loadVideos();
   </script>
 
+  <!-- Global App Logic -->
+  <script src="./script.js"></script>
 </body>
 </html>
 

@@ -1,484 +1,304 @@
 [
-  {
-    "id": 1,
-    "title": "Introduction to Artificial Intelligence",
-    "url": "https://www.youtube.com/embed/2ePf9rue1Ao",
-    "thumbnail": "https://i.ytimg.com/vi/2ePf9rue1Ao/hqdefault.jpg",
-    "category": "AI Basics",
-    "views": 1200
-  },
-  {
-    "id": 2,
-    "title": "What is Machine Learning?",
-    "url": "https://www.youtube.com/embed/ukzFI9rgwfU",
-    "thumbnail": "https://i.ytimg.com/vi/ukzFI9rgwfU/hqdefault.jpg",
-    "category": "AI Basics",
-    "views": 980
-  },
-  {
-    "id": 3,
-    "title": "Neural Networks Explained",
-    "url": "https://www.youtube.com/embed/aircAruvnKk",
-    "thumbnail": "https://i.ytimg.com/vi/aircAruvnKk/hqdefault.jpg",
-    "category": "Deep Learning",
-    "views": 1500
-  },
-  {
-    "id": 4,
-    "title": "Deep Learning Crash Course",
-    "url": "https://www.youtube.com/embed/VyWAvY2CF9c",
-    "thumbnail": "https://i.ytimg.com/vi/VyWAvY2CF9c/hqdefault.jpg",
-    "category": "Deep Learning",
-    "views": 1100
-  },
-  {
-    "id": 5,
-    "title": "Large Language Models Explained",
-    "url": "https://www.youtube.com/embed/7xTGNNLPyMI",
-    "thumbnail": "https://i.ytimg.com/vi/7xTGNNLPyMI/hqdefault.jpg",
-    "category": "LLMs",
-    "views": 2100
-  },
-  {
-    "id": 6,
-    "title": "Prompt Engineering Basics",
-    "url": "https://www.youtube.com/embed/dOxUroR57xs",
-    "thumbnail": "https://i.ytimg.com/vi/dOxUroR57xs/hqdefault.jpg",
-    "category": "Prompt Engineering",
-    "views": 1750
-  },
-  {
-    "id": 7,
-    "title": "AI Ethics and Safety",
-    "url": "https://www.youtube.com/embed/0pDE4VX_9Kk",
-    "thumbnail": "https://i.ytimg.com/vi/0pDE4VX_9Kk/hqdefault.jpg",
-    "category": "AI Ethics",
-    "views": 900
-  },
-  {
-    "id": 8,
-    "title": "How Computers Learn",
-    "url": "https://www.youtube.com/embed/R9OHn5ZF4Uo",
-    "thumbnail": "https://i.ytimg.com/vi/R9OHn5ZF4Uo/hqdefault.jpg",
-    "category": "Machine Learning",
-    "views": 1300
-  },
-  {
-    "id": 9,
-    "title": "Gradient Descent Explained",
-    "url": "https://www.youtube.com/embed/sDv4f4s2SB8",
-    "thumbnail": "https://i.ytimg.com/vi/sDv4f4s2SB8/hqdefault.jpg",
-    "category": "Deep Learning",
-    "views": 1600
-  },
-  {
-    "id": 10,
-    "title": "AI for Beginners",
-    "url": "https://www.youtube.com/embed/JMUxmLyrhSk",
-    "thumbnail": "https://i.ytimg.com/vi/JMUxmLyrhSk/hqdefault.jpg",
-    "category": "AI Basics",
-    "views": 1400
-  },
-  {
-    "id": 11,
-    "title": "Transformers Architecture Explained",
-    "url": "https://www.youtube.com/embed/XSYJ7zSg8yI",
-    "thumbnail": "https://i.ytimg.com/vi/XSYJ7zSg8yI/hqdefault.jpg",
-    "category": "LLMs",
-    "views": 3200
-  },
-  {
-    "id": 12,
-    "title": "Attention Mechanism in Deep Learning",
-    "url": "https://www.youtube.com/embed/5vcj8kSwBCY",
-    "thumbnail": "https://i.ytimg.com/vi/5vcj8kSwBCY/hqdefault.jpg",
-    "category": "Deep Learning",
-    "views": 2900
-  },
-  {
-    "id": 13,
-    "title": "Building ChatGPT from Scratch",
-    "url": "https://www.youtube.com/embed/bZQun8Y4L2A",
-    "thumbnail": "https://i.ytimg.com/vi/bZQun8Y4L2A/hqdefault.jpg",
-    "category": "LLMs",
-    "views": 4100
-  },
-  {
-    "id": 14,
-    "title": "AI Agents Explained",
-    "url": "https://www.youtube.com/embed/8V20HkYxFfA",
-    "thumbnail": "https://i.ytimg.com/vi/8V20HkYxFfA/hqdefault.jpg",
-    "category": "AI Systems",
-    "views": 2600
-  },
-  {
-    "id": 15,
-    "title": "Reinforcement Learning Crash Course",
-    "url": "https://www.youtube.com/embed/IL3gVyJMmhg",
-    "thumbnail": "https://i.ytimg.com/vi/IL3gVyJMmhg/hqdefault.jpg",
-    "category": "Reinforcement Learning",
-    "views": 3500
-  },
-  {
-    "id": 16,
-    "title": "Q-Learning Explained",
-    "url": "https://www.youtube.com/embed/0g4j2k_Ggc4",
-    "thumbnail": "https://i.ytimg.com/vi/0g4j2k_Ggc4/hqdefault.jpg",
-    "category": "Reinforcement Learning",
-    "views": 2800
-  },
-  {
-    "id": 17,
-    "title": "AI in Robotics",
-    "url": "https://www.youtube.com/embed/8LuPp6g8YlE",
-    "thumbnail": "https://i.ytimg.com/vi/8LuPp6g8YlE/hqdefault.jpg",
-    "category": "Robotics",
-    "views": 2300
-  },
-  {
-    "id": 18,
-    "title": "Computer Vision Basics",
-    "url": "https://www.youtube.com/embed/1RZQ0p7g1Ho",
-    "thumbnail": "https://i.ytimg.com/vi/1RZQ0p7g1Ho/hqdefault.jpg",
-    "category": "Computer Vision",
-    "views": 3100
-  },
-  {
-    "id": 19,
-    "title": "Convolutional Neural Networks",
-    "url": "https://www.youtube.com/embed/YRhxdVk_sIs",
-    "thumbnail": "https://i.ytimg.com/vi/YRhxdVk_sIs/hqdefault.jpg",
-    "category": "Computer Vision",
-    "views": 3900
-  },
-  {
-    "id": 20,
-    "title": "AI for Business Automation",
-    "url": "https://www.youtube.com/embed/2eF9V0fZ7xE",
-    "thumbnail": "https://i.ytimg.com/vi/2eF9V0fZ7xE/hqdefault.jpg",
-    "category": "AI Applications",
-    "views": 2500
-  },
-  {
-    "id": 21,
-    "title": "Natural Language Processing Crash Course",
-    "url": "https://www.youtube.com/embed/8u1wZQ0U0WQ",
-    "thumbnail": "https://i.ytimg.com/vi/8u1wZQ0U0WQ/hqdefault.jpg",
-    "category": "NLP",
-    "views": 3300
-  },
-  {
-    "id": 22,
-    "title": "Tokenization in NLP",
-    "url": "https://www.youtube.com/embed/8u1wZQ0U0WQ",
-    "thumbnail": "https://i.ytimg.com/vi/8u1wZQ0U0WQ/hqdefault.jpg",
-    "category": "NLP",
-    "views": 2100
-  },
-  {
-    "id": 23,
-    "title": "AI Security Fundamentals",
-    "url": "https://www.youtube.com/embed/0pDE4VX_9Kk",
-    "thumbnail": "https://i.ytimg.com/vi/0pDE4VX_9Kk/hqdefault.jpg",
-    "category": "AI Ethics",
-    "views": 1900
-  },
-  {
-    "id": 24,
-    "title": "Building AI Models with Python",
-    "url": "https://www.youtube.com/embed/7eh4d6sabA0",
-    "thumbnail": "https://i.ytimg.com/vi/7eh4d6sabA0/hqdefault.jpg",
-    "category": "Programming",
-    "views": 4200
-  },
-  {
-    "id": 25,
-    "title": "Data Science Full Course",
-    "url": "https://www.youtube.com/embed/ua-CiK0o5zU",
-    "thumbnail": "https://i.ytimg.com/vi/ua-CiK0o5zU/hqdefault.jpg",
-    "category": "Data Science",
-    "views": 5100
-  },
-  {
-    "id": 26,
-    "title": "AI for Healthcare",
-    "url": "https://www.youtube.com/embed/8LuPp6g8YlE",
-    "thumbnail": "https://i.ytimg.com/vi/8LuPp6g8YlE/hqdefault.jpg",
-    "category": "AI Applications",
-    "views": 2700
-  },
-  {
-    "id": 27,
-    "title": "AI in Finance",
-    "url": "https://www.youtube.com/embed/2eF9V0fZ7xE",
-    "thumbnail": "https://i.ytimg.com/vi/2eF9V0fZ7xE/hqdefault.jpg",
-    "category": "AI Applications",
-    "views": 3000
-  },
-  {
-    "id": 28,
-    "title": "AI for Cybersecurity",
-    "url": "https://www.youtube.com/embed/0pDE4VX_9Kk",
-    "thumbnail": "https://i.ytimg.com/vi/0pDE4VX_9Kk/hqdefault.jpg",
-    "category": "AI Ethics",
-    "views": 2600
-  },
-  {
-    "id": 29,
-    "title": "Building Neural Networks in Python",
-    "url": "https://www.youtube.com/embed/aircAruvnKk",
-    "thumbnail": "https://i.ytimg.com/vi/aircAruvnKk/hqdefault.jpg",
-    "category": "Programming",
-    "views": 3800
-  },
-  {
-    "id": 30,
-    "title": "AI Career Roadmap",
-    "url": "https://www.youtube.com/embed/JMUxmLyrhSk",
-    "thumbnail": "https://i.ytimg.com/vi/JMUxmLyrhSk/hqdefault.jpg",
-    "category": "AI Basics",
-    "views": 4500
-  },
-  {
-    "id": 31,
-    "title": "Full Machine Learning Course",
-    "url": "https://www.youtube.com/embed/7eh4d6sabA0",
-    "thumbnail": "https://i.ytimg.com/vi/7eh4d6sabA0/hqdefault.jpg",
-    "category": "AI Courses",
-    "views": 6200
-  },
-  {
-    "id": 32,
-    "title": "Deep Learning Full Course",
-    "url": "https://www.youtube.com/embed/aircAruvnKk",
-    "thumbnail": "https://i.ytimg.com/vi/aircAruvnKk/hqdefault.jpg",
-    "category": "AI Courses",
-    "views": 5800
-  },
-  {
-    "id": 33,
-    "title": "Data Science Bootcamp",
-    "url": "https://www.youtube.com/embed/ua-CiK0o5zU",
-    "thumbnail": "https://i.ytimg.com/vi/ua-CiK0o5zU/hqdefault.jpg",
-    "category": "AI Courses",
-    "views": 7300
-  },
-  {
-    "id": 34,
-    "title": "NLP Full Course",
-    "url": "https://www.youtube.com/embed/8u1wZQ0U0WQ",
-    "thumbnail": "https://i.ytimg.com/vi/8u1wZQ0U0WQ/hqdefault.jpg",
-    "category": "AI Courses",
-    "views": 5400
-  },
-  {
-    "id": 35,
-    "title": "Computer Vision Full Course",
-    "url": "https://www.youtube.com/embed/YRhxdVk_sIs",
-    "thumbnail": "https://i.ytimg.com/vi/YRhxdVk_sIs/hqdefault.jpg",
-    "category": "AI Courses",
-    "views": 5600
-  },
-  {
-    "id": 36,
-    "title": "Python for AI Full Course",
-    "url": "https://www.youtube.com/embed/7eh4d6sabA0",
-    "thumbnail": "https://i.ytimg.com/vi/7eh4d6sabA0/hqdefault.jpg",
-    "category": "AI Courses",
-    "views": 6100
-  },
-  {
-    "id": 37,
-    "title": "LLMs and Transformers Masterclass",
-    "url": "https://www.youtube.com/embed/XSYJ7zSg8YI",
-    "thumbnail": "https://i.ytimg.com/vi/XSYJ7zSg8YI/hqdefault.jpg",
-    "category": "AI Courses",
-    "views": 5900
-  },
-  {
-    "id": 38,
-    "title": "Reinforcement Learning Full Course",
-    "url": "https://www.youtube.com/embed/IL3gVyJMmhg",
-    "thumbnail": "https://i.ytimg.com/vi/IL3gVyJMmhg/hqdefault.jpg",
-    "category": "AI Courses",
-    "views": 5700
-  },
-  {
-    "id": 39,
-    "title": "AI Projects Course",
-    "url": "https://www.youtube.com/embed/2ePf9rue1Ao",
-    "thumbnail": "https://i.ytimg.com/vi/2ePf9rue1Ao/hqdefault.jpg",
-    "category": "AI Courses",
-    "views": 5200
-  },
-  {
-    "id": 40,
-    "title": "Crash Course: AI in 1 Hour",
-    "url": "https://www.youtube.com/embed/JMUxmLyrhSk",
-    "thumbnail": "https://i.ytimg.com/vi/JMUxmLyrhSk/hqdefault.jpg",
-    "category": "AI Crash Courses",
-    "views": 4800
-  },
-  {
-    "id": 41,
-    "title": "Crash Course: Machine Learning in 30 Minutes",
-    "url": "https://www.youtube.com/embed/ukzFI9rgwfU",
-    "thumbnail": "https://i.ytimg.com/vi/ukzFI9rgwfU/hqdefault.jpg",
-    "category": "AI Crash Courses",
-    "views": 4500
-  },
-  {
-    "id": 42,
-    "title": "Crash Course: Deep Learning in 45 Minutes",
-    "url": "https://www.youtube.com/embed/VyWAvY2CF9c",
-    "thumbnail": "https://i.ytimg.com/vi/VyWAvY2CF9c/hqdefault.jpg",
-    "category": "AI Crash Courses",
-    "views": 4300
-  },
-  {
-    "id": 43,
-    "title": "Crash Course: NLP in 40 Minutes",
-    "url": "https://www.youtube.com/embed/8u1wZQ0U0WQ",
-    "thumbnail": "https://i.ytimg.com/vi/8u1wZQ0U0WQ/hqdefault.jpg",
-    "category": "AI Crash Courses",
-    "views": 4200
-  },
-  {
-    "id": 44,
-    "title": "Crash Course: Computer Vision in 35 Minutes",
-    "url": "https://www.youtube.com/embed/YRhxdVk_sIs",
-    "thumbnail": "https://i.ytimg.com/vi/YRhxdVk_sIs/hqdefault.jpg",
-    "category": "AI Crash Courses",
-    "views": 4100
-  },
-  {
-    "id": 45,
-    "title": "Crash Course: Python for AI in 1 Hour",
-    "url": "https://www.youtube.com/embed/7eh4d6sabA0",
-    "thumbnail": "https://i.ytimg.com/vi/7eh4d6sabA0/hqdefault.jpg",
-    "category": "AI Crash Courses",
-    "views": 4600
-  },
-  {
-    "id": 46,
-    "title": "دورة الذكاء الاصطناعي للمبتدئين",
-    "url": "https://www.youtube.com/embed/2eF9V0fZ7xE",
-    "thumbnail": "https://i.ytimg.com/vi/2eF9V0fZ7xE/hqdefault.jpg",
-    "category": "Arabic AI Courses",
-    "views": 3500
-  },
-  {
-    "id": 47,
-    "title": "دورة تعلم الآلة باللغة العربية",
-    "url": "https://www.youtube.com/embed/ukzFI9rgwfU",
-    "thumbnail": "https://i.ytimg.com/vi/ukzFI9rgwfU/hqdefault.jpg",
-    "category": "Arabic AI Courses",
-    "views": 3300
-  },
-  {
-    "id": 48,
-    "title": "دورة بايثون للذكاء الاصطناعي",
-    "url": "https://www.youtube.com/embed/7eh4d6sabA0",
-    "thumbnail": "https://i.ytimg.com/vi/7eh4d6sabA0/hqdefault.jpg",
-    "category": "Arabic AI Courses",
-    "views": 3700
-  },
-  {
-    "id": 49,
-    "title": "دورة تحليل البيانات باستخدام بايثون",
-    "url": "https://www.youtube.com/embed/ua-CiK0o5zU",
-    "thumbnail": "https://i.ytimg.com/vi/ua-CiK0o5zU/hqdefault.jpg",
-    "category": "Arabic AI Courses",
-    "views": 3400
-  },
-  {
-    "id": 50,
-    "title": "دورة الشبكات العصبية بالعربي",
-    "url": "https://www.youtube.com/embed/aircAruvnKk",
-    "thumbnail": "https://i.ytimg.com/vi/aircAruvnKk/hqdefault.jpg",
-    "category": "Arabic AI Courses",
-    "views": 3600
-  },
-  {
-    "id": 51,
-    "title": "دورة الرؤية الحاسوبية بالعربي",
-    "url": "https://www.youtube.com/embed/YRhxdVk_sIs",
-    "thumbnail": "https://i.ytimg.com/vi/YRhxdVk_sIs/hqdefault.jpg",
-    "category": "Arabic AI Courses",
-    "views": 3200
-  },
-  {
-    "id": 52,
-    "title": "دورة نماذج اللغة الكبيرة بالعربي",
-    "url": "https://www.youtube.com/embed/XSYJ7zSg8YI",
-    "thumbnail": "https://i.ytimg.com/vi/XSYJ7zSg8YI/hqdefault.jpg",
-    "category": "Arabic AI Courses",
-    "views": 3100
-  },
-  {
-    "id": 53,
-    "title": "دورة الذكاء الاصطناعي العملي",
-    "url": "https://www.youtube.com/embed/8LuPp6g8YlE",
-    "thumbnail": "https://i.ytimg.com/vi/8LuPp6g8YlE/hqdefault.jpg",
-    "category": "Arabic AI Courses",
-    "views": 3900
-  },
-  {
-    "id": 54,
-    "title": "كورس سريع: مقدمة في الذكاء الاصطناعي",
-    "url": "https://www.youtube.com/embed/JMUxmLyrhSk",
-    "thumbnail": "https://i.ytimg.com/vi/JMUxmLyrhSk/hqdefault.jpg",
-    "category": "Arabic AI Crash Courses",
-    "views": 2800
-  },
-  {
-    "id": 55,
-    "title": "كورس سريع: تعلم الآلة في ساعة",
-    "url": "https://www.youtube.com/embed/ukzFI9rgwfU",
-    "thumbnail": "https://i.ytimg.com/vi/ukzFI9rgwfU/hqdefault.jpg",
-    "category": "Arabic AI Crash Courses",
-    "views": 2700
-  },
-  {
-    "id": 56,
-    "title": "كورس سريع: الشبكات العصبية في 45 دقيقة",
-    "url": "https://www.youtube.com/embed/aircAruvnKk",
-    "thumbnail": "https://i.ytimg.com/vi/aircAruvnKk/hqdefault.jpg",
-    "category": "Arabic AI Crash Courses",
-    "views": 2600
-  },
-  {
-    "id": 57,
-    "title": "كورس سريع: الرؤية الحاسوبية في 30 دقيقة",
-    "url": "https://www.youtube.com/embed/YRhxdVk_sIs",
-    "thumbnail": "https://i.ytimg.com/vi/YRhxdVk_sIs/hqdefault.jpg",
-    "category": "Arabic AI Crash Courses",
-    "views": 2500
-  },
-  {
-    "id": 58,
-    "title": "كورس سريع: نماذج اللغة في 40 دقيقة",
-    "url": "https://www.youtube.com/embed/XSYJ7zSg8YI",
-    "thumbnail": "https://i.ytimg.com/vi/XSYJ7zSg8YI/hqdefault.jpg",
-    "category": "Arabic AI Crash Courses",
-    "views": 2400
-  },
-  {
-    "id": 59,
-    "title": "كورس سريع: الذكاء الاصطناعي في الحياة اليومية",
-    "url": "https://www.youtube.com/embed/2eF9V0fZ7xE",
-    "thumbnail": "https://i.ytimg.com/vi/2eF9V0fZ7xE/hqdefault.jpg",
-    "category": "Arabic AI Crash Courses",
-    "views": 2300
-  },
-  {
-    "id": 60,
-    "title": "مسار كامل لتعلم الذكاء الاصطناعي بالعربي",
-    "url": "https://www.youtube.com/embed/ua-CiK0o5zU",
-    "thumbnail": "https://i.ytimg.com/vi/ua-CiK0o5zU/hqdefault.jpg",
-    "category": "Arabic AI Courses",
-    "views": 4200
-  }
+    {
+        "title": "Google’s AI Course for Beginners (in 10 minutes)!",
+        "thumbnail": "https://img.youtube.com/vi/Yq0QkCxoTHM/maxresdefault.jpg",
+        "embed_url": "https://www.youtube.com/embed/Yq0QkCxoTHM"
+    },
+    {
+        "title": "AI for Seniors: Beginner-Friendly introduction to AI. Lesson 1: What is AI?",
+        "thumbnail": "https://img.youtube.com/vi/Z_X785bN6zI/maxresdefault.jpg",
+        "embed_url": "https://www.youtube.com/embed/Z_X785bN6zI"
+    },
+    {
+        "title": "AI for Seniors: How to Create & Edit Videos with AI. Beginner Friendly Introduction",
+        "thumbnail": "https://img.youtube.com/vi/m45UvQS1XQ8/maxresdefault.jpg",
+        "embed_url": "https://www.youtube.com/embed/m45UvQS1XQ8"
+    },
+    {
+        "title": "AI Tutorial for Beginners | Artificial Intelligence Course",
+        "thumbnail": "https://img.youtube.com/vi/LGCZ-Fhm48c/maxresdefault.jpg",
+        "embed_url": "https://www.youtube.com/embed/LGCZ-Fhm48c"
+    },
+    {
+        "title": "AI Essentials Specialization | Full Course by Google",
+        "thumbnail": "https://img.youtube.com/vi/JtIkF2XeIdk/maxresdefault.jpg",
+        "embed_url": "https://www.youtube.com/embed/JtIkF2XeIdk"
+    },
+    {
+        "title": "Google Gemini FULL COURSE 3 HOURS",
+        "thumbnail": "https://img.youtube.com/vi/RAEKaYFRvEU/maxresdefault.jpg",
+        "embed_url": "https://www.youtube.com/embed/RAEKaYFRvEU"
+    },
+    {
+        "title": "CLAUDE SKILLS FULL COURSE 2.5 HOURS (Beginner to Expert)",
+        "thumbnail": "https://img.youtube.com/vi/-DawhgUKiOg/maxresdefault.jpg",
+        "embed_url": "https://www.youtube.com/embed/-DawhgUKiOg"
+    },
+    {
+        "title": "These 9 AI Businesses Will Make You $1M (With Zero Employees)",
+        "thumbnail": "https://img.youtube.com/vi/C0ZKtSx8gyA/maxresdefault.jpg",
+        "embed_url": "https://www.youtube.com/embed/C0ZKtSx8gyA"
+    },
+    {
+        "title": "How I'd Start a 1-Person Business",
+        "thumbnail": "https://img.youtube.com/vi/TePQevG_Dgc/maxresdefault.jpg",
+        "embed_url": "https://www.youtube.com/embed/TePQevG_Dgc"
+    },
+    {
+        "title": "The Man Who Mastered Al: The Fastest Way To Master & Use AI Agents In Your Business",
+        "thumbnail": "https://img.youtube.com/vi/aq_-15fCd-0/maxresdefault.jpg",
+        "embed_url": "https://www.youtube.com/embed/aq_-15fCd-0"
+    },
+    {
+        "title": "Gemini Notebook Full Course: Master “NotebookLM 2.0” in 45 Minutes",
+        "thumbnail": "https://img.youtube.com/vi/WexPjiptQXU/maxresdefault.jpg",
+        "embed_url": "https://www.youtube.com/embed/WexPjiptQXU"
+    },
+    {
+        "title": "NotebookLM Tutorial - The Complete Course for Everyone",
+        "thumbnail": "https://img.youtube.com/vi/4vnbZF0knYA/maxresdefault.jpg",
+        "embed_url": "https://www.youtube.com/embed/4vnbZF0knYA"
+    },
+    {
+        "title": "Canva AI شرح شامل من الصفر",
+        "thumbnail": "https://img.youtube.com/vi/IQIQdDxSsWQ/maxresdefault.jpg",
+        "embed_url": "https://www.youtube.com/embed/IQIQdDxSsWQ"
+    },
+    {
+        "title": "AI Full Course for Beginners 2026 in10 Hours",
+        "thumbnail": "https://img.youtube.com/vi/ZTt3oKiVq-w/maxresdefault.jpg",
+        "embed_url": "https://www.youtube.com/embed/ZTt3oKiVq-w"
+    },
+    {
+        "title": "Generative AI Full Course 2026 [FREE] | Gen AI Tutorial For Beginners",
+        "thumbnail": "https://img.youtube.com/vi/mnkiYN6qikw/maxresdefault.jpg",
+        "embed_url": "https://www.youtube.com/embed/mnkiYN6qikw"
+    },
+    {
+        "title": "Agentic AI Course Free 2026 | Learn Agentic AI Full Course",
+        "thumbnail": "https://img.youtube.com/vi/X_0a2BlptIc/maxresdefault.jpg",
+        "embed_url": "https://www.youtube.com/embed/X_0a2BlptIc"
+    },
+    {
+        "title": "How to Build & Sell AI Agents: Ultimate Beginner’s Guide",
+        "thumbnail": "https://img.youtube.com/vi/w0H1-b044KY/maxresdefault.jpg",
+        "embed_url": "https://www.youtube.com/embed/w0H1-b044KY"
+    },
+    {
+        "title": "Start a 1-Person Business with Claude (4 HOUR COURSE 2026)",
+        "thumbnail": "https://img.youtube.com/vi/mKyaNr3jK-E/maxresdefault.jpg",
+        "embed_url": "https://www.youtube.com/embed/mKyaNr3jK-E"
+    },
+    {
+        "title": "Google Gemini FULL COURSE 3 HOURS",
+        "thumbnail": "https://img.youtube.com/vi/RAEKaYFRvEU/maxresdefault.jpg",
+        "embed_url": "https://www.youtube.com/embed/RAEKaYFRvEU"
+    },
+    {
+        "title": "Artificial Intelligence Full Course | Artificial Intelligence Tutorial for Beginners",
+        "thumbnail": "https://img.youtube.com/vi/JMUxmLyrhSk/maxresdefault.jpg",
+        "embed_url": "https://www.youtube.com/embed/JMUxmLyrhSk"
+    },
+    {
+        "title": "AI Basics Beginner Tutorial: ChatGPT, Claude, and More",
+        "thumbnail": "https://img.youtube.com/vi/cocGYL7mRYk/maxresdefault.jpg",
+        "embed_url": "https://www.youtube.com/embed/cocGYL7mRYk"
+    },
+    {
+        "title": "Full AI Prompting Course",
+        "thumbnail": "https://img.youtube.com/vi/8ib4Qnh2HFE/maxresdefault.jpg",
+        "embed_url": "https://www.youtube.com/embed/8ib4Qnh2HFE"
+    },
+    {
+        "title": "AI for Business Full course in 11 Hours [ 2026]",
+        "thumbnail": "https://img.youtube.com/vi/-UBV7LMchJc/maxresdefault.jpg",
+        "embed_url": "https://www.youtube.com/embed/-UBV7LMchJc"
+    },
+    {
+        "title": "GenAI Essentials – Full Course for Beginners",
+        "thumbnail": "https://img.youtube.com/vi/nJ25yl34Uqw/maxresdefault.jpg",
+        "embed_url": "https://www.youtube.com/embed/nJ25yl34Uqw"
+    },
+    {
+        "title": "Artificial Intelligence Full Course (Free) | Master AI Tools & Core Concepts",
+        "thumbnail": "https://img.youtube.com/vi/LrVw2LtJsYw/maxresdefault.jpg",
+        "embed_url": "https://www.youtube.com/embed/LrVw2LtJsYw"
+    },
+    {
+        "title": "Don't learn AI Agents without Learning these Fundamentals",
+        "thumbnail": "https://img.youtube.com/vi/ZaPbP9DwBOE/maxresdefault.jpg",
+        "embed_url": "https://www.youtube.com/embed/ZaPbP9DwBOE"
+    },
+    {
+        "title": "Microsoft Copilot Full Course For Beginners [2025]",
+        "thumbnail": "https://img.youtube.com/vi/bBqTdOkso2Y/maxresdefault.jpg",
+        "embed_url": "https://www.youtube.com/embed/bBqTdOkso2Y"
+    },
+    {
+        "title": "Microsoft Copilot for Organizations – Complete Tutorial",
+        "thumbnail": "https://img.youtube.com/vi/WclbTYaieHo/maxresdefault.jpg",
+        "embed_url": "https://www.youtube.com/embed/WclbTYaieHo"
+    },
+    {
+        "title": "Workshop Copilot Agents– A Step-by-Step Guide to Workflow Automation",
+        "thumbnail": "https://img.youtube.com/vi/r8GdzsTEX6A/maxresdefault.jpg",
+        "embed_url": "https://www.youtube.com/embed/r8GdzsTEX6A"
+    },
+    {
+        "title": "Make your Own Agents in Copilot | Complete Tutorial",
+        "thumbnail": "https://img.youtube.com/vi/UTRTZMwElWg/maxresdefault.jpg",
+        "embed_url": "https://www.youtube.com/embed/UTRTZMwElWg"
+    },
+    {
+        "title": "14 Insane Things NEW ChatGPT Work Can Do (Automate Anything)",
+        "thumbnail": "https://img.youtube.com/vi/zWL6XGP3Em8/maxresdefault.jpg",
+        "embed_url": "https://www.youtube.com/embed/zWL6XGP3Em8"
+    },
+    {
+        "title": "ChatGPT Full Course 2026 | ChatGPT Tutorial For Absolute Beginners",
+        "thumbnail": "https://img.youtube.com/vi/J_QQ9rCLwSM/maxresdefault.jpg",
+        "embed_url": "https://www.youtube.com/embed/J_QQ9rCLwSM"
+    },
+    {
+        "title": "ChatGPT Tutorial 2025: How to Use ChatGPT - Beginner to Pro!",
+        "thumbnail": "https://img.youtube.com/vi/zqVtHYFYQY8/maxresdefault.jpg",
+        "embed_url": "https://www.youtube.com/embed/zqVtHYFYQY8"
+    },
+    {
+        "title": "Here's my Full ChatGPT Course (it was paid)",
+        "thumbnail": "https://img.youtube.com/vi/FtZiYy7P27g/maxresdefault.jpg",
+        "embed_url": "https://www.youtube.com/embed/FtZiYy7P27g"
+    },
+    {
+        "title": "Canva Tutorial For Beginners: A Free 2 Hour Masterclass",
+        "thumbnail": "https://img.youtube.com/vi/Llnmf5BXLBA/maxresdefault.jpg",
+        "embed_url": "https://www.youtube.com/embed/Llnmf5BXLBA"
+    },
+    {
+        "title": "Graphic Design Essentials: Free Course",
+        "thumbnail": "https://img.youtube.com/vi/SnxFkHqN1RA/maxresdefault.jpg",
+        "embed_url": "https://www.youtube.com/embed/SnxFkHqN1RA"
+    },
+    {
+        "title": "How to Build Real Mobile Apps with Claude - FULL COURSE",
+        "thumbnail": "https://img.youtube.com/vi/tpge9xJ0m5U/maxresdefault.jpg",
+        "embed_url": "https://www.youtube.com/embed/tpge9xJ0m5U"
+    },
+    {
+        "title": "Using GitHub Copilot to build a mobile app without writing a SINGLE line of code",
+        "thumbnail": "https://img.youtube.com/vi/Vj13SdN6OxU/maxresdefault.jpg",
+        "embed_url": "https://www.youtube.com/embed/Vj13SdN6OxU"
+    },
+    {
+        "title": "Let's try GitHub Copilot Agent mode in VS Code to build a FULL app",
+        "thumbnail": "https://img.youtube.com/vi/pUK7MRzoTDc/maxresdefault.jpg",
+        "embed_url": "https://www.youtube.com/embed/pUK7MRzoTDc"
+    },
+    {
+        "title": "The Only GitHub Guide You’ll Ever Need",
+        "thumbnail": "https://img.youtube.com/vi/pJYOG6klqj8/maxresdefault.jpg",
+        "embed_url": "https://www.youtube.com/embed/pJYOG6klqj8"
+    },
+    {
+        "title": "كلود بالعربي",
+        "thumbnail": "https://img.youtube.com/vi/azy3_sBMYCM/maxresdefault.jpg",
+        "embed_url": "https://www.youtube.com/embed/azy3_sBMYCM"
+    },
+    {
+        "title": "كلود مع الاكسيل",
+        "thumbnail": "https://img.youtube.com/vi/JeswuE4fb4A/maxresdefault.jpg",
+        "embed_url": "https://www.youtube.com/embed/JeswuE4fb4A"
+    },
+    {
+        "title": "ابني \"أول موظف رقمي\" مع كلود",
+        "thumbnail": "https://img.youtube.com/vi/fKUjoxFbst0/maxresdefault.jpg",
+        "embed_url": "https://www.youtube.com/embed/fKUjoxFbst0"
+    },
+    {
+        "title": "وكلاء ذكاء اصطناعي جدد للجداول: دورة كاملة من الصفر إلى الاحتراف",
+        "thumbnail": "https://img.youtube.com/vi/KX72WeKSjXc/maxresdefault.jpg",
+        "embed_url": "https://www.youtube.com/embed/KX72WeKSjXc"
+    },
+    {
+        "title": "الدليل الشامل لتعلم تحليل البيانات || كيف تصبح محلل بيانات ؟",
+        "thumbnail": "https://img.youtube.com/vi/-PDckX34514/maxresdefault.jpg",
+        "embed_url": "https://www.youtube.com/embed/-PDckX34514"
+    },
+    {
+        "title": "من الصفر لأول موظف ذكاء اصطناعي في 48 دقيقة (بدون برمجة)",
+        "thumbnail": "https://img.youtube.com/vi/26UcN3T9ztU/maxresdefault.jpg",
+        "embed_url": "https://www.youtube.com/embed/26UcN3T9ztU"
+    },
+    {
+        "title": "تعلم البرمجة في ساعة - اساسيات البرمجة من الصفر | شرح بايثون",
+        "thumbnail": "https://img.youtube.com/vi/8QQdIieD4tw/maxresdefault.jpg",
+        "embed_url": "https://www.youtube.com/embed/8QQdIieD4tw"
+    },
+    {
+        "title": "تعلم Github من الصفر",
+        "thumbnail": "https://img.youtube.com/vi/ZJQ-c4HyeX8/maxresdefault.jpg",
+        "embed_url": "https://www.youtube.com/embed/ZJQ-c4HyeX8"
+    },
+    {
+        "title": "كورس تعلم كلود من الصفر",
+        "thumbnail": "https://img.youtube.com/vi/oz44Wp22iCU/maxresdefault.jpg",
+        "embed_url": "https://www.youtube.com/embed/oz44Wp22iCU"
+    },
+    {
+        "title": "كلود للمبتدئين",
+        "thumbnail": "https://img.youtube.com/vi/ECbTVzZuzzA/maxresdefault.jpg",
+        "embed_url": "https://www.youtube.com/embed/ECbTVzZuzzA"
+    },
+    {
+        "title": "دليلك الكامل لتعلم الـ AI Automation  من الصفر",
+        "thumbnail": "https://img.youtube.com/vi/H4J-NUOQ2xc/maxresdefault.jpg",
+        "embed_url": "https://www.youtube.com/embed/H4J-NUOQ2xc"
+    },
+    {
+        "title": "أهم أساسيات الذكاء الاصطناعي | بداية احتراف الذكاء الاصطناعي",
+        "thumbnail": "https://img.youtube.com/vi/HU6LprakMK0/maxresdefault.jpg",
+        "embed_url": "https://www.youtube.com/embed/HU6LprakMK0"
+    },
+    {
+        "title": "أساسيات الذكاء الاصطناعي وتطبيقاته",
+        "thumbnail": "https://img.youtube.com/vi/rZUPpH5w_lg/maxresdefault.jpg",
+        "embed_url": "https://www.youtube.com/embed/rZUPpH5w_lg"
+    },
+    {
+        "title": "كورس جيميني من الصفر للاحتراف",
+        "thumbnail": "https://img.youtube.com/vi/JxUaznXmn5w/maxresdefault.jpg",
+        "embed_url": "https://www.youtube.com/embed/JxUaznXmn5w"
+    },
+    {
+        "title": "ستة أركان رئيسية لتتحدث مع أدوات الذكاء الاصطناعي باحتراف",
+        "thumbnail": "https://img.youtube.com/vi/OTShvz6m7i0/maxresdefault.jpg",
+        "embed_url": "https://www.youtube.com/embed/OTShvz6m7i0"
+    },
+    {
+        "title": "كورس هندسة البرومبت الكامل من الصفر للاحتراف",
+        "thumbnail": "https://img.youtube.com/vi/VPw6Cyurx2I/maxresdefault.jpg",
+        "embed_url": "https://www.youtube.com/embed/VPw6Cyurx2I"
+    },
+    {
+        "title": "تعلم بناء وكلاء الذكاء الصناعي",
+        "thumbnail": "https://img.youtube.com/vi/za4jJbUp6zc/maxresdefault.jpg",
+        "embed_url": "https://www.youtube.com/embed/za4jJbUp6zc"
+    },
+    {
+        "title": "دليل المبتدئين الكامل تعلم n8n",
+        "thumbnail": "https://img.youtube.com/vi/WiwaPWF64Dg/maxresdefault.jpg",
+        "embed_url": "https://www.youtube.com/embed/WiwaPWF64Dg"
+    },
+    {
+        "title": "أتمتة الأعمال باستخدام عملاء الذكاء الاصطناعي n8n",
+        "thumbnail": "https://img.youtube.com/vi/DS_p-CyakNs/maxresdefault.jpg",
+        "embed_url": "https://www.youtube.com/embed/DS_p-CyakNs"
+    },
+    {
+        "title": "الكورس الكامل لشوبيفاى سنة 2026 (Shopify Course)",
+        "thumbnail": "https://img.youtube.com/vi/mbE2FFk6CcQ/maxresdefault.jpg",
+        "embed_url": "https://www.youtube.com/embed/mbE2FFk6CcQ"
+    }
 ]
 
 

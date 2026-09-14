@@ -65,7 +65,7 @@ function renderCategories(filteredList) {
   const container = document.getElementById("categoryList");
   if (!container) return;
 
-  const categories = filteredList || [...new Set(videos.map(v => v.category))];
+  const categories = ["AI Courses"];
 
   container.innerHTML = "";
   categories.forEach(cat => {

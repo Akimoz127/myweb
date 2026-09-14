@@ -3,31 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Akimoz AI Stream - Categories</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Categories</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    .text-neon { color:#00f5ff; text-shadow:0 0 8px rgba(0,245,255,.7); }
+    .card-neon { transition:.2s; }
+    .card-neon:hover { transform:translateY(-3px); box-shadow:0 0 12px rgba(0,245,255,.4); }
+  </style>
 </head>
-<body class="categories-page">
 
-  <!-- Main Top Navigation Header -->
-  <header>
-    <h1><a href="index.html" style="text-decoration: none; color: inherit;">Akimoz AI Stream</a></h1>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="trending.html">Trending</a>
-      <a href="categories.html" class="active">Categories</a>
-      <a href="favorites.html">Favorites</a>
-      <a href="search.html">Search</a>
-    </nav>
-  </header>
+<body class="bg-black text-white min-h-screen">
 
-  <main>
-    <h2>Explore Categories</h2>
+<header class="p-4 flex justify-between items-center border-b border-gray-700">
+  <h1 class="text-neon text-2xl font-bold">AI Learning Categories</h1>
+  <a href="index.html" class="text-sm text-gray-300 hover:text-neon">← Back</a>
+  <input id="searchInput" type="text" placeholder="Search..."
+         class="px-3 py-2 rounded bg-gray-800 text-white w-40 md:w-60">
+</header>
 
-    <!-- Categories Cards Grid -->
-    <div id="categories-container" class="video-grid"></div>
-  </main>
+<main class="p-4">
+  <div id="categoryList" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+</main>
 
-  <script src="script.js"></script>
+<script src="app.js"></script>
+
 </body>
 </html>
 

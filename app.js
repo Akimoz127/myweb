@@ -112,7 +112,7 @@ function createVideoCard(video) {
 return `
 <div class="bg-gray-900 rounded-lg overflow-hidden shadow-lg card-neon cursor-pointer"
 onclick="window.open('${video.embed_url}', '_blank')">
-${video.thumbnail}
+<img src="${video.thumbnail}" class="w-full h-48
 <div class="p-3">
 <h3 class="text-lg font-semibold">${video.title}</h3>
 </div>

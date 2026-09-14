@@ -111,11 +111,10 @@ function renderWatchLater() {
 function createVideoCard(video) {
 return `
 <div class="bg-gray-900 rounded-lg overflow-hidden shadow-lg card-neon cursor-pointer"
-onclick="window.open('${video.embed_url}', '_blank')"
- 
-<img src="${video.thumbnail}"
-alt="${video.title}"
-class="w-full h-48 object-cover">
+onclick="window.open('${video.embed_url}', '_blank')">
+${video.thumbnail}
+<div class="p-3">
+<h3 class="text-lg font-semibold">${video.title}</h3>
 </div>
 </div>
 `;

@@ -1,79 +1,193 @@
-const express = require('express');
-const fs = require('fs');
-const path = require('path');
+// ===============================
+// تحميل الفيديوهات من videos.json
+// ===============================
 
-const app = express();
-const PORT = process.env.PORT || 3000;
+let allVideos = [];
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+fetch("videos.json")
+  .then(res => res.json())
+  .then(data => {
+    allVideos = data;
+    initPages();
+  })
+  .catch(err => console.error("Error loading videos:", err));
 
-// Serve static files (HTML, JS, CSS) from the 'public' directory
-app.use(express.static(path.join(__dirname, 'public')));
 
-// Path to videos database inside the 'data' folder
-const VIDEOS_FILE = path.join(__dirname, 'data', 'videos.json');
+// ===============================
+// تفعيل الدوال حسب الصفحة الحالية
+// ===============================
 
-// Helper function to read videos with fallbacks applied
-const readVideosFromFile = (callback) => {
-  fs.readFile(VIDEOS_FILE, 'utf8', (err, data) => {
-    if (err) {
-      if (err.code === 'ENOENT') return callback(null, []);
-      return callback(err, null);
-    }
-    try {
-      const videos = JSON.parse(data || '[]');
-      const updatedVideos = videos.map((video) => ({
-        ...video,
-        url: video.url || video.embed_url,
-        category: video.category || "AI",
-        views: video.views || 0
-      }));
-      callback(null, updatedVideos);
-    } catch (parseError) {
-      callback(parseError, null);
-    }
+function initPages() {
+  renderCategories(allVideos);
+  renderCategoryVideos(allVideos);
+  renderTrending(allVideos);
+  renderWatchLater(allVideos);
+  renderWatchPage(allVideos);
+}
+
+
+// ===============================
+// صفحة الأقسام categories.html
+// ===============================
+
+function renderCategories(videos) {
+  const categoryList = document.getElementById("categoryList");
+  if (!categoryList) return;
+
+  const categories = [...new Set(videos.map(v => v.category))];
+
+  categories.forEach(cat => {
+    const div = document.createElement("div");
+    div.className =
+      "card-neon p-4 bg-gray-800 rounded-lg cursor-pointer hover:bg-gray-700 flex justify-between";
+
+    div.innerHTML = `
+      <span class="font-bold">${cat}</span>
+      <span class="text-xs text-gray-400">View →</span>
+    `;
+
+    div.onclick = () => {
+      window.location.href = `category.html?name=${encodeURIComponent(cat)}`;
+    };
+
+    categoryList.appendChild(div);
   });
-};
+}
 
-// Helper function to write videos
-const writeVideosToFile = (data, callback) => {
-  fs.writeFile(VIDEOS_FILE, JSON.stringify(data, null, 2), 'utf8', callback);
-};
 
-// GET /api/videos - Fetch all videos
-app.get('/api/videos', (req, res) => {
-  readVideosFromFile((err, videos) => {
-    if (err) return res.status(500).json({ error: 'Failed to read videos data.' });
-    res.json(videos);
+// ===============================
+// صفحة عرض فيديوهات القسم category.html
+// ===============================
+
+function renderCategoryVideos(videos) {
+  const container = document.getElementById("categoryVideos");
+  const title = document.getElementById("categoryTitle");
+  if (!container || !title) return;
+
+  const params = new URLSearchParams(window.location.search);
+  const categoryName = params.get("name");
+  if (!categoryName) return;
+
+  title.textContent = categoryName;
+
+  const filtered = videos.filter(v => v.category === categoryName);
+
+  filtered.forEach(video => {
+    const div = document.createElement("div");
+    div.className = "card-neon p-4 bg-gray-800 rounded-lg cursor-pointer";
+
+    div.innerHTML = `
+      <img src="${video.thumbnail}" class="rounded-lg mb-2">
+      <h3 class="font-bold">${video.title}</h3>
+      <p class="text-xs text-gray-400">${video.views} views</p>
+    `;
+
+    div.onclick = () => {
+      window.location.href = `watch.html?id=${video.id}`;
+    };
+
+    container.appendChild(div);
   });
-});
+}
 
-// POST /api/videos/:id/view - Increment view count
-app.post('/api/videos/:id/view', (req, res) => {
-  const videoId = parseInt(req.params.id, 10);
 
-  readVideosFromFile((err, videos) => {
-    if (err) return res.status(500).json({ error: 'Failed to read videos data.' });
+// ===============================
+// صفحة Trending
+// ===============================
 
-    const videoIndex = videos.findIndex((v) => v.id === videoId);
-    if (videoIndex === -1) {
-      return res.status(404).json({ error: 'Video not found.' });
-    }
+function renderTrending(videos) {
+  const trendingList = document.getElementById("trendingList");
+  if (!trendingList) return;
 
-    videos[videoIndex].views = (videos[videoIndex].views || 0) + 1;
+  const sorted = [...videos].sort((a, b) => b.views - a.views).slice(0, 9);
 
-    writeVideosToFile(videos, (writeErr) => {
-      if (writeErr) return res.status(500).json({ error: 'Failed to save view.' });
-      res.json({ success: true, views: videos[videoIndex].views });
-    });
+  sorted.forEach(video => {
+    const div = document.createElement("div");
+    div.className = "card-neon p-4 bg-gray-800 rounded-lg cursor-pointer";
+
+    div.innerHTML = `
+      <img src="${video.thumbnail}" class="rounded-lg mb-2">
+      <h3 class="font-bold">${video.title}</h3>
+      <p class="text-xs text-gray-400">${video.views} views</p>
+    `;
+
+    div.onclick = () => {
+      window.location.href = `watch.html?id=${video.id}`;
+    };
+
+    trendingList.appendChild(div);
   });
-});
+}
 
-app.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}`);
-});
 
+// ===============================
+// نظام Watch Later
+// ===============================
+
+// حفظ الفيديو في LocalStorage
+function addToWatchLater(videoId) {
+  const key = "watchLaterList";
+  const current = JSON.parse(localStorage.getItem(key) || "[]");
+
+  if (!current.includes(videoId)) {
+    current.push(videoId);
+    localStorage.setItem(key, JSON.stringify(current));
+  }
+}
+
+// عرض قائمة Watch Later
+function renderWatchLater(videos) {
+  const container = document.getElementById("watchLaterList");
+  if (!container) return;
+
+  const key = "watchLaterList";
+  const ids = JSON.parse(localStorage.getItem(key) || "[]");
+
+  const filtered = videos.filter(v => ids.includes(v.id));
+
+  filtered.forEach(video => {
+    const div = document.createElement("div");
+    div.className = "card-neon p-4 bg-gray-800 rounded-lg cursor-pointer";
+
+    div.innerHTML = `
+      <img src="${video.thumbnail}" class="rounded-lg mb-2">
+      <h3 class="font-bold">${video.title}</h3>
+      <p class="text-xs text-gray-400">${video.views} views</p>
+    `;
+
+    div.onclick = () => {
+      window.location.href = `watch.html?id=${video.id}`;
+    };
+
+    container.appendChild(div);
+  });
+}
+
+
+// ===============================
+// صفحة watch.html
+// ===============================
+
+function renderWatchPage(videos) {
+  const videoContainer = document.getElementById("videoPlayer");
+  const title = document.getElementById("videoTitle");
+  const watchLaterBtn = document.getElementById("watchLaterBtn");
+
+  if (!videoContainer || !title) return;
+
+  const params = new URLSearchParams(window.location.search);
+  const id = parseInt(params.get("id"));
+  const video = videos.find(v => v.id === id);
+
+  if (!video) return;
+
+  videoContainer.src = video.url;
+  title.textContent = video.title;
+
+  if (watchLaterBtn) {
+    watchLaterBtn.onclick = () => addToWatchLater(video.id);
+  }
+}
 
 
 

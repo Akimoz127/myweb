@@ -109,17 +109,15 @@ function renderWatchLater() {
 
 // ====== Card Component ======
 function createVideoCard(video) {
-  return `
-    <div class="bg-gray-900 rounded-lg overflow-hidden shadow-lg card-neon cursor-pointer"
-         onclick="openWatch(${video.id})">
-      <img src="${video.thumbnail}" class="w-full h-32 object-cover">
-      <div class="p-3">
-        <h3 class="text-lg font-semibold">${video.title}</h3>
-        <p class="text-gray-400 text-sm">${video.category}</p>
-        <p class="text-gray-500 text-xs">${video.views} views</p>
-      </div>
-    </div>
-  `;
+return `
+<div class="bg-gray-900 rounded-lg overflow-hidden shadow-lg card-neon cursor-pointer"
+onclick="window.open(video.embed_url, '_blank')">
+${video.thumbnail}
+<div class="p-3">
+<h3 class="text-lg font-semibold">${video.title}</h3>
+</div>
+</div>
+`;
 }
 
 // ====== Navigation ======
@@ -261,7 +259,7 @@ function setupSearchTrending() {
 
   input.addEventListener("input", () => {
     const keyword = input.value.toLowerCase();
-    const sorted = [...videos].sort((a, b) => b.views - a.views);
+    const sorted = [...videos];
     const filtered = sorted.filter(v =>
       v.title.toLowerCase().includes(keyword) ||
       v.category.toLowerCase().includes(keyword)

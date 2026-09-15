@@ -216,11 +216,14 @@ function setupSearchIndex() {
   if (!input) return;
 
   input.addEventListener("input", () => {
-    const keyword = input.value.toLowerCase();
-    const filtered = videos.filter(v =>
-      v.title.toLowerCase().includes(keyword) ||
-      v.category.toLowerCase().includes(keyword)
-    );
+    const keyword = input.value.trim().toLowerCase();
+
+    const filtered = videos.filter(video => {
+      const title = (video.title || "").toLowerCase();
+
+      return title.includes(keyword);
+    });
+
     renderFeaturedVideos(filtered);
   });
 }

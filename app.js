@@ -220,8 +220,12 @@ function setupSearchIndex() {
 
     const filtered = videos.filter(video => {
       const title = (video.title || "").toLowerCase();
+      const url = (video.embed_url || "").toLowerCase();
 
-      return title.includes(keyword);
+      return (
+        title.includes(keyword) ||
+        url.includes(keyword)
+      );
     });
 
     renderFeaturedVideos(filtered);

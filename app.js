@@ -299,6 +299,13 @@ function setupSearchWatchLater() {
   });
 }
 
+function filterVideos(keyword) {
+  const filtered = videos.filter(video =>
+    video.title.toLowerCase().includes(keyword.toLowerCase())
+  );
+
+  renderFeaturedVideos(filtered);
+}
 
 
 

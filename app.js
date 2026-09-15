@@ -300,9 +300,15 @@ function setupSearchWatchLater() {
 }
 
 function filterVideos(keyword) {
-  const filtered = videos.filter(video =>
-    video.title.toLowerCase().includes(keyword.toLowerCase())
-  );
+  keyword = keyword.toLowerCase();
+
+  const filtered = videos.filter(video => {
+    const title = (video.title || "").toLowerCase();
+
+    return title.includes(keyword);
+  });
+
+  console.log(filtered.length);
 
   renderFeaturedVideos(filtered);
 }

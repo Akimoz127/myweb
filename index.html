@@ -33,7 +33,19 @@
 
 <main class="p-4">
   <h2 class="text-xl font-bold mb-4">Featured Videos</h2>
-  <div id="videoList" class="grid grid-cols-1 md:grid-cols-3 gap-4"></div>
+  <h2 class="text-xl font-bold mb-4">Featured Videos</h2>
+
+<div class="mb-4 flex flex-wrap gap-2">
+  <button onclick="filterVideos('chatgpt')">ChatGPT</button>
+  <button onclick="filterVideos('claude')">Claude</button>
+  <button onclick="filterVideos('gemini')">Gemini</button>
+  <button onclick="filterVideos('copilot')">Copilot</button>
+  <button onclick="filterVideos('agent')">AI Agents</button>
+  <button onclick="filterVideos('n8n')">n8n</button>
+  <button onclick="renderFeaturedVideos(videos)">All</button>
+</div>
+
+<div id="videoList" class="grid grid-cols-1 md:grid-cols-3 gap-4"></div>
 </main>
 
 <script src="app.js"></script>
